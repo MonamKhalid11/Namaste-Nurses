@@ -1,4 +1,6 @@
 import { StyleSheet } from 'react-native'
+import { WP } from './PixelPerfect'
+import { Colors } from './Variables'
 
 export default StyleSheet.create({
   /* Column Layouts */
@@ -78,6 +80,7 @@ export default StyleSheet.create({
   /* Sizes Layouts */
   fill: {
     flex: 1,
+    backgroundColor: Colors.white
   },
   fullSize: {
     height: '100%',
@@ -88,6 +91,33 @@ export default StyleSheet.create({
   },
   fullHeight: {
     height: '100%',
+  },
+  buttonContainer: {
+    display: 'flex',
+    height: WP('13'),
+    width: WP('90'),
+    backgroundColor: Colors.white,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  inputContainer: {
+    display: 'flex',
+    height: WP('13'),
+    width: WP('90'),
+    borderColor: Colors.appColor,
+    borderWidth: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  inputText: {
+    color: Colors.black,
+    fontSize: WP('3'),
+    fontWeight: 'bold'
+  },
+  btnText: {
+    color: Colors.appColor,
+    fontWeight: 'bold',
+    fontSize: WP('4')
   },
   /* Operation Layout */
   mirror: {

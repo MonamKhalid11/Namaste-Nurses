@@ -3,5 +3,7 @@
  */
 
 export default {
-  logo: require('@/Assets/Images/TOM.png'),
+  logo: require('@/Assets/Images/carelogo.png'),
+  welcome: require('@/Assets/Images/welcome.png'),
+  drawer: require('@/Assets/Images/drawer.png'),
 }

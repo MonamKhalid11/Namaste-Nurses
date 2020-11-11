@@ -1,15 +1,25 @@
 import React from 'react'
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { IndexExampleContainer } from '@/Containers'
-
-const Tab = createBottomTabNavigator()
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import { Colors } from '../Theme';
+import CustomDrawer from '../Components/CustomDrawer'
+const Drawer = createDrawerNavigator();
 
 // @refresh reset
 const MainNavigator = () => {
   return (
-    <Tab.Navigator>
-      <Tab.Screen name="Home" component={IndexExampleContainer} />
-    </Tab.Navigator>
+    <Drawer.Navigator initialRouteName="Home"
+      drawerPosition={'right'}
+      drawerStyle={{
+        width: 240,
+        backgroundColor: Colors.white
+      }}
+      drawerContent={props => <CustomDrawer {...props} />}
+
+    >
+      <Drawer.Screen name="Home" component={IndexExampleContainer} options={{ headerShown: false }}
+      />
+    </Drawer.Navigator>
   )
 }
 

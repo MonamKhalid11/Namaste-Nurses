@@ -23,7 +23,7 @@ export default StyleSheet.create({
     fontWeight: 'bold',
   },
   titleLarge: {
-    fontSize: FontSize.large * 2,
+    fontSize: FontSize.large,
     fontWeight: 'bold',
   },
   textCenter: {

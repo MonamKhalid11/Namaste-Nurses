@@ -1,2 +1,2 @@
-export { default as IndexExampleContainer } from './Example/Index'
-export { default as IndexStartupContainer } from './Startup/Index'
+export { default as IndexExampleContainer } from './Story/Home/index'
+export { default as IndexStartupContainer } from './Authentication/Login'

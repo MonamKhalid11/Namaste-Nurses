@@ -1,12 +1,24 @@
 export default {
-  welcome: 'Welcome to React Native NamasteNurses by TheCodingMachine',
-  actions: {
-    continue: 'Continue',
+  login: {
+    input: 'ENTER YOUR MOBILE NUMBER',
+    otpTextOne: "We will send a ",
+    otpTextTwo: "One Time Password(OTP)           ",
+    otpTextThree: "to this number for verification.",
+    otpInput: 'ENTER OTP HERE',
+    submit: 'SUBMIT'
   },
-  example: {
-    helloUser: 'I am a fake user, my name is {{name}}',
-    labels: {
-      userId: 'Enter a user id',
-    },
+  home: {
+    button1: "MARK ATTENDANCE",
+    button2: "VIEW FEED",
+    heading: 'Lets get started.',
+    todo: 'What would you like to do today?'
   },
+  drawer: {
+    message: 'Hello!',
+    screen1: 'PROFILE',
+    screen2: 'MARK ATTENDANCE',
+    screen3: 'VIEW FEED',
+    screen4: 'PREVIOUS CLASSED',
+    screen5: 'ONLINE TRAINING',
+  }
 }

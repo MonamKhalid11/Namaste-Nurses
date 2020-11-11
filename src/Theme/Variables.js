@@ -5,6 +5,8 @@
  * That allows to change them more easily later on.
  */
 
+import { WP } from "./PixelPerfect"
+
 /**
  * Colors
  */
@@ -16,15 +18,17 @@ export const Colors = {
   primary: '#E14032',
   success: '#28a745',
   error: '#dc3545',
+  appColor: '#EFB143',
+  black: "black"
 }
 
 /**
  * FontSize
  */
 export const FontSize = {
-  small: 12,
-  regular: 14,
-  large: 18,
+  small: WP('3'),
+  regular: WP('4'),
+  large: WP('4'),
 }
 
 /**
