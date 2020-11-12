@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next'
 
 // create a component
 const PagesList = (props) => {
+    console.log("showing props", props)
     const { t } = useTranslation()
     return (
         <View style={styles.container} >
@@ -15,7 +16,7 @@ const PagesList = (props) => {
             </View>
             {props.pages.map((page) => {
                 return (
-                    <PageItem page={page} />
+                    <PageItem page={page} navigation={props.navigation} />
                 )
             })}
         </View>

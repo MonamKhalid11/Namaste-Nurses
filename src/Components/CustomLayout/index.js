@@ -19,8 +19,8 @@ const CustomLayout = (props) => {
                     />
                 </TouchableOpacity> : null}
                 <Image
-                    source={props.isLogin ? Images.logo : Images.welcome}
-                    style={props.isLogin ? styles.logo : styles.welcome}
+                    source={props.isLogin ? Images.logo : props.isMarked ? Images.marked : Images.welcome}
+                    style={props.isLogin ? styles.logo : props.isMarked ? styles.marked : styles.welcome}
                 />
 
                 {props.isLogin ?
@@ -81,6 +81,11 @@ const styles = StyleSheet.create({
         alignSelf: 'flex-end',
         marginTop: WP('-20'),
         marginRight: WP('-5'),
+    },
+    marked: {
+        height: WP('90'),
+        width: WP('90'),
+        resizeMode: 'contain',
     }
 });
 

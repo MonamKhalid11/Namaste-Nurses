@@ -116,8 +116,12 @@ export default StyleSheet.create({
   },
   btnText: {
     color: Colors.appColor,
-    fontWeight: 'bold',
+    fontWeight: '500',
     fontSize: WP('4')
+  },
+  fieldsContainer: {
+    height: WP('13'),
+    width: WP('90')
   },
   /* Operation Layout */
   mirror: {

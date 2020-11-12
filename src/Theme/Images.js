@@ -6,4 +6,9 @@ export default {
   logo: require('@/Assets/Images/carelogo.png'),
   welcome: require('@/Assets/Images/welcome.png'),
   drawer: require('@/Assets/Images/drawer.png'),
+  back: require('@/Assets/Images/back.png'),
+  menu: require('@/Assets/Images/menu.png'),
+  picker: require('@/Assets/Images/picker.png'),
+  unchecked: require('@/Assets/Images/unchecked.png'),
+  marked: require('@/Assets/Images/marked.png'),
 }

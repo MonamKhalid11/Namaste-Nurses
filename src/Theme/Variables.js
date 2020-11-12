@@ -19,7 +19,11 @@ export const Colors = {
   success: '#28a745',
   error: '#dc3545',
   appColor: '#EFB143',
-  black: "black"
+  black: "black",
+  backgroundColor: '#F4F4F5',
+  containerBorder: '#E7E7EA',
+  pickerBorder: '#A4A9AD',
+  secondaryColor: '#DA696B'
 }
 
 /**

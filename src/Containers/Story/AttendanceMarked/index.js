@@ -4,8 +4,9 @@ import { View, Text, StyleSheet } from 'react-native';
 import { CustomLayout, CustomButton } from '@/Components'
 import { useTranslation } from 'react-i18next'
 import Headings from './Components/Heading'
+import { Colors } from '../../../Theme';
 // create a component
-const Home = (props) => {
+const AttendanceMarked = (props) => {
     const { t } = useTranslation()
 
     const toggleDrawer = () => props.navigation.toggleDrawer();;
@@ -13,14 +14,17 @@ const Home = (props) => {
     return (
         <CustomLayout
             drawerOnPress={toggleDrawer}
+            isMarked={true}
         >
             <Headings />
             <CustomButton
                 onPress={() => props.navigation.navigate('MarkAttendance')}
-                title={t('home.button1')}
+                title={t('attendanceMarked.button1')}
+                titleColor={Colors.black}
             />
             <CustomButton
-                title={t('home.button2')}
+                title={t('attendanceMarked.button2')}
+                titleColor={Colors.black}
             />
         </CustomLayout>
     );
@@ -36,4 +40,4 @@ const styles = StyleSheet.create({
     },
 });
 //make this component available to the app
-export default Home;
+export default AttendanceMarked;

@@ -41,7 +41,7 @@ const CustomDrawer = (props) => {
             <DrawerIcon
                 openDrawer={toggleDrawer}
             />
-            <PagesList pages={pages} />
+            <PagesList pages={pages} navigation={props.navigation} />
         </DrawerContentScrollView>
     );
 };

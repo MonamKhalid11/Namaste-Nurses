@@ -9,13 +9,15 @@ import { useTranslation } from 'react-i18next'
 
 const PageItem = (props) => {
     const { t } = useTranslation()
+    console.log('showing props', props)
 
-    const navigate = (page) => {
+    const navigater = (page) => {
         switch (page.title) {
             case t('drawer.screen1'):
+                props.navigation.navigate('Profile')
                 break;
             case t('drawer.screen2'):
-
+                props.navigation.navigate('MarkAttendance')
                 break;
             case t('drawer.screen3'):
                 break;
@@ -30,7 +32,7 @@ const PageItem = (props) => {
 
     return (
         <TouchableOpacity style={styles.container}
-            onPress={() => navigate(props.page)}
+            onPress={() => navigater(props.page)}
         >
             <Text style={styles.titleText}>{props.page.title}</Text>
         </TouchableOpacity>
