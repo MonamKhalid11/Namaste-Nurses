@@ -54,6 +54,45 @@ export default {
   },
   profile: {
     button: "EDIT PROFILE",
-    personal: 'PERSONAL DETAILS'
-  }
+    personal: 'PERSONAL DETAILS',
+    phone: 'Phone No',
+    date: 'Date of Birth',
+    status: 'Status',
+    year: 'Year of Graduation',
+    trainer: 'Trainer ID',
+    professional: 'PROFESSIONAL DETAILS',
+    location: 'Location',
+    name: 'Name of Hospital',
+    dateOfJoining: 'Date of joining',
+    designation: 'Designation',
+    medical: 'Medical Condition Area',
+    tot: 'Date of TOT Attended',
+    ccp: 'Condition Artea for CCP'
+  },
+  editprofile: {
+    submit: 'SUBMIT DETAILS',
+    name: 'Name',
+    mobile: 'Mobile',
+    Date: 'Date of Birth',
+    year: 'Year of Graduation',
+    trainer: 'Trainer Id',
+    ccp: 'Condition artea for ccp'
+  },
+  onlineCourses: {
+    title: `Let's Learn!`,
+    subtitle: `You can view a course in the`,
+    language: `language of your choice`,
+    click: `by clicking on them`,
+    button1: 'ALL COURSES',
+    button2: 'ENGLISH COURSES',
+    button3: 'HINDI COURSES',
+  },
+  onlineCoursesDetails: {
+    title: `Let's Learn!`,
+    subtitle: `You can`,
+    language: `select your course`,
+    click: `by clicking on the titles below`,
+
+  },
+
 }

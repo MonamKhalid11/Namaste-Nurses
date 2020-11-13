@@ -3,23 +3,23 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import { useTranslation } from 'react-i18next'
 import { Colors, WP } from '../../../../Theme';
-
+import { Layout, Fonts, Images } from '@/Theme'
+import AvatarContainer from '../../../../Components/Avatar'
 // create a component
 const PersonalDetails = (props) => {
     const { t } = useTranslation()
-    placeholder = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSUz5EWKDu-QHOR3ym0eWBSQenc69_kODInRA&usqp=CAU'
     return (
         <View style={styles.container}>
             <Text allowFontScaling={false} style={styles.title}>{t('profile.personal')}</Text>
             <View style={styles.nameContainer}>
                 <Text allowFontScaling={false} style={styles.name}>{props.name}</Text>
-                <View style={styles.profileContainer}>
-                    <Image
-                        source={{ uri: props.profilePicture ? props.profilePicture : placeholder }}
-                    />
-
-                </View>
+                <AvatarContainer />
             </View>
+            <Text style={styles.questions}>{t('profile.phone')} : <Text style={styles.details}>{props.phone}</Text></Text>
+            <Text style={styles.questions}>{t('profile.date')} : <Text style={styles.details}>{props.date}</Text></Text>
+            <Text style={styles.questions}>{t('profile.status')} : <Text style={styles.details}>{props.status}</Text> </Text>
+            <Text style={styles.questions}>{t('profile.year')} : <Text style={styles.details}>{props.year}</Text></Text>
+            <Text style={styles.questions}>{t('profile.trainer')} : <Text style={styles.details}>{props.trainer}</Text></Text>
         </View>
     );
 };
@@ -34,28 +34,56 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: WP('3.5'),
         marginTop: WP('5'),
-        marginBottom: WP('5')
+        // marginBottom: WP('5')
     },
     nameContainer: {
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'space-between'
     },
     name: {
         color: Colors.black,
-        // fontWeight: 'bold',
-        fontSize: WP('3.5'),
-        marginTop: WP('5'),
+        // fontWeight: '500',
+        fontSize: WP('5'),
+        // marginTop: WP('5'),
     },
     profileContainer: {
         display: 'flex',
         height: WP('20'),
         width: WP('20'),
         borderRadius: 100,
-        borderWidth: 1,
-        borderColor: Colors.pickerBorder,
+        borderWidth: WP('1'),
+        borderColor: Colors.white,
         position: 'relative'
+    },
+    questions: {
+        color: Colors.secondaryColor,
+        fontWeight: 'bold',
+        marginBottom: WP('2')
+    },
+    details:
+    {
+        color: Colors.black,
+        fontWeight: '500',
+        fontSize: WP('2.7'),
+        marginBottom: WP('3')
+    },
+    profilePic: {
+        display: 'flex',
+        height: '100%',
+        width: '100%',
+        resizeMode: 'contain',
+        borderRadius: 100,
+        overflow: 'hidden'
+    },
+    add: {
+        display: 'flex',
+        height: WP('5'),
+        width: WP('5'),
+        position: 'absolute',
+        bottom: 0,
+        right: 0
     }
 });
 

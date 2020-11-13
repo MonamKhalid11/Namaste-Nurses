@@ -23,7 +23,8 @@ export const Colors = {
   backgroundColor: '#F4F4F5',
   containerBorder: '#E7E7EA',
   pickerBorder: '#A4A9AD',
-  secondaryColor: '#DA696B'
+  secondaryColor: '#DA696B',
+  coursesColor: '#5DB257'
 }
 
 /**

@@ -6,7 +6,7 @@ import { Layout } from '../../Theme';
 // create a component
 const CustomButton = (props) => {
     return (
-        <TouchableOpacity style={[Layout.buttonContainer, props.bgColor ? { backgroundColor: props.bgColor } : null]}
+        <TouchableOpacity style={[Layout.buttonContainer, props.bgColor ? { backgroundColor: props.bgColor } : null, props.containerStyles]}
             onPress={props.onPress}
         >
             <Text style={[Layout.btnText, props.titleColor ? { color: props.titleColor } : null]} allowFontScaling={false}>{props.title}</Text>

@@ -23,7 +23,8 @@ const PageItem = (props) => {
                 break;
             case t('drawer.screen4'):
                 break;
-            case t('drawer.screen4'):
+            case t('drawer.screen5'):
+                props.navigation.navigate('OnlineCourses')
                 break;
             default:
                 break;

@@ -7,6 +7,9 @@ import MarkAttendance from '../Containers/Story/MarkAttendance'
 import AttendanceMarked from '../Containers/Story/AttendanceMarked'
 import Feed from '../Containers/Story/Feed'
 import Profile from '../Containers/Story/Profile'
+import EditProfile from '../Containers/Story/EditProfile'
+import OnlineCourses from '../Containers/Story/OnlineCourses'
+import OnlineCoursesDetails from '../Containers/Story/OnlineCourseDetails'
 
 const Drawer = createDrawerNavigator();
 
@@ -27,6 +30,9 @@ const MainNavigator = () => {
       <Drawer.Screen name="AttendanceMarked" component={AttendanceMarked} options={{ headerShown: false }} />
       <Drawer.Screen name="Feed" component={Feed} options={{ headerShown: false }} />
       <Drawer.Screen name="Profile" component={Profile} options={{ headerShown: false }} />
+      <Drawer.Screen name="EditProfile" component={EditProfile} options={{ headerShown: false }} />
+      <Drawer.Screen name="OnlineCourses" component={OnlineCourses} options={{ headerShown: false }} />
+      <Drawer.Screen name="OnlineCoursesDetails" component={OnlineCoursesDetails} options={{ headerShown: false }} />
     </Drawer.Navigator>
   )
 }

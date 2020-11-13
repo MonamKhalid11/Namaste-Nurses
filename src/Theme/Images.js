@@ -11,4 +11,6 @@ export default {
   picker: require('@/Assets/Images/picker.png'),
   unchecked: require('@/Assets/Images/unchecked.png'),
   marked: require('@/Assets/Images/marked.png'),
+  add: require('@/Assets/Images/addBtn.png'),
+  forward: require('@/Assets/Images/forward.png'),
 }
