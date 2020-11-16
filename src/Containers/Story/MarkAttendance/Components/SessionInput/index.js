@@ -9,11 +9,10 @@ import { Colors } from '../../../../../Theme';
 // create a component
 const SessionInput = (props) => {
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, props.inputContainerStyles]}>
             <Text allowFontScaling={false} style={styles.title}>{props.title}</Text>
-
             <TextInput
-                style={[styles.inputField, { height: props.isNotes ? 'auto' : WP('13'), minHeight: props.isNotes ? WP('13') : null }]}
+                style={[styles.inputField, { height: props.isNotes ? 'auto' : WP('13'), minHeight: props.isNotes ? WP('13') : null }, props.inputStyles]}
                 multiline={props.isNotes ? true : false}
                 {...props}
             />

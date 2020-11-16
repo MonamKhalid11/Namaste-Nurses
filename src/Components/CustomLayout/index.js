@@ -9,17 +9,17 @@ import CustomTextField from '../CustomInput'
 const CustomLayout = (props) => {
     return (
         <KeyboardAwareScrollView contentContainerStyle={styles.container}>
-            <View style={[styles.logoContainer, !props.isLogin ? { alignItems: 'center', justifyContent: 'center' } : null]}>
+            <View style={[styles.logoContainer, !props.isLogin ? { alignItems: 'center', justifyContent: 'center' } : null, props.logoStyles]}>
                 {!props.isLogin ? <TouchableOpacity style={styles.drawerContainer}
                     onPress={props.drawerOnPress}
                 >
                     <Image
-                        source={Images.drawer}
-                        style={styles.drawer}
+                        source={props.commingSoon ? Images.menu : Images.drawer}
+                        style={props.commingSoon ? styles.menu : styles.drawer}
                     />
                 </TouchableOpacity> : null}
                 <Image
-                    source={props.isLogin ? Images.logo : props.isMarked ? Images.marked : Images.welcome}
+                    source={props.isLogin ? Images.logo : props.isMarked ? Images.marked : props.commingSoon ? Images.commingSoon : Images.welcome}
                     style={props.isLogin ? styles.logo : props.isMarked ? styles.marked : styles.welcome}
                 />
 
@@ -35,7 +35,7 @@ const CustomLayout = (props) => {
                     null
                 }
             </View>
-            <View style={styles.contentContainer}>
+            <View style={[styles.contentContainer, props.contentContainer]}>
                 {props.children}
             </View>
         </KeyboardAwareScrollView>
@@ -76,6 +76,13 @@ const styles = StyleSheet.create({
         height: WP('15'),
         width: WP('15'),
         resizeMode: 'contain',
+    },
+    menu: {
+        height: WP('10'),
+        width: WP('5'),
+        resizeMode: 'contain',
+        tintColor: Colors.black,
+        marginRight: WP('3')
     },
     drawerContainer: {
         alignSelf: 'flex-end',

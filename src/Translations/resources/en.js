@@ -20,6 +20,8 @@ export default {
     screen3: 'VIEW FEED',
     screen4: 'PREVIOUS CLASSES',
     screen5: 'ONLINE TRAINING',
+    screen6: 'CCP TOOLS',
+    screen7: 'INTERACTIVE GAMES',
   },
   markScreen: {
     title: "Add a New Class",
@@ -92,7 +94,56 @@ export default {
     subtitle: `You can`,
     language: `select your course`,
     click: `by clicking on the titles below`,
-
   },
+  addComment: {
+    post: 'POST'
+  },
+  previousclasses: {
+    title: 'Hello!',
+    subtitle: 'You can',
+    language: "view or edit",
+    click: 'your previous class entries by clicking on them',
+    marknew: 'MARK NEW ATTENDANCE'
+  },
+  editclass: {
+    date: 'Date',
+    time: 'Time',
+    number: 'Number of People',
+    classType: 'Class Type',
+    location: 'Location Ward',
+    session: 'Session conducted with section',
+    notes: 'Optional notes section'
+  },
+  ccp: {
+    title: 'CCP Tools',
+    subtitle: 'You can download learning material in the ',
+    language: 'topic of your choice ',
+    click: 'by clicking on them',
+    button1: 'ANC',
+    button2: 'PNC',
+    button3: 'SNCU',
+    button4: 'CCP LOGLOOK',
+  },
+  ccpdetails: {
+    title: 'Hello!',
+    subtitle: 'You can',
+    language: "select the medium of your choice",
+    click: 'by clicking on the options below',
+  },
+  games: {
+    title: `Let's Play!`,
+    subtitle: `You can`,
+    language: `Play the game of your choice`,
+    click: `by clicking on them`,
+    button1: 'COVID MAZE',
+    button2: 'VIRUS WARRIOR',
+  },
+  commingsoon: {
+    heading: `You will be able to`,
+    been: `mark your attendence`,
+    here: 'here!',
+    button1: 'CCP TOOLS',
+    button2: 'VIEW MEDIA',
+  }
 
 }

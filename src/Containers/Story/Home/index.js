@@ -21,6 +21,7 @@ const Home = (props) => {
             />
             <CustomButton
                 title={t('home.button2')}
+                onPress={() => props.navigation.navigate('Feed')}
             />
         </CustomLayout>
     );

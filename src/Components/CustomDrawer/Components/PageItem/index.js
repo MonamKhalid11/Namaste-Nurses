@@ -20,11 +20,19 @@ const PageItem = (props) => {
                 props.navigation.navigate('MarkAttendance')
                 break;
             case t('drawer.screen3'):
+                props.navigation.navigate('Feed')
                 break;
             case t('drawer.screen4'):
+                props.navigation.navigate('PreviousClasses')
                 break;
             case t('drawer.screen5'):
                 props.navigation.navigate('OnlineCourses')
+                break;
+            case t('drawer.screen6'):
+                props.navigation.navigate('CcpTools')
+                break;
+            case t('drawer.screen7'):
+                props.navigation.navigate('Games')
                 break;
             default:
                 break;
@@ -50,7 +58,8 @@ const styles = StyleSheet.create({
         paddingBottom: WP('5')
     },
     titleText: {
-        fontWeight: 'bold'
+        fontWeight: '400',
+        color: Colors.black
     }
 });
 

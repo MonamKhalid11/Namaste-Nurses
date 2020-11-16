@@ -24,7 +24,10 @@ export const Colors = {
   containerBorder: '#E7E7EA',
   pickerBorder: '#A4A9AD',
   secondaryColor: '#DA696B',
-  coursesColor: '#5DB257'
+  coursesColor: '#5DB257',
+  feebackgroundColor: '#78C4CA',
+  grey: 'grey',
+  inputGrey: '#D8D9DE'
 }
 
 /**

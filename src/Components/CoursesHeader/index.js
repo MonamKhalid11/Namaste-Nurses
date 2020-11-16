@@ -10,7 +10,7 @@ const CuatomCoursesHeaders = (props) => {
 
 
     return (
-        <View style={styles.container}>
+        <View style={[props.isPreviousClass ? styles.previous : styles.container, props.color ? { backgroundColor: props.color } : null]}>
             {props.isCourseDetails ?
                 <View style={styles.isCourse}>
                     <TouchableOpacity style={styles.drawerContainer}
@@ -41,13 +41,36 @@ const CuatomCoursesHeaders = (props) => {
                     />
                 </TouchableOpacity>
             }
-            <View>
+            <View style={props.isPreviousClass ? styles.customHeader : styles.textHeader}>
                 <Text allowFontScaling={false} style={styles.title}>{props.title}</Text>
                 <Text allowFontScaling={false} style={styles.subtitle}>{props.subtitle}
                     <Text allowFontScaling={false} style={styles.boldSubtitle}> {props.boldSubtitle}
                     </Text><Text allowFontScaling={false} style={styles.subtitle}> {props.click} </Text>
                 </Text>
             </View>
+
+            {props.isPreviousClass ?
+                <View style={styles.coursesDetails}>
+                    <View style={styles.sessionsContainer}>
+                        <Text allowFontScaling={false} style={styles.sessions} ellipsizeMode={'tail'} numberOfLines={1}>{props.sessions}</Text>
+                        <View>
+                            <Text allowFontScaling={false} style={styles.sessionTheory}>Sessions</Text>
+                            <Text allowFontScaling={false} style={styles.sessionTheory}>Conducted</Text>
+                        </View>
+                    </View>
+                    <View style={styles.border} />
+                    <View style={styles.sessionsContainer}>
+                        <Text allowFontScaling={false} style={styles.sessions} ellipsizeMode={'tail'} numberOfLines={1}> {props.patients}</Text>
+                        <View>
+                            <Text allowFontScaling={false} style={styles.sessionTheory}>Patients</Text>
+                            <Text allowFontScaling={false} style={styles.sessionTheory}>Impacted</Text>
+                        </View>
+                    </View>
+
+                </View>
+                :
+                null
+            }
         </View>
     );
 };
@@ -60,6 +83,20 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.coursesColor,
         padding: WP('5'),
         justifyContent: 'space-between'
+    },
+    previous: {
+        display: 'flex',
+        height: WP('65'),
+        backgroundColor: Colors.coursesColor,
+        padding: WP('5'),
+    },
+    textHeader: {
+        paddingBottom: WP('5')
+    },
+    customHeader: {
+        borderBottomWidth: 1,
+        borderColor: Colors.white,
+        paddingBottom: WP('5')
     },
     drawerContainer: {
         alignSelf: 'flex-end',
@@ -89,6 +126,36 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between'
+    },
+    coursesDetails: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        marginTop: WP('4'),
+        width: WP('80')
+    },
+    sessionsContainer: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center'
+    },
+    sessions: {
+        fontWeight: 'bold',
+        color: Colors.white,
+        fontSize: WP('10'),
+        marginRight: WP('1')
+    },
+    sessionTheory: {
+        fontWeight: 'bold',
+        color: Colors.white,
+        fontSize: WP('4'),
+    },
+    border: {
+        borderWidth: 1,
+        borderColor: Colors.white,
+        height: WP('10'),
+        width: 1
     }
 });
 
