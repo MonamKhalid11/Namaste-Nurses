@@ -8,7 +8,7 @@ import { Colors, WP } from '../../../Theme';
 // create a component
 const CcpTools = (props) => {
     const { t } = useTranslation()
-    const navigateCourse = () => props.navigation.navigate('CcpToolsDetails')
+    const navigateCourse = () => props.navigation.navigate('PreferredLanguage')
 
     return (
         <View style={styles.container}>
@@ -48,7 +48,7 @@ const CcpTools = (props) => {
                     titleColor={Colors.white}
                     title={t('ccp.button4')}
                     containerStyles={styles.btnContainer}
-                    onPress={navigateCourse}
+                // onPress={navigateCourse}
                 />
 
 

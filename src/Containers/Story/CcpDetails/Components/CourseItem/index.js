@@ -11,7 +11,7 @@ const CourseItem = (props) => {
         <TouchableOpacity style={styles.container}>
             <View style={styles.header}>
                 <Text allowFontScaling={false} style={styles.title}>{props.course.title}</Text>
-                <Text allowFontScaling={false} style={styles.course}>{props.course.course}</Text>
+                {/* <Text allowFontScaling={false} style={styles.course}>{props.course.course}</Text> */}
             </View>
             <Image
                 source={Images.forward}

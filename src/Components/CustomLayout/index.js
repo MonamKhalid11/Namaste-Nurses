@@ -7,17 +7,40 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import CustomTextField from '../CustomInput'
 // create a component
 const CustomLayout = (props) => {
+    const toggleDrawer = () => props.navigation.toggleDrawer();;
+    const onBackBtnPressed = () => props.navigation.goBack()
     return (
         <KeyboardAwareScrollView contentContainerStyle={styles.container}>
-            <View style={[styles.logoContainer, !props.isLogin ? { alignItems: 'center', justifyContent: 'center' } : null, props.logoStyles]}>
-                {!props.isLogin ? <TouchableOpacity style={styles.drawerContainer}
-                    onPress={props.drawerOnPress}
-                >
-                    <Image
-                        source={props.commingSoon ? Images.menu : Images.drawer}
-                        style={props.commingSoon ? styles.menu : styles.drawer}
-                    />
-                </TouchableOpacity> : null}
+            <View style={[props.showBackbtn ? styles.logoContainerBackBtn : styles.logoContainer, !props.isLogin && !props.showBackbtn ? { alignItems: 'center', justifyContent: 'center' } : null, props.logoStyles]}>
+                {!props.isLogin ?
+                    props.showBackbtn ?
+                        <View style={styles.isCourse}>
+                            <TouchableOpacity style={styles.drawerContent}
+                                onPress={onBackBtnPressed}
+                            >
+                                <Image
+                                    source={Images.back}
+                                    style={styles.menu}
+                                />
+                            </TouchableOpacity>
+                            <TouchableOpacity style={styles.drawerContainer}
+                                onPress={toggleDrawer}
+                            >
+                                <Image
+                                    source={Images.menu}
+                                    style={styles.menu}
+                                />
+                            </TouchableOpacity>
+                        </View>
+                        :
+                        <TouchableOpacity style={styles.drawerContainer}
+                            onPress={props.drawerOnPress}
+                        >
+                            <Image
+                                source={props.commingSoon ? Images.menu : Images.drawer}
+                                style={props.commingSoon ? styles.menu : styles.drawer}
+                            />
+                        </TouchableOpacity> : null}
                 <Image
                     source={props.isLogin ? Images.logo : props.isMarked ? Images.marked : props.commingSoon ? Images.commingSoon : Images.welcome}
                     style={props.isLogin ? styles.logo : props.isMarked ? styles.marked : styles.welcome}
@@ -38,7 +61,7 @@ const CustomLayout = (props) => {
             <View style={[styles.contentContainer, props.contentContainer]}>
                 {props.children}
             </View>
-        </KeyboardAwareScrollView>
+        </KeyboardAwareScrollView >
     );
 };
 
@@ -54,6 +77,12 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-between'
     },
+    logoContainerBackBtn: {
+        flex: 2,
+        padding: WP('5'),
+        justifyContent: 'space-between',
+        paddingBottom: 0
+    },
     contentContainer: {
         flex: 1,
         backgroundColor: Colors.appColor,
@@ -62,8 +91,8 @@ const styles = StyleSheet.create({
 
     },
     logo: {
-        height: WP('60'),
-        width: WP('60'),
+        height: WP('90'),
+        width: WP('90'),
         resizeMode: 'contain',
         marginTop: WP('20')
     },
@@ -76,6 +105,12 @@ const styles = StyleSheet.create({
         height: WP('15'),
         width: WP('15'),
         resizeMode: 'contain',
+    },
+    isCourse: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between'
     },
     menu: {
         height: WP('10'),
@@ -93,7 +128,10 @@ const styles = StyleSheet.create({
         height: WP('90'),
         width: WP('90'),
         resizeMode: 'contain',
-    }
+    },
+    drawerContent: {
+        // alignSelf: 'flex-end',
+    },
 });
 
 //make this component available to the app

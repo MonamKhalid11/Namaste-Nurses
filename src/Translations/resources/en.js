@@ -5,7 +5,7 @@ export default {
     otpTextTwo: "One Time Password(OTP)           ",
     otpTextThree: "to this number for verification.",
     otpInput: 'ENTER OTP HERE',
-    submit: 'SUBMIT'
+    submit: 'SUBMIT',
   },
   home: {
     button1: "MARK ATTENDANCE",
@@ -144,6 +144,19 @@ export default {
     here: 'here!',
     button1: 'CCP TOOLS',
     button2: 'VIEW MEDIA',
+  },
+  languages: {
+    title: `Preferred Language?`,
+    subtitle: `You can download learning material in the`,
+    language: `Language of your choice`,
+    click: `by clicking on them`,
+    button1: 'ENGLISH',
+    button2: 'HINDI',
+    button3: 'TELUGU',
+    button4: 'MARATHI',
+    button5: 'KANNADA',
+    button6: 'PUNJABI',
+
   }
 
 }

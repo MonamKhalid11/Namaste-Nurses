@@ -18,6 +18,7 @@ import CcpTools from '../Containers/Story/Ccp'
 import CcpToolsDetails from '../Containers/Story/CcpDetails'
 import Games from '../Containers/Story/InteractiveGame'
 import CommingSoon from '../Containers/Story/CommingSoon'
+import PreferredLanguage from '../Containers/Story/PreferredLanguage'
 const Drawer = createDrawerNavigator();
 
 // @refresh reset
@@ -48,6 +49,7 @@ const MainNavigator = () => {
       <Drawer.Screen name="CcpToolsDetails" component={CcpToolsDetails} options={{ headerShown: false }} />
       <Drawer.Screen name="Games" component={Games} options={{ headerShown: false }} />
       <Drawer.Screen name="CommingSoon" component={CommingSoon} options={{ headerShown: false }} />
+      <Drawer.Screen name="PreferredLanguage" component={PreferredLanguage} options={{ headerShown: false }} />
     </Drawer.Navigator>
   )
 }

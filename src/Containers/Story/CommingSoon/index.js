@@ -17,6 +17,8 @@ const CommingSoon = (props) => {
             commingSoon={true}
             logoStyles={styles.logoContainer}
             contentContainer={styles.contentContainer}
+            showBackbtn={true}
+            navigation={props.navigation}
         >
             <Headings />
             <CustomButton

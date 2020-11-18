@@ -10,21 +10,27 @@ const OtpText = () => {
     const { t } = useTranslation()
 
     return (
-        <Text style={[Fonts.textRegular, styles.text]}>{t('login.otpTextOne')}
-            <Text style={[Fonts.titleLarge, styles.textTwo]}>{t('login.otpTextTwo')}</Text>
-            <Text style={[Fonts.textRegular, styles.text]}>{t('login.otpTextThree')}</Text>
-
-        </Text>
+        <View style={styles.container}>
+            <Text style={[Fonts.textRegular, styles.text]}>{t('login.otpTextOne')}
+                <Text style={[Fonts.titleLarge, styles.textTwo]}>{t('login.otpTextTwo')}</Text>
+                <Text style={[Fonts.textRegular, styles.text]}>{t('login.otpTextThree')}</Text>
+            </Text>
+        </View>
     );
 };
 
 // define your styles
 const styles = StyleSheet.create({
+    container: {
+        height: WP('13')
+    },
     text: {
         color: Colors.white,
+        fontSize: WP('5')
     },
     textTwo: {
         color: Colors.white,
+        fontSize: WP('4.7')
     }
 });
 

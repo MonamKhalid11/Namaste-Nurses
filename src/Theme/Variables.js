@@ -18,16 +18,16 @@ export const Colors = {
   primary: '#E14032',
   success: '#28a745',
   error: '#dc3545',
-  appColor: '#EFB143',
+  appColor: '#FAAF1B',
   black: "black",
   backgroundColor: '#F4F4F5',
   containerBorder: '#E7E7EA',
   pickerBorder: '#A4A9AD',
-  secondaryColor: '#DA696B',
-  coursesColor: '#5DB257',
-  feebackgroundColor: '#78C4CA',
-  grey: 'grey',
-  inputGrey: '#D8D9DE'
+  secondaryColor: '#EA5F65',
+  coursesColor: '#4CB25B',
+  feebackgroundColor: '#5AC6CC',
+  grey: '#606060',
+  inputGrey: '#F3F2F1'
 }
 
 /**

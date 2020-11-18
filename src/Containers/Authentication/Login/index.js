@@ -8,12 +8,14 @@ import { CommonActions } from '@react-navigation/native'
 import { useTranslation } from 'react-i18next'
 import OtpText from './Components/OtpText'
 import OTPInputView from './Components/OtpInput'
+import { Colors } from '../../../Theme'
 
 const Login = ({ navigation }) => {
     const { t } = useTranslation()
     const dispatch = useDispatch()
     const isApplicationLoading = useSelector((state) => state.startup.loading)
     const [mobile, setMobile] = useState('')
+    const [enterOtp, setEnterOtp] = useState(false)
     useEffect(() => {
         dispatch(InitStartup.action())
     }, [dispatch])
@@ -38,7 +40,16 @@ const Login = ({ navigation }) => {
                         onChangeText={setMobile}
                     >
                         <OtpText />
-                        <OTPInputView />
+                        {enterOtp ?
+                            <OTPInputView />
+                            :
+                            <CustomButton
+                                title={t('login.otpInput')}
+                                onPress={navigateHome}
+                                titleColor={Colors.black}
+                                onPress={() => setEnterOtp(true)}
+                            />
+                        }
                         <CustomButton
                             title={t('login.submit')}
                             onPress={navigateHome}
