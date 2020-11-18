@@ -6,6 +6,7 @@ export default {
     otpTextThree: "to this number for verification.",
     otpInput: 'ENTER OTP HERE',
     submit: 'SUBMIT',
+    resendOtp: 'RESEND OTP'
   },
   home: {
     button1: "MARK ATTENDANCE",
@@ -116,8 +117,8 @@ export default {
   },
   ccp: {
     title: 'CCP Tools',
-    subtitle: 'You can download learning material in the ',
-    language: 'topic of your choice ',
+    subtitle: 'You can download learning material in the',
+    language: 'topic of your choice',
     click: 'by clicking on them',
     button1: 'ANC',
     button2: 'PNC',

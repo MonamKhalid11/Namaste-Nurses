@@ -91,6 +91,7 @@ const EditProfile = (props) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor: Colors.white
     },
     scrollingContainer: {
         flexGrow: 1,
@@ -98,7 +99,7 @@ const styles = StyleSheet.create({
     },
     title: {
         color: Colors.secondaryColor,
-        fontWeight: 'bold',
+        fontFamily: 'Assistant-Bold',
         fontSize: WP('3.5'),
         marginTop: WP('5'),
         marginBottom: WP('5')

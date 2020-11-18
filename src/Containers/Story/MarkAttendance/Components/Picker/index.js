@@ -12,7 +12,9 @@ const Picker = (props) => {
     const { t } = useTranslation()
 
     return (
-        <TouchableOpacity style={[styles.container]}>
+        <TouchableOpacity style={[styles.container]}
+            onPress={props.onPress}
+        >
             <Image
                 source={Images.picker}
                 style={styles.iconContainer}
@@ -43,7 +45,8 @@ const styles = StyleSheet.create({
         resizeMode: 'contain'
     },
     imageText: {
-        color: Colors.black
+        color: Colors.grey,
+        fontFamily: 'Assistant-SemiBold'
     }
 });
 

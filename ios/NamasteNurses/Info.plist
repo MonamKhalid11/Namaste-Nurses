@@ -53,5 +53,12 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Assistant-Bold.otf</string>
+		<string>Assistant-Regular.otf</string>
+		<string>Assistant-ExtraBold.otf</string>
+		<string>Assistant-SemiBold.otf</string>
+	</array>
 </dict>
 </plist>

@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     },
     title: {
         color: Colors.secondaryColor,
-        fontWeight: 'bold',
+        fontFamily: 'Assistant-Bold',
         fontSize: WP('3.5'),
         marginTop: WP('5'),
         marginBottom: WP('5')
@@ -44,6 +44,8 @@ const styles = StyleSheet.create({
         color: Colors.black,
         // fontWeight: '500',
         fontSize: WP('5'),
+        fontFamily: 'Assistant-Regular',
+
         // marginTop: WP('5'),
     },
     profileContainer: {
@@ -57,15 +59,16 @@ const styles = StyleSheet.create({
     },
     questions: {
         color: Colors.secondaryColor,
-        fontWeight: 'bold',
+        fontFamily: 'Assistant-Bold',
+        fontSize: WP('4'),
         marginBottom: WP('2')
     },
     details:
     {
-        color: Colors.black,
-        fontWeight: '500',
-        fontSize: WP('2.7'),
-        marginBottom: WP('3')
+        color: Colors.grey,
+        fontSize: WP('4'),
+        marginBottom: WP('3'),
+        fontFamily: 'Assistant-Bold',
     }
 });
 

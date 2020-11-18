@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     },
     location: {
         fontSize: WP('4'),
-        fontWeight: 'bold',
+        fontFamily: 'Assistant-Bold',
         color: Colors.feebackgroundColor,
         marginTop: WP('2')
     }

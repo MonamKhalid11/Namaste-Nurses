@@ -31,7 +31,8 @@ const styles = StyleSheet.create({
         width: WP('90'),
         backgroundColor: Colors.white,
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        paddingBottom: WP('3')
     },
     underlineStyleBase: {
         width: 30,
@@ -40,7 +41,7 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         borderColor: Colors.appColor,
         color: Colors.black,
-        fontWeight: 'bold',
+        fontFamily: 'Assistant-Bold',
         fontSize: WP('4')
     },
 

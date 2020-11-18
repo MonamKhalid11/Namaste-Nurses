@@ -21,7 +21,7 @@ const Headings = () => {
 const styles = StyleSheet.create({
     heading: {
         color: Colors.appColor,
-        fontWeight: 'bold',
+        fontFamily: 'Assistant-Bold',
         fontSize: WP('5')
     },
     todo: {

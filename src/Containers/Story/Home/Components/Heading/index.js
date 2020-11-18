@@ -21,13 +21,13 @@ const Headings = () => {
 const styles = StyleSheet.create({
     heading: {
         color: Colors.white,
-        fontWeight: 'bold',
+        fontFamily: 'Assistant-Bold',
         fontSize: WP('7')
     },
     todo: {
         color: Colors.white,
-        fontSize: WP('6')
-
+        fontSize: WP('6'),
+        fontFamily: 'Assistant-Regular'
     },
 
 });

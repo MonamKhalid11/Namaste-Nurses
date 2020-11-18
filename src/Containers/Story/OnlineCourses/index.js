@@ -26,6 +26,7 @@ const OnlineCourses = (props) => {
                     title={t('onlineCourses.button1')}
                     containerStyles={styles.btnContainer}
                     onPress={navigateCourse}
+                    textStyles={styles.allCourses}
                 />
                 <CustomButton
                     bgColor={Colors.coursesColor}
@@ -33,6 +34,7 @@ const OnlineCourses = (props) => {
                     title={t('onlineCourses.button2')}
                     containerStyles={styles.btnContainer}
                     onPress={navigateCourse}
+                    textStyles={styles.english}
                 />
                 <CustomButton
                     bgColor={Colors.coursesColor}
@@ -40,6 +42,7 @@ const OnlineCourses = (props) => {
                     title={t('onlineCourses.button3')}
                     containerStyles={styles.btnContainer}
                     onPress={navigateCourse}
+                    textStyles={styles.english}
                 />
 
 
@@ -52,6 +55,7 @@ const OnlineCourses = (props) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor: Colors.white
     },
     scroller: {
         flexGrow: 1,
@@ -59,6 +63,16 @@ const styles = StyleSheet.create({
     },
     btnContainer: {
         marginTop: WP('5')
+    },
+    allCourses: {
+        fontFamily: 'Assistant-ExtraBold',
+        fontSize: WP('4'),
+        color: Colors.white
+    },
+    english: {
+        fontFamily: 'Assistant-SemiBold',
+        fontSize: WP('4'),
+        color: Colors.white
     }
 });
 

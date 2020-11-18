@@ -50,8 +50,6 @@ const CcpTools = (props) => {
                     containerStyles={styles.btnContainer}
                 // onPress={navigateCourse}
                 />
-
-
             </ScrollView>
         </View>
     );
@@ -61,6 +59,7 @@ const CcpTools = (props) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor: Colors.white
     },
     scroller: {
         flexGrow: 1,

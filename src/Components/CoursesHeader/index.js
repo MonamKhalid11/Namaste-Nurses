@@ -59,7 +59,7 @@ const CuatomCoursesHeaders = (props) => {
                         </View>
                     </View>
                     <View style={styles.border} />
-                    <View style={styles.sessionsContainer}>
+                    <View style={styles.sessionsContainer2}>
                         <Text allowFontScaling={false} style={styles.sessions} ellipsizeMode={'tail'} numberOfLines={1}> {props.patients}</Text>
                         <View>
                             <Text allowFontScaling={false} style={styles.sessionTheory}>Patients</Text>
@@ -108,18 +108,18 @@ const styles = StyleSheet.create({
     },
     title: {
         color: Colors.white,
-        fontWeight: 'bold',
-        fontSize: WP('6'),
+        fontFamily: 'Assistant-Bold',
+        fontSize: WP('8'),
         marginBottom: WP('2')
     },
     subtitle: {
         color: Colors.white,
-        fontSize: WP('3.5')
+        fontSize: WP('4')
     },
     boldSubtitle: {
         color: Colors.white,
-        fontWeight: 'bold',
-        fontSize: WP('3.5')
+        fontFamily: 'Assistant-Bold',
+        fontSize: WP('5')
     },
     isCourse: {
         display: 'flex',
@@ -132,30 +132,38 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
-        marginTop: WP('4'),
-        width: WP('80')
+        width: WP('90')
     },
     sessionsContainer: {
         display: 'flex',
         flexDirection: 'row',
-        alignItems: 'center'
+        alignItems: 'center',
+        width: WP('44')
+    },
+    sessionsContainer2: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        width: WP('44'),
+        paddingLeft: WP('2')
     },
     sessions: {
-        fontWeight: 'bold',
+        fontFamily: 'Assistant-Bold',
         color: Colors.white,
-        fontSize: WP('10'),
+        fontSize: WP('12'),
         marginRight: WP('1')
     },
     sessionTheory: {
-        fontWeight: 'bold',
+        fontFamily: 'Assistant-Bold',
         color: Colors.white,
-        fontSize: WP('4'),
+        fontSize: WP('5'),
     },
     border: {
         borderWidth: 1,
         borderColor: Colors.white,
         height: WP('10'),
-        width: 1
+        width: 1,
+        alignSelf: 'center'
     }
 });
 

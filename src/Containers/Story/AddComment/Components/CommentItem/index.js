@@ -40,12 +40,12 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: WP('4'),
-        fontWeight: 'bold',
+        fontFamily: 'Assistant-Bold',
         color: Colors.black
     },
     posted: {
         color: Colors.inputGrey,
-        fontWeight: 'bold'
+        fontFamily: 'Assistant-Bold'
     },
     headingContainer: {
         width: WP('78'),

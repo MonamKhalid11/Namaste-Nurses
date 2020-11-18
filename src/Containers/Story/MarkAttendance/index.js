@@ -10,11 +10,13 @@ import SessionInput from './Components/SessionInput'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import CustomButton from '../../../Components/CustomButton'
 import OptionsListing from './Components/OptionsList'
+import CustomModal from '../../../Components/CustomModal'
 // create a component
 const MarkAttendance = (props) => {
     const { t } = useTranslation()
     const [date, SetDate] = useState(null)
     const [time, SetTime] = useState(null)
+    const [openModal, setModal] = useState(false)
     const [classesTypes, setClassesTypes] = useState([
         {
             id: 1,
@@ -54,6 +56,7 @@ const MarkAttendance = (props) => {
 
     ])
 
+    toggleModal = () => setModal(!openModal)
     return (
         <View style={styles.container}>
             <CustomHeader
@@ -62,7 +65,9 @@ const MarkAttendance = (props) => {
             />
             <KeyboardAwareScrollView >
                 <View style={styles.domainContainer}>
-                    <Picker />
+                    <Picker
+                        onPress={toggleModal}
+                    />
                     <CustomDateTimePicker isDate={true} date={date} onDateChange={SetDate} title={t('markScreen.date')} />
                     <CustomDateTimePicker isDate={false} time={time} onTimeChange={SetTime} title={t('markScreen.time')} />
                     <SessionInput title={t('markScreen.people')} placeholder={t('markScreen.peoplePlaceHolder')} keyboardType={'numeric'} />
@@ -73,6 +78,10 @@ const MarkAttendance = (props) => {
                     <CustomButton title={t('markScreen.submit')} bgColor={Colors.appColor} titleColor={Colors.white} onPress={() => props.navigation.navigate('AttendanceMarked')} />
                 </View>
             </KeyboardAwareScrollView>
+            <CustomModal
+                isVisible={openModal}
+                onClosePress={toggleModal}
+            />
 
         </View>
     );

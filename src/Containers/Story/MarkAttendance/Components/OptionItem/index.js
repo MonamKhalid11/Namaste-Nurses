@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
         resizeMode: 'contain'
     },
     title: {
-        color: Colors.black,
+        color: Colors.grey,
     }
 });
 

@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
         width: WP('20'),
         borderRadius: 100,
         borderWidth: WP('1'),
-        borderColor: Colors.white,
+        borderColor: Colors.inputGrey,
         position: 'relative'
     },
     profilePic: {
@@ -45,7 +45,8 @@ const styles = StyleSheet.create({
         width: WP('5'),
         position: 'absolute',
         bottom: 0,
-        right: 0
+        right: 0,
+        tintColor: Colors.secondaryColor
     }
 });
 

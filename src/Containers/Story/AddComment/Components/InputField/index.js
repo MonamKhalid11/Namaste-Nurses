@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
     },
     post: {
         color: Colors.feebackgroundColor,
-        fontWeight: 'bold'
+        fontFamily: 'Assistant-Bold'
     }
 });
 

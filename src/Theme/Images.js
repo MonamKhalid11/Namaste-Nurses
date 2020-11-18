@@ -20,4 +20,8 @@ export default {
   comment: require('@/Assets/Images/comment.png'),
   nursedp: require('@/Assets/Images/nursedp.png'),
   commingSoon: require('@/Assets/Images/commingsoon.png'),
+  right: require('@/Assets/Images/right.png'),
+  close: require('@/Assets/Images/close.png'),
+  camera: require('@/Assets/Images/camera.png'),
+  gallery: require('@/Assets/Images/gallery.png'),
 }

@@ -9,7 +9,7 @@ const CustomButton = (props) => {
         <TouchableOpacity style={[Layout.buttonContainer, props.bgColor ? { backgroundColor: props.bgColor } : null, props.containerStyles]}
             onPress={props.onPress}
         >
-            <Text style={[Layout.btnText, props.titleColor ? { color: props.titleColor } : null]} allowFontScaling={false}>{props.title}</Text>
+            <Text style={[props.textStyles ? props.textStyles : Layout.btnText, props.titleColor ? { color: props.titleColor } : null]} allowFontScaling={false}>{props.title}</Text>
         </TouchableOpacity>
     );
 };

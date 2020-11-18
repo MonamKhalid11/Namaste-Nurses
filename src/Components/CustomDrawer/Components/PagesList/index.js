@@ -31,15 +31,15 @@ const styles = StyleSheet.create({
     },
     helloTextContainer: {
         display: 'flex',
-        borderBottomWidth: 1,
+        borderBottomWidth: WP('0.5'),
         borderColor: Colors.appColor,
-        marginBottom: WP('5'),
-        paddingBottom: WP('5')
+        marginBottom: WP('3'),
+        paddingBottom: WP('3')
     },
     titleText: {
-        fontWeight: 'bold',
+        fontFamily: 'Assistant-Bold',
         color: Colors.appColor,
-        fontSize: WP('7')
+        fontSize: WP('8'),
     }
 });
 export default PagesList;

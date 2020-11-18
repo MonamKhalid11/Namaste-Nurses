@@ -4,7 +4,7 @@ import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { Common, Fonts, Gutters, Layout, WP, Images } from '@/Theme'
 import { Colors } from '../../Theme';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
-import CustomTextField from '../CustomInput'
+import MobileNumberInput from '../MobileNumberInput'
 // create a component
 const CustomLayout = (props) => {
     const toggleDrawer = () => props.navigation.toggleDrawer();;
@@ -47,7 +47,7 @@ const CustomLayout = (props) => {
                 />
 
                 {props.isLogin ?
-                    <CustomTextField
+                    <MobileNumberInput
                         placeholder={props.loginPlaceHolder}
                         isLogin={props.isLogin}
                         keyboardType={'phone-pad'}
@@ -68,7 +68,7 @@ const CustomLayout = (props) => {
 // define your styles
 const styles = StyleSheet.create({
     container: {
-        flexGrow: 1,
+        flex: 1,
         backgroundColor: Colors.white
     },
     logoContainer: {
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
         height: WP('90'),
         width: WP('90'),
         resizeMode: 'contain',
-        marginTop: WP('20')
+        // marginTop: WP('12'),
     },
     welcome: {
         height: WP('90'),
@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
     },
     drawerContainer: {
         alignSelf: 'flex-end',
-        marginTop: WP('-20'),
+        marginTop: WP('-10'),
         marginRight: WP('-5'),
     },
     marked: {

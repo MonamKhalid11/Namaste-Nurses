@@ -24,7 +24,7 @@ const ClassesItems = (props) => {
                     </View>
                     <Text allowFontScaling={false} style={styles.time}>{props.classDetails.time}</Text>
                     <Image
-                        source={Images.forward}
+                        source={Images.right}
                         style={styles.forward}
                     />
                 </View>
@@ -62,11 +62,12 @@ const styles = StyleSheet.create({
     },
     date: {
         color: Colors.black,
-        fontWeight: 'bold'
+        fontFamily: 'Assistant-Bold'
     },
     month: {
-        color: Colors.black,
-        marginLeft: WP('1')
+        color: Colors.grey,
+        marginLeft: WP('1'),
+        fontFamily: 'Assistant-SemiBold'
     },
     border: {
         display: 'flex',
@@ -78,7 +79,9 @@ const styles = StyleSheet.create({
         marginRight: WP('2')
     },
     day: {
-        color: Colors.black,
+        color: Colors.grey,
+        fontFamily: 'Assistant-SemiBold'
+
     },
     forward: {
         height: WP('4'),
@@ -93,12 +96,12 @@ const styles = StyleSheet.create({
     },
     time: {
         color: Colors.appColor,
-        fontWeight: 'bold',
+        fontFamily: 'Assistant-Bold',
         marginRight: WP('2')
     },
     course: {
         color: Colors.appColor,
-        fontWeight: 'bold',
+        fontFamily: 'Assistant-Bold',
         fontSize: WP('3'),
     },
     circle: {
@@ -113,6 +116,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: Colors.appColor,
         borderStyle: 'dashed',
+        borderRadius: 1,
         height: WP('10')
     }
 });

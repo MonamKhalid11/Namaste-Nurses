@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
         height: WP('25'),
     },
     title: {
-        color: Colors.black,
+        color: Colors.grey,
         fontSize: WP('3'),
         marginBottom: WP('3')
     },

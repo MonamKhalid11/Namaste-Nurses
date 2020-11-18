@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
     },
     label: {
         color: Colors.white,
-        // fontWeight: 'bold',
+        //     fontFamily: 'Assistant-Bold',
         fontSize: WP('5')
     }
 });

@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
         marginBottom: WP('3')
     },
     title: {
-        color: Colors.black,
+        color: Colors.grey,
         fontSize: WP('3'),
         marginBottom: WP('3')
     }

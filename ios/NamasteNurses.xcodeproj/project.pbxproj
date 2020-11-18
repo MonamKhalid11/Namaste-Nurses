@@ -17,6 +17,12 @@
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* NamasteNursesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* NamasteNursesTests.m */; };
+		52E381B7256548090073D131 /* Assistant-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 52E381B1256548090073D131 /* Assistant-Regular.otf */; };
+		52E381B8256548090073D131 /* Assistant-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 52E381B2256548090073D131 /* Assistant-SemiBold.otf */; };
+		52E381B9256548090073D131 /* Assistant-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 52E381B3256548090073D131 /* Assistant-Bold.otf */; };
+		52E381BA256548090073D131 /* Assistant-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 52E381B4256548090073D131 /* Assistant-Light.otf */; };
+		52E381BB256548090073D131 /* Assistant-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 52E381B5256548090073D131 /* Assistant-ExtraLight.otf */; };
+		52E381BC256548090073D131 /* Assistant-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 52E381B6256548090073D131 /* Assistant-ExtraBold.otf */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		833F2006FE004CFBA319C9F2 /* libPods-NamasteNurses.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CE8F60935CC7F1EA8FB7E0E /* libPods-NamasteNurses.a */; };
 		F98E0BA87E9A7377883D6CF3 /* libPods-NamasteNurses-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DF2B387AECB3EB857C4592D /* libPods-NamasteNurses-tvOS.a */; };
@@ -59,6 +65,12 @@
 		2F9E780CE724C60CB827C553 /* Pods-NamasteNurses-NamasteNursesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NamasteNurses-NamasteNursesTests.debug.xcconfig"; path = "Target Support Files/Pods-NamasteNurses-NamasteNursesTests/Pods-NamasteNurses-NamasteNursesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		363F4681F4D72D355459D728 /* Pods-NamasteNurses-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NamasteNurses-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-NamasteNurses-tvOSTests/Pods-NamasteNurses-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3DF2B387AECB3EB857C4592D /* libPods-NamasteNurses-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NamasteNurses-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		52E381B1256548090073D131 /* Assistant-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Assistant-Regular.otf"; path = "../../src/Assets/fonts/Assistant-Regular.otf"; sourceTree = "<group>"; };
+		52E381B2256548090073D131 /* Assistant-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Assistant-SemiBold.otf"; path = "../../src/Assets/fonts/Assistant-SemiBold.otf"; sourceTree = "<group>"; };
+		52E381B3256548090073D131 /* Assistant-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Assistant-Bold.otf"; path = "../../src/Assets/fonts/Assistant-Bold.otf"; sourceTree = "<group>"; };
+		52E381B4256548090073D131 /* Assistant-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Assistant-Light.otf"; path = "../../src/Assets/fonts/Assistant-Light.otf"; sourceTree = "<group>"; };
+		52E381B5256548090073D131 /* Assistant-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Assistant-ExtraLight.otf"; path = "../../src/Assets/fonts/Assistant-ExtraLight.otf"; sourceTree = "<group>"; };
+		52E381B6256548090073D131 /* Assistant-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Assistant-ExtraBold.otf"; path = "../../src/Assets/fonts/Assistant-ExtraBold.otf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = NamasteNurses/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8CE8F60935CC7F1EA8FB7E0E /* libPods-NamasteNurses.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NamasteNurses.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		968A20F8BD0245E30FBD22A5 /* Pods-NamasteNurses.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NamasteNurses.release.xcconfig"; path = "Target Support Files/Pods-NamasteNurses/Pods-NamasteNurses.release.xcconfig"; sourceTree = "<group>"; };
@@ -164,6 +176,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		52E381AC256547A60073D131 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				52E381B3256548090073D131 /* Assistant-Bold.otf */,
+				52E381B6256548090073D131 /* Assistant-ExtraBold.otf */,
+				52E381B5256548090073D131 /* Assistant-ExtraLight.otf */,
+				52E381B4256548090073D131 /* Assistant-Light.otf */,
+				52E381B1256548090073D131 /* Assistant-Regular.otf */,
+				52E381B2256548090073D131 /* Assistant-SemiBold.otf */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -174,6 +199,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				52E381AC256547A60073D131 /* fonts */,
 				13B07FAE1A68108700A75B9A /* NamasteNurses */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* NamasteNursesTests */,
@@ -342,7 +368,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
+				52E381B9256548090073D131 /* Assistant-Bold.otf in Resources */,
+				52E381BC256548090073D131 /* Assistant-ExtraBold.otf in Resources */,
+				52E381B7256548090073D131 /* Assistant-Regular.otf in Resources */,
+				52E381BA256548090073D131 /* Assistant-Light.otf in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				52E381B8256548090073D131 /* Assistant-SemiBold.otf in Resources */,
+				52E381BB256548090073D131 /* Assistant-ExtraLight.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

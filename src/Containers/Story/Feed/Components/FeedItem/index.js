@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
     },
     title: {
         color: Colors.black,
-        fontWeight: 'bold',
+        fontFamily: 'Assistant-Bold',
         fontSize: WP('4'),
         marginBottom: WP('1'),
     },

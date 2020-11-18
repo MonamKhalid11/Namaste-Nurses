@@ -1,7 +1,7 @@
 import React from 'react'
 import { IndexExampleContainer } from '@/Containers'
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { Colors } from '../Theme';
+import { Colors, WP } from '../Theme';
 import CustomDrawer from '../Components/CustomDrawer'
 import MarkAttendance from '../Containers/Story/MarkAttendance'
 import AttendanceMarked from '../Containers/Story/AttendanceMarked'
@@ -27,7 +27,7 @@ const MainNavigator = () => {
     <Drawer.Navigator initialRouteName="Home"
       drawerPosition={'right'}
       drawerStyle={{
-        width: 240,
+        width: WP('50'),
         backgroundColor: Colors.white
       }}
       drawerContent={props => <CustomDrawer {...props} />}

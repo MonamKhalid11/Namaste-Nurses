@@ -42,11 +42,11 @@ const styles = StyleSheet.create({
     },
     title: {
         color: Colors.black,
-        fontWeight: 'bold'
+        fontFamily: 'Assistant-Bold'
     },
     course: {
         color: Colors.appColor,
-        fontWeight: 'bold',
+        fontFamily: 'Assistant-Bold',
         fontSize: WP('2.8'),
         marginTop: WP('1')
     }

@@ -52,14 +52,15 @@ const PageItem = (props) => {
 const styles = StyleSheet.create({
     container: {
         display: 'flex',
-        borderBottomWidth: 1,
+        borderBottomWidth: WP('0.5'),
         borderColor: Colors.appColor,
-        marginBottom: WP('5'),
-        paddingBottom: WP('5')
+        marginBottom: WP('3'),
+        paddingBottom: WP('3')
     },
     titleText: {
-        fontWeight: '400',
-        color: Colors.black
+        color: Colors.grey,
+        fontFamily: 'Assistant-Bold',
+        fontSize: WP('4')
     }
 });
 

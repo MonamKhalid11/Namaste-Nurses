@@ -112,13 +112,12 @@ export default StyleSheet.create({
   inputText: {
     color: Colors.black,
     fontSize: WP('4'),
-    fontWeight: 'bold'
+    fontFamily: 'Assistant-Regular'
   },
   btnText: {
     color: Colors.appColor,
-    fontWeight: '500',
     fontSize: WP('4'),
-    fontWeight: 'bold'
+    fontFamily: 'Assistant-Bold'
   },
   fieldsContainer: {
     height: WP('13'),

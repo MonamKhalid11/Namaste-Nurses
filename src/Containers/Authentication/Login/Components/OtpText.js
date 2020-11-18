@@ -26,7 +26,9 @@ const styles = StyleSheet.create({
     },
     text: {
         color: Colors.white,
-        fontSize: WP('5')
+        fontSize: WP('5'),
+        fontFamily: 'Assistant-Regular'
+
     },
     textTwo: {
         color: Colors.white,

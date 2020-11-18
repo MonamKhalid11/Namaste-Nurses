@@ -16,15 +16,15 @@ export default StyleSheet.create({
   },
   titleSmall: {
     fontSize: FontSize.small * 2,
-    fontWeight: 'bold',
+    fontFamily: 'Assistant-Bold',
   },
   titleRegular: {
     fontSize: FontSize.regular * 2,
-    fontWeight: 'bold',
+    fontFamily: 'Assistant-Bold',
   },
   titleLarge: {
     fontSize: FontSize.large,
-    fontWeight: 'bold',
+    fontFamily: 'Assistant-Bold',
   },
   textCenter: {
     textAlign: 'center',
