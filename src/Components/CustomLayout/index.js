@@ -53,12 +53,13 @@ const CustomLayout = (props) => {
                         keyboardType={'phone-pad'}
                         value={props.value}
                         onChangeText={props.onChangeText}
+                        onArrowPress={props.onArrowPress}
                     />
                     :
                     null
                 }
             </View>
-            <View style={[styles.contentContainer, props.contentContainer]}>
+            <View style={[props.isLogin ? styles.contentContainerLogin : styles.contentContainer, props.contentContainer]}>
                 {props.children}
             </View>
         </KeyboardAwareScrollView >
@@ -90,9 +91,16 @@ const styles = StyleSheet.create({
         justifyContent: 'space-evenly'
 
     },
+    contentContainerLogin:
+    {
+        flex: 1,
+        backgroundColor: Colors.appColor,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
     logo: {
-        height: WP('90'),
-        width: WP('90'),
+        height: WP('80'),
+        width: WP('80'),
         resizeMode: 'contain',
         // marginTop: WP('12'),
     },

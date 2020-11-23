@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
         padding: WP('5'),
     },
     textHeader: {
-        paddingBottom: WP('5')
+        // paddingBottom: WP('5')
     },
     customHeader: {
         borderBottomWidth: 1,
@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
     },
     boldSubtitle: {
         color: Colors.white,
-        fontFamily: 'Assistant-Bold',
+        // fontFamily: 'Assistant-Bold',
         fontSize: WP('5')
     },
     isCourse: {

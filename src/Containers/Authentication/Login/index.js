@@ -3,72 +3,73 @@ import { ActivityIndicator, View, Button, Text, StyleSheet } from 'react-native'
 import { Layout, Fonts } from '@/Theme'
 import { CustomLayout, CustomButton } from '@/Components'
 import { useDispatch, useSelector } from 'react-redux'
-import InitStartup from '@/Store/Startup/Init'
 import { CommonActions } from '@react-navigation/native'
 import { useTranslation } from 'react-i18next'
 import OtpText from './Components/OtpText'
 import OTPInputView from './Components/OtpInput'
 import { Colors, WP } from '../../../Theme'
-
+import { getAppSettings, requestOtp } from '../../../Store/actions'
+import { phoneNumberValidator, showToast, deviceInformation, isOnline } from '../../../Services/index'
 const Login = ({ navigation }) => {
     const { t } = useTranslation()
     const dispatch = useDispatch()
-    const isApplicationLoading = useSelector((state) => state.startup.loading)
-    const [mobile, setMobile] = useState('')
-    const [enterOtp, setEnterOtp] = useState(false)
-    const [showOtp, setShowOtp] = useState(false)
-    useEffect(() => {
-        dispatch(InitStartup.action())
-    }, [dispatch])
-
-    navigateHome = () => {
-        navigation.dispatch(
-            CommonActions.reset({
-                index: 0,
-                routes: [{ name: 'Main' }],
-            }),
-        )
+    const [mobile, setMobile] = useState("9945122470")
+    const [loading, setLoading] = useState(false)
+    dispatch(getAppSettings())
+    sendOtp = () => {
+        if (phoneNumberValidator(mobile)) {
+            let params = {
+                mobile_number: mobile,
+            }
+            setLoading(true)
+            isOnline((connected) => {
+                dispatch(requestOtp(params, navigation, setLoading))
+            }, (offline) => {
+                setLoading(false)
+                showToast(t('commonApp.internetError'))
+            })
+        }
+        else {
+            showToast(t('login.valid'))
+        }
     }
     return (
         <View style={[Layout.fill, Layout.rowCenter]}>
-            {isApplicationLoading ? (
-                <ActivityIndicator />
-            ) : (
-                    <CustomLayout
-                        isLogin={true}
-                        loginPlaceHolder={t('login.input')}
-                        value={(mobile)}
-                        onChangeText={setMobile}
+            <CustomLayout
+                isLogin={true}
+                loginPlaceHolder={t('login.input')}
+                value={(mobile)}
+                onChangeText={setMobile}
+                onArrowPress={sendOtp}
+            >
+                {/* <OtpText />
+                {enterOtp ?
+                    <CustomButton
+                        title={t('login.resendOtp')}
+                        onPress={resendPassword}
+                        containerStyles={styles.resendOtp}
+                        titleColor={Colors.white}
+                    />
+                    :
+                    null
+                }
 
-                    >
-                        <OtpText />
-                        {enterOtp ?
-                            <CustomButton
-                                title={t('login.resendOtp')}
-                                onPress={navigateHome}
-                                containerStyles={styles.resendOtp}
-                                titleColor={Colors.white}
-                            />
-                            :
-                            null
-                        }
-
-                        {enterOtp ?
-                            <OTPInputView />
-                            :
-                            <CustomButton
-                                title={t('login.otpInput')}
-                                onPress={navigateHome}
-                                titleColor={Colors.black}
-                                onPress={() => setEnterOtp(true)}
-                            />
-                        }
-                        <CustomButton
-                            title={t('login.submit')}
-                            onPress={navigateHome}
-                        />
-                    </CustomLayout>
-                )}
+                {enterOtp ?
+                    <OTPInputView />
+                    :
+                    <CustomButton
+                        title={t('login.otpInput')}
+                        onPress={navigateHome}
+                        titleColor={Colors.grey}
+                        onPress={() => setEnterOtp(true)}
+                    />
+                } */}
+                <CustomButton
+                    title={t('login.submit')}
+                    onPress={sendOtp}
+                    loading={loading}
+                />
+            </CustomLayout>
         </View>
     )
 }

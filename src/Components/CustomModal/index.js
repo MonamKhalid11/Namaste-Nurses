@@ -25,7 +25,7 @@ const CustomModal = (props) => {
                     </View>
                     <View style={styles.imagesContainer}>
                         <TouchableOpacity
-                            onPress={props.onClosePress}
+                            onPress={props.onCameraPress}
                         >
                             <Image
                                 source={Images.camera}
@@ -33,7 +33,7 @@ const CustomModal = (props) => {
                             />
                         </TouchableOpacity>
                         <TouchableOpacity
-                            onPress={props.onClosePress}
+                            onPress={props.onLibraryPress}
                         >
                             <Image
                                 source={Images.gallery}

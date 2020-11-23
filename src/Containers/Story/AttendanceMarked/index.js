@@ -18,7 +18,7 @@ const AttendanceMarked = (props) => {
         >
             <Headings />
             <CustomButton
-                onPress={() => props.navigation.navigate('MarkAttendance')}
+                onPress={() => props.navigation.navigate('PreviousClasses')}
                 title={t('attendanceMarked.button1')}
                 titleColor={Colors.black}
             />

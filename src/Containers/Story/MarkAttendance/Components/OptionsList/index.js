@@ -1,11 +1,14 @@
 //import liraries
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import OptionItem from '../OptionItem'
 import { Colors, WP } from '../../../../../Theme';
 
 // create a component
 const OptionsListing = (props) => {
+    useEffect(() => {
+
+    }, [props.classesTypes])
     return (
         <>
             <Text allowFontScaling={false} style={styles.title}>{props.title}
@@ -14,7 +17,7 @@ const OptionsListing = (props) => {
             <View style={styles.container}>
                 {props.classesTypes.map((type) => {
                     return (
-                        <OptionItem classes={type} onPress={(type) => { alert(type) }} />
+                        <OptionItem classes={type} onPress={(tapped) => { props.onPress(tapped) }} />
                     )
                 })}
             </View >
@@ -27,7 +30,8 @@ const styles = StyleSheet.create({
     container: {
         flexWrap: 'wrap',
         marginBottom: WP('10'),
-        height: WP('25'),
+        height: WP('35'),
+        width: WP('90')
     },
     title: {
         color: Colors.grey,

@@ -2,11 +2,14 @@ export default {
   login: {
     input: 'ENTER YOUR MOBILE NUMBER',
     otpTextOne: "We will send a ",
-    otpTextTwo: "One Time Password(OTP)           ",
+    otpTextTwo: "One Time Password(OTP) ",
     otpTextThree: "to this number for verification.",
     otpInput: 'ENTER OTP HERE',
     submit: 'SUBMIT',
-    resendOtp: 'RESEND OTP'
+    resendOtp: 'RESEND OTP',
+    valid: 'Please enter valid mobile number!',
+    empty: 'Please enter mobile number to proceed!',
+    sent: 'OTP sent to you mobile number!'
   },
   home: {
     button1: "MARK ATTENDANCE",
@@ -70,7 +73,7 @@ export default {
     designation: 'Designation',
     medical: 'Medical Condition Area',
     tot: 'Date of TOT Attended',
-    ccp: 'Condition Artea for CCP'
+    ccp: 'Condition Area for CCP'
   },
   editprofile: {
     submit: 'SUBMIT DETAILS',
@@ -157,7 +160,9 @@ export default {
     button4: 'MARATHI',
     button5: 'KANNADA',
     button6: 'PUNJABI',
-
+  },
+  commonApp: {
+    internetError: 'Please check your internet in order to proceed!'
   }
 
 }

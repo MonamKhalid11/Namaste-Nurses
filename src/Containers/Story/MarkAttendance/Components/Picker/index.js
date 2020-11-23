@@ -16,7 +16,7 @@ const Picker = (props) => {
             onPress={props.onPress}
         >
             <Image
-                source={Images.picker}
+                source={props.selectedImage ? { uri: props.selectedImage.uri } : Images.picker}
                 style={styles.iconContainer}
             />
             <Text allowFontScaling={false} style={styles.imageText}>{t('markScreen.uploadText')}</Text>
@@ -30,14 +30,14 @@ const styles = StyleSheet.create({
         display: 'flex',
         borderWidth: 1,
         borderColor: '#A4A9AD',
-        borderStyle: 'dashed',
         flexDirection: 'row',
         alignItems: 'center',
         paddingLeft: WP('5'),
         height: WP('16'),
         width: WP('90'),
-        marginBottom: WP('3')
-
+        marginBottom: WP('3'),
+        borderStyle: 'dashed',
+        borderRadius: 1,
     },
     iconContainer: {
         height: WP('8'),

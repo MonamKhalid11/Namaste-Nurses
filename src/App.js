@@ -2,15 +2,17 @@ import 'react-native-gesture-handler'
 import React from 'react'
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/lib/integration/react'
-import { store, persistor } from '@/Store'
+import { STORE, PERSISTOR } from './Store'
 import { SafeAreaView, StatusBar } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { ApplicationNavigator } from '@/Navigators'
 import { Layout } from '@/Theme'
 import './Translations'
+import { navigationRef } from './Services/navigation';
+
 
 const App = () => (
-  <Provider store={store}>
+  <Provider store={STORE}>
     {/**
      * PersistGate delays the rendering of the app's UI until the persisted state has been retrieved
      * and saved to redux.
@@ -18,9 +20,9 @@ const App = () => (
      * for example `loading={<SplashScreen />}`.
      * @see https://github.com/rt2zz/redux-persist/blob/master/docs/PersistGate.md
      */}
-    <PersistGate loading={null} persistor={persistor}>
+    <PersistGate loading={null} persistor={PERSISTOR}>
       <SafeAreaView style={Layout.fill}>
-        <NavigationContainer>
+        <NavigationContainer ref={navigationRef}>
           <StatusBar barStyle={'light-content'} />
           <ApplicationNavigator />
         </NavigationContainer>

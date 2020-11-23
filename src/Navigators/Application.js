@@ -6,23 +6,18 @@ import MainNavigator from './Main'
 const Stack = createStackNavigator()
 // @refresh reset
 const ApplicationNavigator = () => {
-  const [isApplicationLoaded, setIsApplicationLoaded] = useState(false)
-
-  const applicationIsLoading = useSelector((state) => state.startup.loading)
-
-  useEffect(() => {
-    if (!applicationIsLoading) {
-      setIsApplicationLoaded(true)
-    }
-  }, [applicationIsLoading])
-
+  const user = useSelector(state => state.auth.user)
+  console.log("showing user here", user)
   return (
     <Stack.Navigator headerMode={'none'}>
-      <Stack.Screen name="Startup" component={IndexStartupContainer} />
-
-      {isApplicationLoaded && (
+      {!user ?
         <Stack.Screen name="Main" component={MainNavigator} />
-      )}
+        :
+        <>
+          <Stack.Screen name="Startup" component={IndexStartupContainer} />
+          <Stack.Screen name="Main" component={MainNavigator} />
+        </>
+      }
     </Stack.Navigator>
   )
 }

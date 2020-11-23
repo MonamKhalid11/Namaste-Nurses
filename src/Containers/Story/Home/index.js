@@ -1,14 +1,31 @@
 //import liraries
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { CustomLayout, CustomButton } from '@/Components'
 import { useTranslation } from 'react-i18next'
+import { useDispatch, useSelector } from 'react-redux'
 import Headings from './Components/Heading'
+import { getNurseFeed } from '../../../Store/actions'
+import { showToast, isOnline } from '../../../Services/index'
+
 // create a component
 const Home = (props) => {
     const { t } = useTranslation()
-
-    const toggleDrawer = () => props.navigation.toggleDrawer();;
+    const dispatch = useDispatch()
+    const user = useSelector(state => state.auth.user)
+    const [laoding, setLoading] = useState(false)
+    fetchFeed = () => {
+        if (user) {
+            setLoading(true)
+            isOnline((connected) => {
+                dispatch(getNurseFeed(user.id, setLoading))
+            }, (offline) => {
+                setLoading(false)
+                showToast(t('commonApp.internetError'))
+            })
+        }
+    }
+    const toggleDrawer = () => props.navigation.toggleDrawer();
 
     return (
         <CustomLayout
@@ -21,7 +38,8 @@ const Home = (props) => {
             />
             <CustomButton
                 title={t('home.button2')}
-                onPress={() => props.navigation.navigate('Feed')}
+                onPress={fetchFeed}
+                loading={laoding}
             />
         </CustomLayout>
     );

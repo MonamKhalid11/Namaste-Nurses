@@ -11,7 +11,7 @@ const FeedItem = (props) => {
                 <View style={styles.nameProfileContainer}>
                     <View style={styles.imageContainer}>
                         <Image
-                            source={props.feed.profilepic}
+                            source={props.feed.user.profile_image ? { uri: props.feed.user.profile_image } : Images.noora}
                             style={styles.dp}
                         />
                     </View>
@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
         marginLeft: WP('2')
     },
     title: {
-        color: Colors.black,
+        color: Colors.grey,
         fontFamily: 'Assistant-Bold',
         fontSize: WP('4'),
         marginBottom: WP('1'),

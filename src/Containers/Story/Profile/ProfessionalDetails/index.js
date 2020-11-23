@@ -15,7 +15,13 @@ const ProfessionalDetails = (props) => {
             <Text style={styles.questions}>{t('profile.name')} : <Text style={styles.details}>{props.name}</Text></Text>
             <Text style={styles.questions}>{t('profile.dateOfJoining')} : <Text style={styles.details}>{props.dateOfJoining}</Text> </Text>
             <Text style={styles.questions}>{t('profile.designation')} : <Text style={styles.details}>{props.designation}</Text></Text>
-            <Text style={styles.questions}>{t('profile.medical')} : <Text style={styles.details}>{props.medical}</Text></Text>
+            <Text style={styles.questions}>{t('profile.medical')} :
+            {props.medical.map((condition) => {
+                return (
+                    <Text style={styles.details}>{condition.name}</Text>
+                )
+            })}
+            </Text>
             <Text style={styles.questions}>{t('profile.tot')} : <Text style={styles.details}>{props.tot}</Text></Text>
             <Text style={styles.questions}>{t('profile.ccp')} : <Text style={styles.details}>{props.ccp}</Text></Text>
         </View>

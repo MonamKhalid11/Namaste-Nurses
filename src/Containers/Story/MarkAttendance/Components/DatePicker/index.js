@@ -6,53 +6,34 @@ import { Colors, WP } from '../../../../../Theme';
 
 // create a component
 const CustomDateTimePicker = (props) => {
+    console.log("showing props fro getting time and date", props)
     return (
-        <>
-            {props.isDate ?
-                <View>
-                    <Text allowFontScaling={false} style={styles.title}>{props.title}</Text>
-                    <DatePicker
-                        style={styles.inputField}
-                        date={props.date}
-                        mode='date'
-                        placeholder="Select Date"
-                        format="YYYY-MM-DD"
-                        confirmBtnText="Confirm"
-                        cancelBtnText="Cancel"
-                        showIcon={false}
-                        onDateChange={(date) => props.onDateChange(date)}
-                        customStyles={{
-                            dateInput: {
-                                borderWidth: 0,
-                                alignItems: 'flex-start'
-                            }
-                        }}
-                    />
-                </View>
-                :
-                <View>
-                    <Text allowFontScaling={false} style={styles.title}>{props.title}</Text>
-                    <DatePicker
-                        style={styles.inputField}
-                        value={props.time}
-                        mode={'time'}
-                        placeholder="Select Time"
-                        format="YYYY-MM-DD"
-                        confirmBtnText="Confirm"
-                        cancelBtnText="Cancel"
-                        showIcon={false}
-                        onDateChange={(date) => props.onTimeChange(date)}
-                        customStyles={{
-                            dateInput: {
-                                borderWidth: 0,
-                                alignItems: 'flex-start',
-                            }
-                        }}
-                    />
-                </View>
+        <View>
 
-            }
-        </>
+            <Text allowFontScaling={false} style={styles.title}>{props.title}</Text>
+            <DatePicker
+                style={styles.inputField}
+                date={props.date}
+                mode={'date'}
+                placeholder="Select Date"
+                format="YYYY-MM-DD"
+                confirmBtnText="Confirm"
+                cancelBtnText="Cancel"
+                showIcon={false}
+                onDateChange={(date) => props.onDateChange(date)}
+                customStyles={{
+                    dateInput: {
+                        borderWidth: 0,
+                        alignItems: 'flex-start',
+                    },
+                    placeholderText: {
+                        color: Colors.pickerBorder
+                    }
+                }}
+            />
+        </View>
+
+
     );
 };
 

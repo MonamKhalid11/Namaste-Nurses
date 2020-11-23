@@ -5,94 +5,20 @@ import CustomHeader from '../../../Components/CustomHeader'
 import { Colors, WP } from '../../../Theme';
 import FeedListing from './Components/FeedList'
 import { Layout, Fonts, Images } from '@/Theme'
+import { useDispatch, useSelector } from 'react-redux'
 
 // create a component
 const Feed = (props) => {
-    const [nurseFeed, setNurseFeed] = useState([
-        {
-            id: Math.random(),
-            profilepic: Images.noora,
-            lastPosted: '35 days ago',
-            description: `Here's some motivation to help you power through this Thursday!`,
-            images: Images.feed,
-            title: "Noora Health",
-            comments: [
-                {
-                    id: Math.random(),
-                    name: 'Alisha',
-                    posted: '7 days ago',
-                    comment: 'Hello sir , update me thanks!',
-                },
-                {
-                    id: Math.random(),
-                    name: 'Taranjeet',
-                    posted: '27 days ago',
-                    comment: 'thanks sir',
-                },
-                {
-                    id: Math.random(),
-                    name: 'Surekha',
-                    posted: '7 days ago',
-                    comment: 'thanks for giving this message',
-                },
-            ],
-            likes: [
-                {
-                    id: Math.random(),
-                    name: 'Lovely Chawla',
-                    location: 'Punjab'
-                },
-                {
-                    id: Math.random(),
-                    name: 'Lovely Chawla',
-                    location: 'Punjab'
-                },
-                {
-                    id: Math.random(),
-                    name: 'Lovely Chawla',
-                    location: 'Punjab'
-                },
-                {
-                    id: Math.random(),
-                    name: 'Lovely Chawla',
-                    location: 'Punjab'
-                },
-            ]
-        },
-        {
-            id: Math.random(),
-            profilepic: Images.noora,
-            lastPosted: '35 days ago',
-            description: `Here's some motivation to help you power through this Thursday!`,
-            images: Images.feed,
-            title: "Noora Health",
-            comments: [
-                {
-                    id: Math.random(),
-                    name: 'Alisha',
-                    posted: '7 days ago',
-                    comment: 'Hello sir , update me thanks!',
-                },
-                {
-                    id: Math.random(),
-                    name: 'Taranjeet',
-                    posted: '27 days ago',
-                    comment: 'thanks sir',
-                },
-                {
-                    id: Math.random(),
-                    name: 'Surekha',
-                    posted: '7 days ago',
-                    comment: 'thanks for giving this message',
-                },
-            ]
-        },
-    ])
+    const nurseFeed = useSelector(state => state.story.nurseFeed)
+    const user = useSelector(state => state.auth.user)
+
+    console.log("showing data  in feeds", nurseFeed)
+
     return (
         <View style={styles.container}>
             <CustomHeader
                 headerColor={Colors.feebackgroundColor}
-                screenTitle={'Hi Lovely!'}
+                screenTitle={user.first_name + ' ' + user.last_name}
                 navigation={props.navigation}
             />
             <FeedListing

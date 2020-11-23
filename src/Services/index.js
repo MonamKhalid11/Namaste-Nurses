@@ -1,24 +1,46 @@
-import axios from 'axios'
-import { Config } from '@/Config'
+export {
+  isOnline,
+  showToast,
+  storeToStorage,
+  retriveFromStorage,
+  phoneNumberValidator,
+  deviceInformation,
+  getCurrentDate,
+  getPicture,
+  ShowActivityIndicator
+} from './helpers';
+export {
+  BASE_URL,
+  endPoints,
+} from './constants';
+export {
+  sendMobileOTP,
+  verifyMobileOTP,
+  updateDeviceToken,
+  getAppSetting,
+  getMasterData,
+} from './api/methods/authenticationMethods';
+export {
+  getNurseContent,
+  getNurseClass,
+  setContentLikeBulk,
+  getContentComment,
+  getContentLikes,
+  postContentCommentBulk,
+  getNurseProfile,
+  getNurseFullProfile,
+  getTrainingLanguage,
+  getTrainingCourses,
+  submitClass,
+  updateUserSession,
+  updateUserContentView,
+  updateUserProfile,
+  getCCPLetsPlay,
+  getCCPToolType,
+  getCCPToolMaterial,
+  getNurseList,
+} from './api/methods/storyMethods'
+export {
+  navigate, push
+} from './navigation'
 
-const instance = axios.create({
-  baseURL: Config.API_URL,
-  headers: {
-    Accept: 'application/json',
-    'Content-Type': 'application/json',
-  },
-  timeout: 3000,
-})
-
-export const handleError = ({ message, data, status }) => {
-  return Promise.reject({ message, data, status })
-}
-
-instance.interceptors.response.use(
-  (response) => response,
-  ({ message, response: { data, status } }) => {
-    return handleError({ message, data, status })
-  },
-)
-
-export default instance

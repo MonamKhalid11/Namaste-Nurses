@@ -14,12 +14,13 @@ const MobileNumberInput = (props) => {
                     :
                     null
                 }
-                <TextInput style={[Layout.inputText, props.value.length > 0 ? styles.input : styles.placer]}  {...props} placeholderTextColor={Colors.black} maxLength=
-                    {1032424} />
+                <TextInput style={[Layout.inputText, props.value.length > 0 ? styles.input : styles.placer]}  {...props} placeholderTextColor={Colors.black} maxLength={10} />
             </View>
-            {props.value.length > 0 ?
+            {props.value.length > 9 ?
 
-                <TouchableOpacity>
+                <TouchableOpacity
+                    onPress={props.onArrowPress}
+                >
                     <Image
                         source={Images.forward}
                         style={styles.accessory}
@@ -50,7 +51,7 @@ const styles = StyleSheet.create({
     prefix: {
         paddingHorizontal: 10,
         fontFamily: 'Assistant-Bold',
-        color: 'black',
+        color: Colors.grey,
         fontSize: WP('4.5')
 
     },

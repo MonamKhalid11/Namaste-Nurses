@@ -2,15 +2,23 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Layout } from '../../Theme';
-
+import { ShowActivityIndicator } from '../../Services'
 // create a component
 const CustomButton = (props) => {
     return (
-        <TouchableOpacity style={[Layout.buttonContainer, props.bgColor ? { backgroundColor: props.bgColor } : null, props.containerStyles]}
-            onPress={props.onPress}
-        >
-            <Text style={[props.textStyles ? props.textStyles : Layout.btnText, props.titleColor ? { color: props.titleColor } : null]} allowFontScaling={false}>{props.title}</Text>
-        </TouchableOpacity>
+        <>
+            {props.loading ?
+                <View style={[Layout.buttonContainer, props.bgColor ? { backgroundColor: props.bgColor } : null, props.containerStyles]}>
+                    {ShowActivityIndicator()}
+                </View>
+                :
+                <TouchableOpacity style={[Layout.buttonContainer, props.bgColor ? { backgroundColor: props.bgColor } : null, props.containerStyles]}
+                    onPress={props.onPress}
+                >
+                    <Text style={[props.textStyles ? props.textStyles : Layout.btnText, props.titleColor ? { color: props.titleColor } : null]} allowFontScaling={false}>{props.title}</Text>
+                </TouchableOpacity>
+            }
+        </>
     );
 };
 

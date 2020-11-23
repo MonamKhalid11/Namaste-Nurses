@@ -8,12 +8,14 @@ import AvatarContainer from '../../../../Components/Avatar'
 // create a component
 const PersonalDetails = (props) => {
     const { t } = useTranslation()
+
+
     return (
         <View style={styles.container}>
             <Text allowFontScaling={false} style={styles.title}>{t('profile.personal')}</Text>
             <View style={styles.nameContainer}>
                 <Text allowFontScaling={false} style={styles.name}>{props.name}</Text>
-                <AvatarContainer />
+                <AvatarContainer profilePicture={props.profilePicture} />
             </View>
             <Text style={styles.questions}>{t('profile.phone')} : <Text style={styles.details}>{props.phone}</Text></Text>
             <Text style={styles.questions}>{t('profile.date')} : <Text style={styles.details}>{props.date}</Text></Text>

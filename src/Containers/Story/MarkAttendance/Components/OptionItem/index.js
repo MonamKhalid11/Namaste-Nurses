@@ -1,5 +1,5 @@
 //import liraries
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { Colors, } from '../../../../../Theme';
 import {
@@ -7,23 +7,36 @@ import {
 } from '@/Theme'
 // create a component
 const OptionItem = (props) => {
+
+    useEffect(() => {
+
+    }, [props.classes])
     return (
         <View style={styles.container}>
-            <TouchableOpacity onPress={props.onPress}
+            <TouchableOpacity onPress={() => props.onPress(props.classes)}
             >
                 {props.classes.isSelected ?
-                    <Image
-                        style={styles.image}
-                        source={Images.unchecked}
+                    <View style={styles.container}>
+                        <Image
+                            style={styles.image}
+                            source={Images.like}
 
-                    /> :
-                    <Image
-                        style={styles.image}
-                        source={Images.unchecked}
-                    />
+                        />
+                        <Text allowFontScaling={false} style={styles.title}>{props.classes.title}</Text>
+                    </View>
+                    :
+                    <View style={styles.container}>
+
+                        <Image
+                            style={styles.image}
+                            source={Images.unchecked}
+                        />
+                        <Text allowFontScaling={false} style={styles.title}>{props.classes.title}</Text>
+                    </View>
+
+
                 }
             </TouchableOpacity>
-            <Text allowFontScaling={false} style={styles.title}>{props.classes.title}</Text>
         </View>
     );
 };
@@ -35,6 +48,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         marginRight: WP('6'),
+        marginBottom: WP('1')
+
     },
     image: {
         height: WP('6'),

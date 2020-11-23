@@ -15,6 +15,7 @@ const SessionInput = (props) => {
                 style={[styles.inputField, { height: props.isNotes ? 'auto' : WP('13'), minHeight: props.isNotes ? WP('13') : null }, props.inputStyles]}
                 multiline={props.isNotes ? true : false}
                 {...props}
+                placeholderTextColor={Colors.pickerBorder}
             />
         </View>
     );
