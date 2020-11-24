@@ -1,5 +1,5 @@
 //import liraries
-import React, { Component, useEffect } from 'react';
+import React, { Component, useEffect, useState } from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import CustomHeader from '../../../Components/CustomHeader'
 import CustomButton from '../../../Components/CustomButton'
@@ -15,6 +15,48 @@ const Profile = (props) => {
     const user = useSelector(state => state.auth.user)
     const nurserProfile = useSelector(state => state.story.nurseProfile)
     console.log('showing nurse profile', nurserProfile)
+    const [classesTypes, setClassesTypes] = useState([
+        {
+            id: 1,
+            title: t('markScreen.option1'),
+            isSelected: false
+        },
+        {
+            id: 3,
+            title: t('markScreen.option2'),
+            isSelected: false
+        },
+        {
+            id: 5,
+            title: t('markScreen.option3'),
+            isSelected: false
+        },
+        {
+            id: 7,
+            title: t('markScreen.option4'),
+            isSelected: false
+        },
+        {
+            id: 2,
+            title: t('markScreen.option5'),
+            isSelected: false
+        },
+        {
+            id: 4,
+            title: t('markScreen.option6'),
+            isSelected: false
+        },
+        {
+            id: 6,
+            title: t('markScreen.option7'),
+            isSelected: false
+        },
+
+    ])
+
+    const findById = (ccpId) => {
+        return classesTypes.find((ccp) => ccp.id == ccpId)
+    }
 
     useEffect(() => {
     }, [nurserProfile])
@@ -30,7 +72,7 @@ const Profile = (props) => {
                     bgColor={Colors.secondaryColor}
                     titleColor={Colors.white}
                     title={t('profile.button')}
-                    onPress={() => props.navigation.navigate('EditProfile')}
+                    onPress={() => props.navigation.navigate('EditProfile', nurserProfile)}
                 />
                 {nurserProfile ?
                     <PersonalDetails
@@ -52,7 +94,7 @@ const Profile = (props) => {
                     designation={nurserProfile.designation.match('NA') ? 'Designation not found' : nurserProfile.designation}
                     medical={nurserProfile.hospital_condition.length > 0 ? nurserProfile.hospital_condition : 'Medical Condition not found'}
                     tot={nurserProfile.tot_date.match('NA') ? 'Date of TOT Attended not found' : nurserProfile.tot_date}
-                    ccp={'Cardiology'}
+                    ccp={nurserProfile.ccp_condition_id ? findById(nurserProfile.ccp_condition_id) : null}
 
                 />
             </ScrollView>

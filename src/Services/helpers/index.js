@@ -105,6 +105,34 @@ export const getPicture = (isCamera, success, reject) => {
     });
   }
 };
+export const pickImages = (success, reject) => {
+  const options = {
+    quality: 0.1,
+    maxWidth: 700,
+    maxHeight: 700,
+    storageOptions: {
+      skipBackup: true,
+    },
+  };
+  ImagePicker.showImagePicker(options, response => {
+    if (response.didCancel) {
+      console.log('User cancelled photo picker');
+      reject();
+    } else if (response.error) {
+      console.log('ImagePicker Error: ', response.error);
+      reject();
+    } else if (response.customButton) {
+      console.log('User tapped custom button: ', response.customButton);
+    } else {
+      let source = { uri: response };
+      // You can also display the image using data:
+      // let source = { uri: 'data:image/jpeg;base64,' + response.data };
+      success(source);
+    }
+  });
+
+};
+
 
 export const deviceInformation = (success) => {
   try {

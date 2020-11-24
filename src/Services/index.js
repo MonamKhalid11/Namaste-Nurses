@@ -7,7 +7,8 @@ export {
   deviceInformation,
   getCurrentDate,
   getPicture,
-  ShowActivityIndicator
+  ShowActivityIndicator,
+  pickImages
 } from './helpers';
 export {
   BASE_URL,

@@ -20,7 +20,7 @@ const MarkAttendance = (props) => {
     console.log("showing props here for marked attendance", props)
     const { t } = useTranslation()
     const [date, SetDate] = useState(null)
-    const [time, SetTime] = useState(null)
+    const [time, SetTime] = useState(new Date())
     const [people, SetPeople] = useState(null)
     const [location, SetLocation] = useState(null)
     const [session, SetSession] = useState(null)

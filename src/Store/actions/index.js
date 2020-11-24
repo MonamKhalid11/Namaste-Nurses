@@ -9,5 +9,6 @@ export {
 export {
     getNurseFeed,
     fetchNurseProfile,
-    markAttendance
+    markAttendance,
+    updateUserProfiles
 } from './story'

@@ -6,6 +6,7 @@ import { Colors, WP } from '../../../../Theme';
 
 // create a component
 const ProfessionalDetails = (props) => {
+    console.log("showing props", props)
     const { t } = useTranslation()
     placeholder = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSUz5EWKDu-QHOR3ym0eWBSQenc69_kODInRA&usqp=CAU'
     return (
@@ -23,7 +24,7 @@ const ProfessionalDetails = (props) => {
             })}
             </Text>
             <Text style={styles.questions}>{t('profile.tot')} : <Text style={styles.details}>{props.tot}</Text></Text>
-            <Text style={styles.questions}>{t('profile.ccp')} : <Text style={styles.details}>{props.ccp}</Text></Text>
+            <Text style={styles.questions}>{t('profile.ccp')} : <Text style={styles.details}>{props.ccp ? props.ccp.title : 'Condition area not found'}</Text></Text>
         </View>
     );
 };

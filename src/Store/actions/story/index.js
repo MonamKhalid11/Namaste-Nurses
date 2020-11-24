@@ -77,3 +77,20 @@ export const markAttendance = (params, setLoading) => {
     }
   }
 }
+
+export const updateUserProfiles = (params, success, reject) => {
+  return async dispatch => {
+    try {
+      let api = await storyApi.updateUserProfile(params)
+      console.log('shwoing response here for submit', api)
+      if (api.success) {
+        success(true)
+      }
+      else {
+        reject(true)
+      }
+    } catch (error) {
+      reject(true)
+    }
+  }
+}

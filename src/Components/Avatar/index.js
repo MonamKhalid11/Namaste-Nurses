@@ -1,6 +1,6 @@
 //import liraries
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { Colors, WP } from '../../Theme';
 import { Layout, Fonts, Images } from '@/Theme'
 // create a component
@@ -12,10 +12,12 @@ const AvatarContainer = (props) => {
                 source={{ uri: props.profilePicture ? props.profilePicture : placeholder }}
                 style={styles.profilePic}
             />
-            <Image
-                source={Images.add}
-                style={styles.add}
-            />
+            <TouchableOpacity onPress={props.onPress}>
+                <Image
+                    source={Images.add}
+                    style={styles.add}
+                />
+            </TouchableOpacity>
         </View>
     );
 };
@@ -35,7 +37,7 @@ const styles = StyleSheet.create({
         display: 'flex',
         height: '100%',
         width: '100%',
-        resizeMode: 'contain',
+        resizeMode: 'cover',
         borderRadius: 100,
         overflow: 'hidden'
     },
@@ -43,6 +45,7 @@ const styles = StyleSheet.create({
         display: 'flex',
         height: WP('5'),
         width: WP('5'),
+        resizeMode: 'contain',
         position: 'absolute',
         bottom: 0,
         right: 0,

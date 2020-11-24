@@ -77,7 +77,8 @@ export default {
   },
   editprofile: {
     submit: 'SUBMIT DETAILS',
-    name: 'Name',
+    name: 'First Name',
+    lname: 'Last Name',
     mobile: 'Mobile',
     Date: 'Date of Birth',
     year: 'Year of Graduation',
@@ -163,6 +164,12 @@ export default {
   },
   commonApp: {
     internetError: 'Please check your internet in order to proceed!'
-  }
+  },
+  medicalConditons: {
+    option1: 'MCH',
+    option2: 'Inpatient',
+    option3: 'Cardiac',
+    option4: 'Oncology',
 
+  }
 }
