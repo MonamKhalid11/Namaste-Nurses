@@ -13,7 +13,7 @@ import { phoneNumberValidator, showToast, deviceInformation, isOnline } from '..
 const Login = ({ navigation }) => {
     const { t } = useTranslation()
     const dispatch = useDispatch()
-    const [mobile, setMobile] = useState("9945122470")
+    const [mobile, setMobile] = useState("")
     const [loading, setLoading] = useState(false)
     dispatch(getAppSettings())
     sendOtp = () => {

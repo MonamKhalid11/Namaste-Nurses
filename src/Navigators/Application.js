@@ -10,7 +10,7 @@ const ApplicationNavigator = () => {
   console.log("showing user here", user)
   return (
     <Stack.Navigator headerMode={'none'}>
-      {!user ?
+      {user ?
         <Stack.Screen name="Main" component={MainNavigator} />
         :
         <>

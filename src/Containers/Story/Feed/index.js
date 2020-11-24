@@ -1,5 +1,5 @@
 //import liraries
-import React, { Component, useState } from 'react';
+import React, { Component, useEffect, useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import CustomHeader from '../../../Components/CustomHeader'
 import { Colors, WP } from '../../../Theme';
@@ -13,6 +13,8 @@ const Feed = (props) => {
     const user = useSelector(state => state.auth.user)
 
     console.log("showing data  in feeds", nurseFeed)
+    useEffect(() => {
+    }, [nurseFeed])
 
     return (
         <View style={styles.container}>

@@ -1,5 +1,5 @@
 //import liraries
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import CustomHeader from '../../../Components/CustomHeader'
 import CustomButton from '../../../Components/CustomButton'
@@ -16,7 +16,8 @@ const Profile = (props) => {
     const nurserProfile = useSelector(state => state.story.nurseProfile)
     console.log('showing nurse profile', nurserProfile)
 
-
+    useEffect(() => {
+    }, [nurserProfile])
     return (
         <View style={styles.container}>
             <CustomHeader

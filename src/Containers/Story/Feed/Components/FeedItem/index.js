@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity, } from 'react-native';
 import { Colors, Images, WP } from '../../../../../Theme';
+import TimeAgo from 'react-native-timeago';
 
 // create a component
 const FeedItem = (props) => {
@@ -17,17 +18,28 @@ const FeedItem = (props) => {
                     </View>
                     <View style={styles.headingContainer}>
                         <Text allowFontScaling={false} style={styles.title}>{props.feed.title}</Text>
-                        <Text allowFontScaling={false} style={styles.posted}>{props.feed.lastPosted}</Text>
+                        <TimeAgo allowFontScaling={false} style={styles.posted} time={props.feed.entry_time} />
+
                     </View>
                 </View>
                 <Text allowFontScaling={false} style={styles.description}>{props.feed.description}</Text>
             </View>
-            <View style={styles.feedImageContainer}>
-                <Image
-                    source={props.feed.images}
-                    style={styles.feedImage}
-                />
-            </View>
+            {props.feed.attachment_list.length > 0 ?
+                <View style={styles.feedImageContainer}>
+                    <Image
+                        source={{ uri: props.feed.attachment_list[0].attachment }}
+                        style={styles.feedImage}
+                    />
+                </View>
+                :
+                <View style={styles.feedImageContainer}>
+                    <Image
+                        source={Images.noora}
+                        style={styles.feedImage}
+                    />
+                </View>
+
+            }
             <View style={styles.likeCommentContainer}>
                 <TouchableOpacity style={styles.iconContainer}
                     onPress={() => props.navigation.navigate('Likes', props.feed)}
@@ -109,7 +121,7 @@ const styles = StyleSheet.create({
     feedImage: {
         height: "100%",
         width: "100%",
-        resizeMode: 'stretch'
+        resizeMode: 'contain'
     },
     feedImageContainer: {
         display: 'flex',
