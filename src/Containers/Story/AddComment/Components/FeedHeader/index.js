@@ -3,19 +3,21 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import { Colors, WP } from '../../../../../Theme';
 import { Layout, Fonts, Images } from '@/Theme'
+import TimeAgo from 'react-native-timeago';
+
 // create a component
 const FeedHeader = (props) => {
     return (
         <View style={styles.nameProfileContainer}>
             <View style={styles.imageContainer}>
                 <Image
-                    source={Images.noora}
+                    source={props.feed.user ? { uri: props.feed.user.profile_image } : Images.noora}
                     style={styles.dp}
                 />
             </View>
             <View style={styles.headingContainer}>
                 <Text allowFontScaling={false} style={styles.title}>{props.feed.title}</Text>
-                <Text allowFontScaling={false} style={styles.posted}>{props.feed.lastPosted}</Text>
+                <TimeAgo allowFontScaling={false} style={styles.posted} time={props.feed.entry_time} />
             </View>
         </View>
     );

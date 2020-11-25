@@ -1,6 +1,7 @@
 //import liraries
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { WP } from '../../../../../Theme';
 import LikeItem from '../LikeItem'
 // create a component
 const LikesListing = (props) => {
@@ -18,7 +19,8 @@ const LikesListing = (props) => {
 // define your styles
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        flexGrow: 1,
+        paddingBottom: WP('50')
     },
 });
 

@@ -9,6 +9,14 @@ export const HIDE_LOADER = 'HIDE_LOADER';
 //App story 
 export const FEED_DATA = 'FEED_DATA';
 export const NURSE_PROFILE = 'NURSE_PROFILE';
+export const NURSE_PREVIOUS_CLASSES = 'NURSE_PREVIOUS_CLASSES'
+export const NURSE_COMMENTS = 'NURSE_COMMENTS'
+export const NURSE_LIKES = 'NURSE_LIKES'
+export const ONLINE_COURSES = 'ONLINE_COURSES'
+
+
+
+
 
 
 

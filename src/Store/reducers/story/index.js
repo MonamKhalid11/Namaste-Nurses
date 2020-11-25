@@ -1,7 +1,11 @@
 import * as TYPES from '../../actions/types';
 const initialState = {
   nurseFeed: [],
-  nurseProfile: null
+  nurseProfile: null,
+  classesDetails: [],
+  nurseComments: [],
+  nurseLikes: [],
+  coursesLists: [],
 };
 const reducer = (state = initialState, actions) => {
   switch (actions.type) {
@@ -14,6 +18,26 @@ const reducer = (state = initialState, actions) => {
       return {
         ...state,
         nurseProfile: actions.profile,
+      };
+    case TYPES.NURSE_PREVIOUS_CLASSES:
+      return {
+        ...state,
+        classesDetails: actions.previousClasses,
+      };
+    case TYPES.NURSE_COMMENTS:
+      return {
+        ...state,
+        nurseComments: actions.comments,
+      };
+    case TYPES.NURSE_LIKES:
+      return {
+        ...state,
+        nurseLikes: actions.likes,
+      };
+    case TYPES.ONLINE_COURSES:
+      return {
+        ...state,
+        coursesLists: actions.courses,
       };
     default:
       return state;

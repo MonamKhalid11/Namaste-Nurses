@@ -1,38 +1,55 @@
 //import liraries
-import React, { Component, useState } from 'react';
+import React, { Component, useEffect, useState } from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import CuatomCoursesHeaders from '../../../Components/CoursesHeader'
 import { useTranslation } from 'react-i18next'
 import CustomButton from '../../../Components/CustomButton'
 import { Colors, WP } from '../../../Theme';
 import CoursesList from './Components/CoursesList'
+import { useDispatch, useSelector } from 'react-redux'
+
 // create a component
 const OnlineCoursesDetails = (props) => {
     const { t } = useTranslation()
-    const [courses, setCourses] = useState([
-        {
-            id: Math.random(),
-            title: 'Covid 19 : Training of the Trainers',
-            course: 'ENGLISH'
-        },
-        {
-            id: Math.random(),
-            title: 'Covid 19 : Training of the Trainers',
-            course: 'ENGLISH'
-        },
-    ])
+    const { params } = props.route
+    console.log('showing params', params)
+    const courses = useSelector(state => state.story.coursesLists)
+    const [coursesFiltered, setCoursesFiltered] = useState([])
+    useEffect(() => {
+        try {
+            if (params.course.match('All')) {
+                setCoursesFiltered(courses)
+            }
+            else {
+                let coursesArray = []
+
+                courses.map((course) => {
+                    if (course.language.toLowerCase().match(params.course.toLowerCase())) {
+                        if (course) {
+                            coursesArray.push(course)
+                        }
+                    }
+                })
+                setCoursesFiltered(coursesArray)
+            }
+        }
+        catch (error) {
+
+        }
+    }, [params.course])
+
     return (
         <View style={styles.container}>
             <CuatomCoursesHeaders
                 navigation={props.navigation}
-                title={t('English Courses')}
+                title={params.course + " " + "Courses"}
                 subtitle={t('onlineCoursesDetails.subtitle')}
                 boldSubtitle={t('onlineCoursesDetails.language')}
                 click={t('onlineCoursesDetails.click')}
                 isCourseDetails={true}
             />
             <ScrollView contentContainerStyle={styles.scroller}>
-                <CoursesList courses={courses} />
+                <CoursesList courses={coursesFiltered} />
             </ScrollView>
         </View>
     );

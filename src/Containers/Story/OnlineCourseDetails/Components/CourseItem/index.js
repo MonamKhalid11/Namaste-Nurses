@@ -1,23 +1,33 @@
 //import liraries
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity, Linking } from 'react-native';
 import { Colors } from '../../../../../Theme';
 import {
     Layout, Fonts, Images, WP
 } from '@/Theme'
 // create a component
 const CourseItem = (props) => {
+    const openCoursesDetails = (links) => {
+        try {
+            Linking.openURL(links)
+
+        } catch (error) {
+
+        }
+    }
     return (
-        <View style={styles.container}>
+        <TouchableOpacity style={styles.container}
+            onPress={() => { openCoursesDetails(props.course.training_url) }}
+        >
             <View style={styles.header}>
-                <Text allowFontScaling={false} style={styles.title}>{props.course.title}</Text>
-                <Text allowFontScaling={false} style={styles.course}>{props.course.course}</Text>
+                <Text allowFontScaling={false} style={styles.title}>{props.course.name}</Text>
+                <Text allowFontScaling={false} style={styles.course}>{props.course.language}</Text>
             </View>
             <Image
                 source={Images.forward}
                 style={styles.drawer}
             />
-        </View>
+        </TouchableOpacity>
     );
 };
 

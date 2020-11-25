@@ -10,5 +10,10 @@ export {
     getNurseFeed,
     fetchNurseProfile,
     markAttendance,
-    updateUserProfiles
+    updateUserProfiles,
+    getFullData,
+    fetchNurseComments,
+    fetchNurseLikes,
+    fetchOnlineCourses,
+    fetchCCPMaterials
 } from './story'

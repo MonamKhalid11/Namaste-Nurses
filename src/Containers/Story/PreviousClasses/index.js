@@ -1,94 +1,28 @@
 //import liraries
-import React, { Component, useState } from 'react';
+import React, { Component, useEffect, useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import CuatomCoursesHeaders from '../../../Components/CoursesHeader'
 import CustomButton from '../../../Components/CustomButton'
 import { useTranslation } from 'react-i18next'
 import { Colors, WP } from '../../../Theme';
 import PreviousClassesList from './Components/ClassesLisitngs'
+import { getFullData } from '../../../Store/actions'
+import { useDispatch, useSelector } from 'react-redux'
+
 // create a component
 const PreviousClasses = (props) => {
     const { t } = useTranslation()
-    const [classes, setClasses] = useState([
-        {
-            id: Math.random(),
-            date: '06',
-            month: 'August',
-            day: 'THURSDAY',
-            className: 'PNC',
-            time: '05.10 PM',
-            dated: "06 july 2020"
-        },
-        {
-            id: Math.random(),
-            date: '06',
-            month: 'August',
-            day: 'THURSDAY',
-            className: 'PNC',
-            time: '05.10 PM',
-            dated: "06 july 2020"
-
-        },
-        {
-            id: Math.random(),
-            date: '06',
-            month: 'August',
-            day: 'THURSDAY',
-            className: 'PNC',
-            time: '05.10 PM',
-            dated: "06 july 2020"
-
-        },
-        {
-            id: Math.random(),
-            date: '06',
-            month: 'August',
-            day: 'THURSDAY',
-            className: 'PNC',
-            time: '05.10 PM',
-            dated: "06 july 2020"
-
-        },
-        {
-            id: Math.random(),
-            date: '06',
-            month: 'August',
-            day: 'THURSDAY',
-            className: 'PNC',
-            time: '05.10 PM',
-            dated: "06 july 2020"
-
-        },
-        {
-            id: Math.random(),
-            date: '06',
-            month: 'August',
-            day: 'THURSDAY',
-            className: 'PNC',
-            time: '05.10 PM',
-            dated: "06 july 2020"
-
-        },
-        {
-            id: Math.random(),
-            date: '06',
-            month: 'August',
-            day: 'THURSDAY',
-            className: 'PNC',
-            time: '05.10 PM',
-            dated: "06 july 2020"
-
-        },
-        {
-            id: Math.random(),
-            date: '06',
-            month: 'August',
-            day: 'THURSDAY',
-            className: 'PNC',
-            time: '05.10 PM',
-            dated: "06 july 2020"
-        },
-    ])
+    const previousClasses = useSelector(state => state.story.classesDetails)
+    console.log("showing previous classes in content", previousClasses)
+    previousClasses.map((entry) => {
+        entry.no_of_people = parseInt(entry.no_of_people)
+    })
+    var msgTotal = previousClasses.reduce(function (prev, cur) {
+        return prev + cur.no_of_people;
+    }, 0);
+    console.warn(msgTotal)
+    useEffect(() => {
+    }, [previousClasses])
     return (
         <View style={styles.container}>
             <CuatomCoursesHeaders
@@ -99,10 +33,10 @@ const PreviousClasses = (props) => {
                 click={t('previousclasses.click')}
                 color={Colors.appColor}
                 isPreviousClass={true}
-                sessions={'02'}
-                patients={'26'}
+                sessions={previousClasses.length}
+                patients={msgTotal}
             />
-            <PreviousClassesList classes={classes} onPress={(item) => props.navigation.navigate('EditClassDetails', item)} />
+            <PreviousClassesList classes={previousClasses} onPress={(item) => props.navigation.navigate('EditClassDetails', item)} />
             <CustomButton title={t('previousclasses.marknew')}
                 bgColor={Colors.appColor} titleColor={Colors.white}
                 onPress={() => props.navigation.navigate('MarkAttendance')}

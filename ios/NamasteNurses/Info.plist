@@ -25,11 +25,11 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string></string>
+	<string>Namste</string>
 	<key>NSAppleMusicUsageDescription</key>
-	<string></string>
+	<string>Namste</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string></string>
+	<string>Namste Nurses will use library</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Namaste nurses will use camera for class image</string>
 	<key>NSAppTransportSecurity</key>

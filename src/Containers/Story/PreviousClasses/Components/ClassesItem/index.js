@@ -2,9 +2,21 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { Colors, Images, WP } from '../../../../../Theme';
-
+import moment from 'moment'
 // create a component
 const ClassesItems = (props) => {
+    function tConvert(time) {
+        // Check correct time format and split into components
+        time = time.toString().match(/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];
+
+        if (time.length > 1) { // If time format correct
+            time = time.slice(1);  // Remove full string match value
+            time[5] = +time[0] < 12 ? 'AM' : 'PM'; // Set AM/PM
+            time[0] = +time[0] % 12 || 12; // Adjust hours
+        }
+        return time.join(''); // return adjusted time or original string
+    }
+
     return (
         <View style={styles.docker}>
             <View style={styles.parent}>
@@ -17,18 +29,18 @@ const ClassesItems = (props) => {
             >
                 <View style={styles.heading}>
                     <View style={styles.details}>
-                        <Text allowFontScaling={false} style={styles.date}>{props.classDetails.date}</Text>
-                        <Text allowFontScaling={false} style={styles.month}>{props.classDetails.month}</Text>
+                        <Text allowFontScaling={false} style={styles.date}>{moment(props.classDetails.class_date).format('DD')}</Text>
+                        <Text allowFontScaling={false} style={styles.month}>{moment(props.classDetails.class_date).format('MMMM')}</Text>
                         <View style={styles.border} />
-                        <Text allowFontScaling={false} style={styles.day}>{props.classDetails.day}</Text>
+                        <Text allowFontScaling={false} style={styles.day}>{moment(props.classDetails.class_date).format('dddd')}</Text>
                     </View>
-                    <Text allowFontScaling={false} style={styles.time}>{props.classDetails.time}</Text>
+                    <Text allowFontScaling={false} style={styles.time}>{tConvert(props.classDetails.class_time)}</Text>
                     <Image
                         source={Images.right}
                         style={styles.forward}
                     />
                 </View>
-                <Text allowFontScaling={false} style={styles.course}>{props.classDetails.className}</Text>
+                <Text allowFontScaling={false} style={styles.course}>{props.classDetails.class_type.name}</Text>
             </TouchableOpacity >
         </View>
 
@@ -62,12 +74,15 @@ const styles = StyleSheet.create({
     },
     date: {
         color: Colors.black,
-        fontFamily: 'Assistant-Bold'
+        fontFamily: 'Assistant-Bold',
+        width: WP('4'),
     },
     month: {
         color: Colors.grey,
         marginLeft: WP('1'),
-        fontFamily: 'Assistant-SemiBold'
+        fontFamily: 'Assistant-SemiBold',
+        width: WP('16'),
+
     },
     border: {
         display: 'flex',
@@ -80,8 +95,8 @@ const styles = StyleSheet.create({
     },
     day: {
         color: Colors.grey,
-        fontFamily: 'Assistant-SemiBold'
-
+        fontFamily: 'Assistant-SemiBold',
+        width: WP('13'),
     },
     forward: {
         height: WP('4'),
@@ -97,7 +112,8 @@ const styles = StyleSheet.create({
     time: {
         color: Colors.appColor,
         fontFamily: 'Assistant-Bold',
-        marginRight: WP('2')
+        // marginRight: WP('2'),
+        width: WP('17'),
     },
     course: {
         color: Colors.appColor,

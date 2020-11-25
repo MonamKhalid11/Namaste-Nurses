@@ -1,16 +1,34 @@
 //import liraries
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity, Linking } from 'react-native';
 import { Colors } from '../../../../../Theme';
 import {
     Layout, Fonts, Images, WP
 } from '@/Theme'
+import { showToast } from '../../../../../Services';
 // create a component
 const CourseItem = (props) => {
+    const openCoursesDetails = (links) => {
+
+        try {
+            if (links) {
+                Linking.openURL(links)
+            }
+            else {
+                showToast('No link found')
+            }
+
+        } catch (error) {
+            console.log("showing error", error)
+        }
+    }
     return (
-        <TouchableOpacity style={styles.container}>
+        <TouchableOpacity style={styles.container}
+            onPress={() => { openCoursesDetails(props.course.url) }}
+
+        >
             <View style={styles.header}>
-                <Text allowFontScaling={false} style={styles.title}>{props.course.title}</Text>
+                <Text allowFontScaling={false} style={styles.title}>{props.course.name}</Text>
                 {/* <Text allowFontScaling={false} style={styles.course}>{props.course.course}</Text> */}
             </View>
             <Image

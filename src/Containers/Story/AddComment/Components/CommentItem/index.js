@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import { Colors, Images, WP } from '../../../../../Theme';
+import TimeAgo from 'react-native-timeago';
 
 // create a component
 const CommentItem = (props) => {
@@ -9,12 +10,12 @@ const CommentItem = (props) => {
         <View style={styles.container}>
             <View style={styles.header}>
                 <Image
-                    source={Images.comment}
+                    source={props.comment.user && props.comment.user.profile_image ? { uri: props.comment.user.profile_image } : Images.comment}
                     style={styles.dp}
                 />
                 <View style={styles.headingContainer}>
-                    <Text allowFontScaling={false} style={styles.title}>{props.comment.name}</Text>
-                    <Text allowFontScaling={false} style={styles.posted}>{props.comment.posted}</Text>
+                    <Text allowFontScaling={false} style={styles.title}>{props.comment.user.first_name + ' ' + props.comment.user.last_name}</Text>
+                    <TimeAgo allowFontScaling={false} style={styles.posted} time={props.comment.entry_time} />
                 </View>
             </View>
             <Text allowFontScaling={false} style={styles.comment}>{props.comment.comment}</Text>
@@ -36,7 +37,8 @@ const styles = StyleSheet.create({
     dp: {
         height: WP('13'),
         width: WP('13'),
-        resizeMode: 'contain'
+        resizeMode: 'cover',
+        borderRadius: 100
     },
     title: {
         fontSize: WP('4'),
@@ -44,7 +46,7 @@ const styles = StyleSheet.create({
         color: Colors.black
     },
     posted: {
-        color: Colors.inputGrey,
+        color: Colors.pickerBorder,
         fontFamily: 'Assistant-Bold'
     },
     headingContainer: {
@@ -52,7 +54,8 @@ const styles = StyleSheet.create({
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        marginLeft: WP('2')
     },
     comment: {
         paddingLeft: WP('13'),

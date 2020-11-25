@@ -6,7 +6,9 @@ import CommentItem from '../CommentItem'
 // create a component
 const CommentsListings = (props) => {
     return (
-        <ScrollView contentContainerStyle={styles.container}>
+        <ScrollView contentContainerStyle={styles.container}
+            showsVerticalScrollIndicator={false}
+        >
             {props.comments.map((comment) => {
                 return (
                     <CommentItem

@@ -17,6 +17,7 @@ export default {
   noora: require('@/Assets/Images/noora.png'),
   chat: require('@/Assets/Images/chat.png'),
   like: require('@/Assets/Images/like.png'),
+  unlike: require('@/Assets/Images/unlike.png'),
   comment: require('@/Assets/Images/comment.png'),
   nursedp: require('@/Assets/Images/nursedp.png'),
   commingSoon: require('@/Assets/Images/commingsoon.png'),

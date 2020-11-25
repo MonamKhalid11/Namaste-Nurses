@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity, } from 'react-native';
 import { Colors, Images, WP } from '../../../../../Theme';
 import TimeAgo from 'react-native-timeago';
-
 // create a component
 const FeedItem = (props) => {
     return (
@@ -41,6 +40,7 @@ const FeedItem = (props) => {
 
             }
             <View style={styles.likeCommentContainer}>
+
                 <TouchableOpacity style={styles.iconContainer}
                     onPress={() => props.navigation.navigate('Likes', props.feed)}
                 >

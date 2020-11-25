@@ -7,8 +7,9 @@ import CustomButton from '../../../Components/CustomButton'
 import { Colors, WP } from '../../../Theme';
 // create a component
 const PreferredLanguage = (props) => {
+    const { params } = props.route
     const { t } = useTranslation()
-    const navigateCourse = () => props.navigation.navigate('CcpToolsDetails')
+    const navigateCourse = () => props.navigation.navigate('CcpToolsDetails', { ccp: params.ccp })
 
     return (
         <View style={styles.container}>
@@ -19,6 +20,8 @@ const PreferredLanguage = (props) => {
                 boldSubtitle={t('languages.language')}
                 click={t('languages.click')}
                 color={Colors.appColor}
+                isCourseDetails={true}
+
 
             />
             <ScrollView contentContainerStyle={styles.scroller}>

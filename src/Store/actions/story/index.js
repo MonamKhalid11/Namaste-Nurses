@@ -78,13 +78,148 @@ export const markAttendance = (params, setLoading) => {
   }
 }
 
+//Update nurse profile
 export const updateUserProfiles = (params, success, reject) => {
   return async dispatch => {
     try {
       let api = await storyApi.updateUserProfile(params)
       console.log('shwoing response here for submit', api)
       if (api.success) {
+
         success(true)
+      }
+      else {
+        reject(true)
+      }
+    } catch (error) {
+      reject(true)
+    }
+  }
+}
+
+//Fetch previous classes
+export const getFullData = (nurseId, success, reject) => {
+  return async dispatch => {
+    try {
+      let params = {
+        nurse_id: nurseId,
+        appuser_id: nurseId,
+        access_token: "",
+        token: "j56sugRk029Po5DB"
+      }
+      let api = await storyApi.getNurseClass(params)
+      console.log('shwoing response here for submit', api)
+      if (api.success) {
+        dispatch({
+          type: TYPES.NURSE_PREVIOUS_CLASSES,
+          previousClasses: api.details
+        })
+        success(true)
+      }
+      else {
+        reject(true)
+      }
+    } catch (error) {
+      reject(true)
+    }
+  }
+}
+
+//getComments for user feed 
+
+export const fetchNurseComments = (nurseId, content_id, success, reject) => {
+  return async dispatch => {
+    try {
+      let params = {
+        nurse_id: nurseId,
+        content_id: content_id,
+        appuser_id: nurseId,
+        access_token: "",
+        token: "j56sugRk029Po5DB"
+      }
+      let api = await storyApi.getContentComment(params)
+      console.log('shwoing response here for submit', api)
+      if (api.success) {
+        dispatch({
+          type: TYPES.NURSE_COMMENTS,
+          comments: api.details
+        })
+        success(api.details)
+      }
+      else {
+        reject(true)
+      }
+    } catch (error) {
+      reject(true)
+    }
+  }
+}
+
+//fetch likes by sending content id from feed
+export const fetchNurseLikes = (nurseId, content_id, success, reject) => {
+  return async dispatch => {
+    try {
+      let params = {
+        nurse_id: nurseId,
+        content_id: content_id,
+        appuser_id: nurseId,
+        access_token: "",
+        token: "j56sugRk029Po5DB"
+      }
+      let api = await storyApi.getContentLikes(params)
+      console.log('shwoing response here for submit', api)
+      if (api.success) {
+        success(api.details)
+      }
+      else {
+        reject(true)
+      }
+    } catch (error) {
+      reject(true)
+    }
+  }
+}
+
+//fetch Online courses 
+export const fetchOnlineCourses = (userId) => {
+  return async dispatch => {
+    try {
+      let params = {
+        user_id: userId,
+        token: "j56sugRk029Po5DB",
+        appuser_id: userId,
+        access_token: "",
+      }
+      let api = await storyApi.getTrainingCourses(params)
+      console.log('shwoing response here for submit', api)
+      if (api.success) {
+        dispatch({
+          type: TYPES.ONLINE_COURSES,
+          courses: api.details
+        })
+      }
+      else {
+      }
+    } catch (error) {
+    }
+  }
+}
+
+//fetchCCPtools material 
+
+export const fetchCCPMaterials = (userId, success, reject) => {
+  return async dispatch => {
+    try {
+      let params = {
+        user_id: userId,
+        token: "j56sugRk029Po5DB",
+        appuser_id: userId,
+        access_token: "",
+      }
+      let api = await storyApi.getCCPToolMaterial(params)
+      console.log('shwoing response here for submit', api)
+      if (api.success) {
+        success(api.details)
       }
       else {
         reject(true)

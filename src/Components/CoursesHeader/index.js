@@ -8,7 +8,9 @@ const CuatomCoursesHeaders = (props) => {
     const toggleDrawer = () => props.navigation.toggleDrawer();;
     const onBackBtnPressed = () => props.navigation.goBack()
 
-
+    function kFormatter(num) {
+        return Math.abs(num) > 999 ? Math.sign(num) * ((Math.abs(num) / 1000).toFixed(1)) + 'k' : Math.sign(num) * Math.abs(num)
+    }
     return (
         <View style={[props.isPreviousClass ? styles.previous : styles.container, props.color ? { backgroundColor: props.color } : null]}>
             {props.isCourseDetails ?
@@ -52,7 +54,7 @@ const CuatomCoursesHeaders = (props) => {
             {props.isPreviousClass ?
                 <View style={styles.coursesDetails}>
                     <View style={styles.sessionsContainer}>
-                        <Text allowFontScaling={false} style={styles.sessions} ellipsizeMode={'tail'} numberOfLines={1}>{props.sessions}</Text>
+                        <Text allowFontScaling={false} style={styles.sessions} ellipsizeMode={'tail'} numberOfLines={1}>{kFormatter(props.sessions)}</Text>
                         <View>
                             <Text allowFontScaling={false} style={styles.sessionTheory}>Sessions</Text>
                             <Text allowFontScaling={false} style={styles.sessionTheory}>Conducted</Text>
@@ -60,7 +62,7 @@ const CuatomCoursesHeaders = (props) => {
                     </View>
                     <View style={styles.border} />
                     <View style={styles.sessionsContainer2}>
-                        <Text allowFontScaling={false} style={styles.sessions} ellipsizeMode={'tail'} numberOfLines={1}> {props.patients}</Text>
+                        <Text allowFontScaling={false} style={styles.pateints} ellipsizeMode={'tail'} numberOfLines={1}> {kFormatter(props.patients)}</Text>
                         <View>
                             <Text allowFontScaling={false} style={styles.sessionTheory}>Patients</Text>
                             <Text allowFontScaling={false} style={styles.sessionTheory}>Impacted</Text>
@@ -150,8 +152,14 @@ const styles = StyleSheet.create({
     sessions: {
         fontFamily: 'Assistant-Bold',
         color: Colors.white,
-        fontSize: WP('12'),
-        marginRight: WP('1')
+        fontSize: WP('10'),
+        marginRight: WP('2'),
+    },
+    pateints: {
+        fontFamily: 'Assistant-Bold',
+        color: Colors.white,
+        fontSize: WP('10'),
+        marginRight: WP('2'),
     },
     sessionTheory: {
         fontFamily: 'Assistant-Bold',

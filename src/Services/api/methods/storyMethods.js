@@ -85,7 +85,13 @@ function updateUserSession(params) {
         'post',
     );
 }
-
+function getMasterData(params) {
+    return Api(
+        endPoints.getMasterData,
+        params,
+        'post',
+    );
+}
 function updateUserContentView(params) {
     return Api(
         endPoints.updateUserContentView,
@@ -147,4 +153,5 @@ export {
     getCCPToolType,
     getCCPToolMaterial,
     getNurseList,
+    getMasterData
 }

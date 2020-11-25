@@ -8,12 +8,12 @@ const LikeItem = (props) => {
     return (
         <View style={styles.container}>
             <Image
-                source={Images.nursedp}
+                source={props.like.user && props.like.user.profile_image ? { uri: props.like.user.profile_image } : Images.comment}
                 style={styles.dp}
             />
             <View style={styles.details}>
-                <Text allowFontScaling={false} style={styles.header}>{props.like.name}</Text>
-                <Text allowFontScaling={false} style={styles.location}>{props.like.location}</Text>
+                <Text allowFontScaling={false} style={styles.header}>{props.like.user.first_name + ' ' + props.like.user.last_name}</Text>
+                <Text allowFontScaling={false} style={styles.location}>{props.like.user.location.state_name}</Text>
             </View>
 
         </View>
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
         height: WP('18'),
         width: WP('18'),
         borderRadius: 100,
-        resizeMode: 'contain',
+        resizeMode: 'cover',
     },
     details: {
         marginLeft: WP('2')

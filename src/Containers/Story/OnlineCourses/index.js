@@ -1,14 +1,25 @@
 //import liraries
-import React, { Component } from 'react';
+import React, { Component, useEffect, useState } from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import CuatomCoursesHeaders from '../../../Components/CoursesHeader'
 import { useTranslation } from 'react-i18next'
 import CustomButton from '../../../Components/CustomButton'
 import { Colors, WP } from '../../../Theme';
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchOnlineCourses } from '../../../Store/actions'
+import { ShowActivityIndicator } from '../../../Services';
 // create a component
 const OnlineCourses = (props) => {
     const { t } = useTranslation()
-    const navigateCourse = () => props.navigation.navigate('OnlineCoursesDetails')
+    const user = useSelector(state => state.auth.user)
+    const dispatch = useDispatch()
+    const [courses, setCourses] = useState([])
+    useEffect(() => {
+        dispatch(fetchOnlineCourses(user.id))
+    }, [])
+    const navigateCourse = (option) => {
+        props.navigation.navigate('OnlineCoursesDetails', { course: option })
+    }
 
     return (
         <View style={styles.container}>
@@ -25,7 +36,7 @@ const OnlineCourses = (props) => {
                     titleColor={Colors.white}
                     title={t('onlineCourses.button1')}
                     containerStyles={styles.btnContainer}
-                    onPress={navigateCourse}
+                    onPress={() => { navigateCourse('All') }}
                     textStyles={styles.allCourses}
                 />
                 <CustomButton
@@ -33,7 +44,7 @@ const OnlineCourses = (props) => {
                     titleColor={Colors.white}
                     title={t('onlineCourses.button2')}
                     containerStyles={styles.btnContainer}
-                    onPress={navigateCourse}
+                    onPress={() => { navigateCourse('English') }}
                     textStyles={styles.english}
                 />
                 <CustomButton
@@ -41,7 +52,7 @@ const OnlineCourses = (props) => {
                     titleColor={Colors.white}
                     title={t('onlineCourses.button3')}
                     containerStyles={styles.btnContainer}
-                    onPress={navigateCourse}
+                    onPress={() => { navigateCourse('Hindi') }}
                     textStyles={styles.english}
                 />
 

@@ -21,13 +21,6 @@ function getAppSetting(params) {
         'post',
     );
 }
-function getMasterData(params) {
-    return Api(
-        endPoints.getMasterData,
-        params,
-        'post',
-    );
-}
 function updateDeviceToken(params) {
     return Api(
         endPoints.updateDeviceToken,
@@ -39,6 +32,5 @@ export {
     sendMobileOTP,
     verifyMobileOTP,
     getAppSetting,
-    getMasterData,
     updateDeviceToken
 }

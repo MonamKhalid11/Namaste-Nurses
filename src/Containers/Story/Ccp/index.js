@@ -8,7 +8,9 @@ import { Colors, WP } from '../../../Theme';
 // create a component
 const CcpTools = (props) => {
     const { t } = useTranslation()
-    const navigateCourse = () => props.navigation.navigate('PreferredLanguage')
+    const navigateCourse = (options) => {
+        props.navigation.navigate('PreferredLanguage', { ccp: options })
+    }
 
     return (
         <View style={styles.container}>
@@ -27,22 +29,31 @@ const CcpTools = (props) => {
                     titleColor={Colors.white}
                     title={t('ccp.button1')}
                     containerStyles={styles.btnContainer}
-                    onPress={navigateCourse}
+                    onPress={() => navigateCourse({
+                        type: "ANC",
+                        type_id: "1",
+                    })}
                 />
                 <CustomButton
                     bgColor={Colors.appColor}
                     titleColor={Colors.white}
                     title={t('ccp.button2')}
                     containerStyles={styles.btnContainer}
-                    onPress={navigateCourse}
+                    onPress={() => navigateCourse({
+                        type: "PNC",
+                        type_id: "2"
+                    })}
+
                 />
                 <CustomButton
                     bgColor={Colors.appColor}
                     titleColor={Colors.white}
                     title={t('ccp.button3')}
                     containerStyles={styles.btnContainer}
-                    onPress={navigateCourse}
-                />
+                    onPress={() => navigateCourse({
+                        type: "SNCU",
+                        type_id: "3",
+                    })} />
                 <CustomButton
                     bgColor={Colors.appColor}
                     titleColor={Colors.white}

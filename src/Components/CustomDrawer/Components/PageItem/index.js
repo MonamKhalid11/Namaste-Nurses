@@ -5,7 +5,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Colors, WP } from '../../../../Theme';
 import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchNurseProfile, getNurseFeed } from '../../../../Store/actions'
+import { fetchNurseProfile, getNurseFeed, getFullData } from '../../../../Store/actions'
 import { isOnline, ShowActivityIndicator, showToast } from '../../../../Services'
 // create a component
 
@@ -38,7 +38,17 @@ const PageItem = (props) => {
                 })
                 break;
             case t('drawer.screen4'):
-                props.navigation.navigate('PreviousClasses')
+                isOnline((connected) => {
+                    setLoader(true)
+                    dispatch(getFullData(user.id, () => {
+                        setLoader(false)
+                        props.navigation.navigate('PreviousClasses')
+                    }, () => { setLoader(false) }))
+                }, (offline) => {
+                    setLoader(false)
+                    showToast(t('commonApp.internetError'))
+                })
+
                 break;
             case t('drawer.screen5'):
                 props.navigation.navigate('OnlineCourses')
