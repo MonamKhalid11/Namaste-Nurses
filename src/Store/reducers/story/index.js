@@ -39,6 +39,19 @@ const reducer = (state = initialState, actions) => {
         ...state,
         coursesLists: actions.courses,
       };
+    case TYPES.ADD_LIKE:
+      let object = state.nurseFeed.map(reduxItem => {
+        if (reduxItem.id === actions.id) {
+          reduxItem.like_count = reduxItem.like_count + 1
+          reduxItem.like = true
+        }
+        return reduxItem
+      });
+      return {
+        ...state,
+        nurseFeed: object,
+      };
+
     default:
       return state;
   }

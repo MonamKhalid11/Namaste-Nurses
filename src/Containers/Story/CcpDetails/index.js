@@ -8,6 +8,7 @@ import { Colors, WP } from '../../../Theme';
 import CoursesList from './Components/CoursesList'
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchCCPMaterials } from '../../../Store/actions'
+import { isOnline } from '../../../Services';
 // create a component
 const CcpToolsDetails = (props) => {
     const { params } = props.route
@@ -19,19 +20,25 @@ const CcpToolsDetails = (props) => {
     let filteredDetails = []
 
     useEffect(() => {
-        dispatch(fetchCCPMaterials(user.id, (courses) => {
-            console.log("showing response here for material", courses)
-            if (courses.length > 0) {
-                courses.map((materials) => {
-                    if (materials.type_id.match(params.ccp.type_id)) {
-                        filteredDetails.push(materials)
-                        console.log("showingg", materials)
-                    }
-                })
-            }
-            setMaterial(filteredDetails)
-        }, (reject) => { }))
-    }, [])
+        isOnline(() => {
+            dispatch(fetchCCPMaterials(user.id, (courses) => {
+                console.log("showing response here for material", courses)
+                if (courses.length > 0) {
+                    courses.map((materials) => {
+                        if (materials.type_id.match(params.ccp.type_id)) {
+                            filteredDetails.push(materials)
+                            console.log("showingg", materials)
+                        }
+                    })
+                }
+                setMaterial(filteredDetails)
+            }, (reject) => { }))
+        },
+            () => {
+                showToast(t('commonApp.internetError'))
+
+            })
+    }, [material])
     return (
         <View style={styles.container}>
             <CuatomCoursesHeaders

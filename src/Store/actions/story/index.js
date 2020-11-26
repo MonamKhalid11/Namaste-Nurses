@@ -15,6 +15,9 @@ export const getNurseFeed = (nurseId, setLoading) => {
       }
       let api = await storyApi.getNurseContent(params)
       if (api.success) {
+        api.details.map((feed) => {
+          feed.like_count = parseInt(feed.like_count)
+        })
         dispatch({
           type: TYPES.FEED_DATA,
           feed: api.details
@@ -109,7 +112,7 @@ export const getFullData = (nurseId, success, reject) => {
       }
       let api = await storyApi.getNurseClass(params)
       console.log('shwoing response here for submit', api)
-      if (api.success) {
+      if (api) {
         dispatch({
           type: TYPES.NURSE_PREVIOUS_CLASSES,
           previousClasses: api.details
@@ -219,7 +222,50 @@ export const fetchCCPMaterials = (userId, success, reject) => {
       let api = await storyApi.getCCPToolMaterial(params)
       console.log('shwoing response here for submit', api)
       if (api.success) {
+
         success(api.details)
+      }
+      else {
+        reject(true)
+      }
+    } catch (error) {
+      reject(true)
+    }
+  }
+}
+
+//Add comments to user feed 
+export const addComments = (params, success, reject) => {
+  return async dispatch => {
+    try {
+      let api = await storyApi.postContentCommentBulk(params)
+      console.log('shwoing response here for submit', api)
+      if (api.success) {
+        success(api.details)
+      }
+      else {
+        reject(true)
+      }
+    } catch (error) {
+      reject(true)
+    }
+  }
+}
+
+//Add Like in feed 
+
+export const addLikesToFeed = (params, success, reject) => {
+  return async dispatch => {
+    try {
+      let api = await storyApi.setContentLikeBulk(params)
+      console.log('shwoing response here for submit', api)
+      if (api.success) {
+        dispatch({
+          type: TYPES.ADD_LIKE,
+          id: params.content_id
+        })
+        success(api.details)
+
       }
       else {
         reject(true)

@@ -15,5 +15,7 @@ export {
     fetchNurseComments,
     fetchNurseLikes,
     fetchOnlineCourses,
-    fetchCCPMaterials
+    fetchCCPMaterials,
+    addComments,
+    addLikesToFeed
 } from './story'

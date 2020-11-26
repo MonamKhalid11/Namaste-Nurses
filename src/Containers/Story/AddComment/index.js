@@ -9,8 +9,9 @@ import CommentInputBox from './Components/InputField'
 import CommentsListings from './Components/CommentsLists'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchNurseComments } from '../../../Store/actions'
-import { ShowActivityIndicator } from '../../../Services';
+import { fetchNurseComments, addComments } from '../../../Store/actions'
+import { isOnline, ShowActivityIndicator, showToast } from '../../../Services';
+import moment from 'moment'
 // create a component
 const AddComments = ({ route, navigation }) => {
     console.log("showing props here", route)
@@ -20,11 +21,49 @@ const AddComments = ({ route, navigation }) => {
     const dispatch = useDispatch()
     const [loading, setLoading] = useState(false)
     const [comments, setComments] = useState([])
+    const [addedComments, setAddedComments] = useState(null)
     useEffect(() => {
-        setLoading(true)
-        setComments([])
-        dispatch(fetchNurseComments(user.id, params.id, (comments) => { setLoading(false), setComments(comments) }, () => { setLoading(false) }))
+        isOnline((connected) => {
+            setLoading(true)
+            setComments([])
+            dispatch(fetchNurseComments(user.id, params.id, (comments) => { setLoading(false), setComments(comments) }, () => { setLoading(false) }))
+        },
+            (offline) => {
+                showToast(t('commonApp.internetError'))
+
+            })
     }, [params])
+
+    const addComment = () => {
+        try {
+            if (addedComments) {
+                let parameter = {
+                    user_id: user.id,
+                    content_id: params.id,
+                    comment: addedComments,
+                    entry_time: moment(new Date()).format('YYYY-MM-DD HH:MM:SS'),
+                    session_id: moment(new Date()).format('YYYY-MM-DD HH:MM:SS'),
+                    token: "j56sugRk029Po5DB",
+                    appuser_id: user.id,
+                    access_token: "",
+                }
+                setLoading(true)
+                isOnline((connected) => {
+                    dispatch(addComments(parameter, (success) => {
+                        dispatch(fetchNurseComments(user.id, params.id, (comments) => { setLoading(false), setComments(comments) }, () => { setLoading(false) }))
+                        setAddedComments(null)
+                    }, () => { setLoading(false), showToast('Please tap post again!') }))
+                }, (offline) => {
+                    showToast(t('commonApp.internetError'))
+
+                })
+
+            }
+        }
+        catch (error) {
+
+        }
+    }
     return (
         <View style={styles.container}>
             <CustomHeader
@@ -38,7 +77,11 @@ const AddComments = ({ route, navigation }) => {
                 />
                 <CommentInputBox
                     placeholder={'Add Comment Here'}
-                    onPress={() => alert('posting...')}
+                    onPress={addComment}
+                    value={addedComments}
+                    onChangeText={setAddedComments}
+
+
                 />
                 {loading ?
                     <View style={styles.loader}>

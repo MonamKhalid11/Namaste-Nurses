@@ -5,6 +5,7 @@ import { Colors, } from '../../Theme';
 import { Common, Fonts, Gutters, Layout, WP, Images } from '@/Theme'
 // create a component
 const CuatomCoursesHeaders = (props) => {
+    console.log("showing numners", props.patients)
     const toggleDrawer = () => props.navigation.toggleDrawer();;
     const onBackBtnPressed = () => props.navigation.goBack()
 

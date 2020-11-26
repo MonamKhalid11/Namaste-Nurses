@@ -13,6 +13,7 @@ const CommentInputBox = (props) => {
                 <TextInput
                     {...props}
                     style={styles.input}
+                    placeholderTextColor={Colors.pickerBorder}
                 />
                 <TouchableOpacity onPress={props.onPress}>
                     <Text allowFontScaling={false} style={styles.post}>{t('addComment.post')}</Text>
@@ -44,7 +45,8 @@ const styles = StyleSheet.create({
     },
     input: {
         width: WP('70'),
-        paddingRight: WP('5')
+        paddingRight: WP('5'),
+        color: Colors.grey
     },
     post: {
         color: Colors.feebackgroundColor,

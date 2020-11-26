@@ -25,4 +25,7 @@ export default {
   close: require('@/Assets/Images/close.png'),
   camera: require('@/Assets/Images/camera.png'),
   gallery: require('@/Assets/Images/gallery.png'),
+  likedBy: require('@/Assets/Images/likedBy.png'),
+  likeEmpty: require('@/Assets/Images/likeEmpty.png'),
+  likeFilled: require('@/Assets/Images/likeFilled.png'),
 }

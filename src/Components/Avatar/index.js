@@ -12,7 +12,9 @@ const AvatarContainer = (props) => {
                 source={{ uri: props.profilePicture ? props.profilePicture : placeholder }}
                 style={styles.profilePic}
             />
-            <TouchableOpacity onPress={props.onPress}>
+            <TouchableOpacity onPress={props.onPress}
+                style={styles.imageContainer}
+            >
                 <Image
                     source={Images.add}
                     style={styles.add}
@@ -42,6 +44,11 @@ const styles = StyleSheet.create({
         overflow: 'hidden'
     },
     add: {
+        height: '100%',
+        width: "100%",
+        resizeMode: 'contain'
+    },
+    imageContainer: {
         display: 'flex',
         height: WP('5'),
         width: WP('5'),

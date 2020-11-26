@@ -1,22 +1,25 @@
 //import liraries
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, FlatList } from 'react-native';
 import FeedItem from '../FeedItem'
 // create a component
 const FeedListing = (props) => {
+
     return (
-        <ScrollView style={styles.container}
-            showsVerticalScrollIndicator={false}
-        >
-            {props.feeds.map((feed) => {
-                return (
+        <View style={styles.container}>
+            <FlatList
+                data={props.feeds}
+                extraData={props.feeds}
+                renderItem={({ item }) => (
                     <FeedItem
-                        feed={feed}
+                        feed={item}
                         navigation={props.navigation}
                     />
-                )
-            })}
-        </ScrollView>
+                )}
+
+                keyExtractor={item => item.id}
+            />
+        </View>
     );
 };
 

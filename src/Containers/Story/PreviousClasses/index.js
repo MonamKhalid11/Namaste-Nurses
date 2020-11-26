@@ -14,15 +14,19 @@ const PreviousClasses = (props) => {
     const { t } = useTranslation()
     const previousClasses = useSelector(state => state.story.classesDetails)
     console.log("showing previous classes in content", previousClasses)
-    previousClasses.map((entry) => {
-        entry.no_of_people = parseInt(entry.no_of_people)
-    })
-    var msgTotal = previousClasses.reduce(function (prev, cur) {
-        return prev + cur.no_of_people;
-    }, 0);
-    console.warn(msgTotal)
+    var msgTotal
+    if (previousClasses.length > 0) {
+        previousClasses.map((entry) => {
+            entry.no_of_people = parseInt(entry.no_of_people)
+        })
+        msgTotal = previousClasses.reduce(function (prev, cur) {
+            return prev + cur.no_of_people;
+        }, 0);
+        console.warn(msgTotal)
+    }
+
     useEffect(() => {
-    }, [previousClasses])
+    }, [previousClasses, msgTotal])
     return (
         <View style={styles.container}>
             <CuatomCoursesHeaders

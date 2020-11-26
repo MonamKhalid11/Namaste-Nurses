@@ -1,10 +1,41 @@
 //import liraries
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity, } from 'react-native';
 import { Colors, Images, WP } from '../../../../../Theme';
 import TimeAgo from 'react-native-timeago';
+import { useDispatch, useSelector } from 'react-redux'
+import { isOnline, ShowActivityIndicator } from '../../../../../Services';
+import { addLikesToFeed, getNurseFeed } from '../../../../../Store/actions'
 // create a component
+import moment from 'moment'
 const FeedItem = (props) => {
+    const user = useSelector(state => state.auth.user)
+    const dispatch = useDispatch()
+    const [loading, setLoading] = useState(false)
+    const addLike = () => {
+        isOnline((online) => {
+            let params = {
+                user_id: user.id,
+                content_id: props.feed.id,
+                entry_time: moment(new Date()).format('YYYY-MM-DD HH:MM:SS'),
+                session_id: moment(new Date()).format('YYYY-MM-DD HH:MM:SS'),
+                status: true,
+                token: "j56sugRk029Po5DB",
+                appuser_id: user.id,
+                access_token: ""
+            }
+            setLoading(true)
+            dispatch(addLikesToFeed(params, (success) => {
+                // dispatch(getNurseFeed(user.id, setLoading))
+                setLoading(false)
+
+            }, (reject) => {
+                setLoading(false)
+            }))
+        }, (offline) => {
+
+        })
+    }
     return (
         <View style={styles.container}>
             <View style={styles.descriptionContainer}>
@@ -39,17 +70,34 @@ const FeedItem = (props) => {
                 </View>
 
             }
+            <TouchableOpacity style={styles.likesContainer}
+                onPress={() => props.navigation.navigate('Likes', props.feed)}
+            >
+                <Image
+                    source={Images.likedBy}
+                    style={styles.icon}
+                />
+                <Text allowFontScaling={false} style={styles.like}>{props.feed.like_count}</Text>
+            </TouchableOpacity>
             <View style={styles.likeCommentContainer}>
+                {loading ?
+                    <View style={styles.iconContainer}>
 
-                <TouchableOpacity style={styles.iconContainer}
-                    onPress={() => props.navigation.navigate('Likes', props.feed)}
-                >
-                    <Image
-                        source={Images.like}
-                        style={styles.icon}
-                    />
-                    <Text allowFontScaling={false} style={styles.like}>Liked</Text>
-                </TouchableOpacity>
+                        {ShowActivityIndicator()}
+                    </View>
+                    :
+                    <TouchableOpacity style={styles.iconContainer}
+                        disabled={props.feed.like ? true : false}
+                        onPress={addLike}
+                    >
+                        <Image
+                            source={props.feed.like ? Images.likeFilled : Images.likeEmpty}
+                            style={[styles.icon, { tintColor: props.feed.like ? Colors.appColor : Colors.black }]}
+                        />
+                        <Text allowFontScaling={false} style={styles.like}>{props.feed.like ? "Liked" : "Like"}</Text>
+                    </TouchableOpacity>
+                }
+
                 <TouchableOpacity style={styles.iconContainer2}
                     onPress={() => props.navigation.navigate('AddComments', props.feed)}
                 >
@@ -141,7 +189,7 @@ const styles = StyleSheet.create({
         display: 'flex',
         height: WP('5'),
         width: WP('5'),
-        resizeMode: 'contain'
+        resizeMode: 'contain',
     },
     iconContainer: {
         display: 'flex',
@@ -153,6 +201,16 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         marginLeft: WP('18')
+    },
+    likesContainer: {
+        display: 'flex',
+        // height: WP('15'),
+        width: '100%',
+        backgroundColor: Colors.white,
+        flexDirection: 'row',
+        alignItems: 'center',
+        paddingLeft: WP('5'),
+        paddingTop: WP('3'),
     },
     like: {
         color: Colors.grey,
