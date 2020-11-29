@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { Common, Fonts, Gutters, Layout, WP, Images } from '@/Theme'
+import { Colors } from '../../../../Theme';
 
 // create a component
 const DrawerIcon = (props) => {
@@ -10,7 +11,7 @@ const DrawerIcon = (props) => {
             onPress={props.openDrawer}
         >
             <Image
-                source={Images.drawer}
+                source={Images.menu}
                 style={styles.drawer}
             />
         </TouchableOpacity>
@@ -20,12 +21,21 @@ const DrawerIcon = (props) => {
 // define your styles
 const styles = StyleSheet.create({
     drawer: {
-        height: WP('15'),
-        width: WP('15'),
+        height: WP('5'),
+        width: WP('5'),
+        tintColor: Colors.grey,
         resizeMode: 'contain',
     },
     drawerContainer: {
-        alignSelf: 'flex-end',
+        display: 'flex',
+        height: WP('13'),
+        width: '100%',
+        alignItems: 'center',
+        justifyContent: 'flex-end',
+        flexDirection: 'row',
+        paddingRight: WP('5'),
+        paddingBottom: WP('2')
+
     }
 });
 

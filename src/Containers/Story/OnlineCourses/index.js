@@ -36,6 +36,7 @@ const OnlineCourses = (props) => {
                 subtitle={t('onlineCourses.subtitle')}
                 boldSubtitle={t('onlineCourses.language')}
                 click={t('onlineCourses.click')}
+                color={Colors.coursesColor}
             />
             <ScrollView contentContainerStyle={styles.scroller}>
                 <CustomButton

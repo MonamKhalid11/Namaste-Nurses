@@ -113,6 +113,17 @@ export const getFullData = (nurseId, success, reject) => {
       let api = await storyApi.getNurseClass(params)
       console.log('shwoing response here for submit', api)
       if (api) {
+        if (api.details.length > 0) {
+          for (var i = 0; i < api.details.length; i++) {
+            if (i % 2 == 0) {
+              api.details[i].isEven = true
+            }
+            else {
+              api.details[i].isEven = false
+            }
+          }
+        }
+
         dispatch({
           type: TYPES.NURSE_PREVIOUS_CLASSES,
           previousClasses: api.details

@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { Colors, } from '../../Theme';
 import { Common, Fonts, Gutters, Layout, WP, Images } from '@/Theme'
+import { navigate } from '../../Services';
 // create a component
 const CuatomCoursesHeaders = (props) => {
     console.log("showing numners", props.patients)
@@ -13,10 +14,10 @@ const CuatomCoursesHeaders = (props) => {
         return Math.abs(num) > 999 ? Math.sign(num) * ((Math.abs(num) / 1000).toFixed(1)) + 'k' : Math.sign(num) * Math.abs(num)
     }
     return (
-        <View style={[props.isPreviousClass ? styles.previous : styles.container, props.color ? { backgroundColor: props.color } : null]}>
+        <View>
             {props.isCourseDetails ?
-                <View style={styles.isCourse}>
-                    <TouchableOpacity style={styles.drawerContainer}
+                <View style={[styles.drawerContainerDetails, props.color ? { backgroundColor: props.color } : null]}>
+                    <TouchableOpacity
                         onPress={onBackBtnPressed}
                     >
                         <Image
@@ -24,7 +25,7 @@ const CuatomCoursesHeaders = (props) => {
                             style={styles.drawer}
                         />
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.drawerContainer}
+                    <TouchableOpacity
                         onPress={toggleDrawer}
                     >
                         <Image
@@ -35,46 +36,53 @@ const CuatomCoursesHeaders = (props) => {
                 </View>
 
                 :
-                <TouchableOpacity style={styles.drawerContainer}
+                <TouchableOpacity style={[styles.drawerContainer, props.color ? { backgroundColor: props.color } : null]}
                     onPress={toggleDrawer}
                 >
                     <Image
                         source={Images.menu}
-                        style={styles.drawer}
+                        style={styles.menu}
                     />
                 </TouchableOpacity>
             }
-            <View style={props.isPreviousClass ? styles.customHeader : styles.textHeader}>
-                <Text allowFontScaling={false} style={styles.title}>{props.title}</Text>
-                <Text allowFontScaling={false} style={styles.subtitle}>{props.subtitle}
-                    <Text allowFontScaling={false} style={styles.boldSubtitle}> {props.boldSubtitle}
-                    </Text><Text allowFontScaling={false} style={styles.subtitle}> {props.click} </Text>
-                </Text>
-            </View>
-
-            {props.isPreviousClass ?
-                <View style={styles.coursesDetails}>
-                    <View style={styles.sessionsContainer}>
-                        <Text allowFontScaling={false} style={styles.sessions} ellipsizeMode={'tail'} numberOfLines={1}>{kFormatter(props.sessions)}</Text>
-                        <View>
-                            <Text allowFontScaling={false} style={styles.sessionTheory}>Sessions</Text>
-                            <Text allowFontScaling={false} style={styles.sessionTheory}>Conducted</Text>
-                        </View>
-                    </View>
-                    <View style={styles.border} />
-                    <View style={styles.sessionsContainer2}>
-                        <Text allowFontScaling={false} style={styles.pateints} ellipsizeMode={'tail'} numberOfLines={1}> {kFormatter(props.patients)}</Text>
-                        <View>
-                            <Text allowFontScaling={false} style={styles.sessionTheory}>Patients</Text>
-                            <Text allowFontScaling={false} style={styles.sessionTheory}>Impacted</Text>
-                        </View>
-                    </View>
-
+            <View style={[props.isPreviousClass ? styles.previous : styles.container, props.color ? { backgroundColor: props.color } : null]}>
+                <View style={props.isPreviousClass ? styles.customHeader : styles.textHeader}>
+                    <TouchableOpacity
+                        onPress={() => navigate('Home')}
+                        disabled={!props.isPreviousClass ? true : false}
+                    >
+                        <Text allowFontScaling={false} style={styles.title}>{props.title}</Text>
+                    </TouchableOpacity>
+                    <Text allowFontScaling={false} style={styles.subtitle}>{props.subtitle}
+                        <Text allowFontScaling={false} style={styles.boldSubtitle}> {props.boldSubtitle}
+                        </Text><Text allowFontScaling={false} style={styles.subtitle}> {props.click} </Text>
+                    </Text>
                 </View>
-                :
-                null
-            }
-        </View>
+
+                {props.isPreviousClass ?
+                    <View style={styles.coursesDetails}>
+                        <View style={styles.sessionsContainer}>
+                            <Text allowFontScaling={false} style={styles.sessions} ellipsizeMode={'tail'} numberOfLines={1}>{kFormatter(props.sessions)}</Text>
+                            <View>
+                                <Text allowFontScaling={false} style={styles.sessionTheory}>Sessions</Text>
+                                <Text allowFontScaling={false} style={styles.sessionTheory}>Conducted</Text>
+                            </View>
+                        </View>
+                        <View style={styles.border} />
+                        <View style={styles.sessionsContainer2}>
+                            <Text allowFontScaling={false} style={styles.pateints} ellipsizeMode={'tail'} numberOfLines={1}> {kFormatter(props.patients)}</Text>
+                            <View>
+                                <Text allowFontScaling={false} style={styles.sessionTheory}>Patients</Text>
+                                <Text allowFontScaling={false} style={styles.sessionTheory}>Impacted</Text>
+                            </View>
+                        </View>
+
+                    </View>
+                    :
+                    null
+                }
+            </View>
+        </View >
     );
 };
 
@@ -82,14 +90,14 @@ const CuatomCoursesHeaders = (props) => {
 const styles = StyleSheet.create({
     container: {
         display: 'flex',
-        height: WP('55'),
+        height: WP('42'),
         backgroundColor: Colors.coursesColor,
         padding: WP('5'),
-        justifyContent: 'space-between'
+        justifyContent: 'flex-end'
     },
     previous: {
         display: 'flex',
-        height: WP('65'),
+        // height: WP('42'),
         backgroundColor: Colors.coursesColor,
         padding: WP('5'),
     },
@@ -102,10 +110,33 @@ const styles = StyleSheet.create({
         paddingBottom: WP('5')
     },
     drawerContainer: {
-        alignSelf: 'flex-end',
+        display: 'flex',
+        height: WP('13'),
+        width: '100%',
+        alignItems: 'center',
+        justifyContent: 'flex-end',
+        paddingRight: WP('5'),
+        backgroundColor: Colors.appColor,
+        flexDirection: 'row'
+    },
+    drawerContainerDetails: {
+        display: 'flex',
+        height: WP('13'),
+        width: '100%',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        paddingRight: WP('5'),
+        paddingLeft: WP('5'),
+        backgroundColor: Colors.appColor,
+        flexDirection: 'row'
     },
     drawer: {
         height: WP('15'),
+        width: WP('5'),
+        resizeMode: 'contain',
+    },
+    menu: {
+        height: WP('5'),
         width: WP('5'),
         resizeMode: 'contain',
     },
@@ -117,12 +148,14 @@ const styles = StyleSheet.create({
     },
     subtitle: {
         color: Colors.white,
-        fontSize: WP('4')
+        fontSize: WP('4'),
+        fontFamily: 'Assistant-Regular',
+
     },
     boldSubtitle: {
         color: Colors.white,
-        // fontFamily: 'Assistant-Bold',
-        fontSize: WP('5')
+        fontFamily: 'Assistant-Bold',
+        fontSize: WP('4')
     },
     isCourse: {
         display: 'flex',
@@ -135,7 +168,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
-        width: WP('90')
+        width: WP('90'),
+        paddingTop: WP('2')
     },
     sessionsContainer: {
         display: 'flex',
@@ -165,7 +199,7 @@ const styles = StyleSheet.create({
     sessionTheory: {
         fontFamily: 'Assistant-Bold',
         color: Colors.white,
-        fontSize: WP('5'),
+        fontSize: WP('4'),
     },
     border: {
         borderWidth: 1,

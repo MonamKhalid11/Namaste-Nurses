@@ -15,15 +15,7 @@ const Home = (props) => {
     const user = useSelector(state => state.auth.user)
     const [laoding, setLoading] = useState(false)
     fetchFeed = () => {
-        if (user) {
-            setLoading(true)
-            isOnline((connected) => {
-                dispatch(getNurseFeed(user.id, setLoading))
-            }, (offline) => {
-                setLoading(false)
-                showToast(t('commonApp.internetError'))
-            })
-        }
+        props.navigation.navigate('Feed')
     }
     const toggleDrawer = () => props.navigation.toggleDrawer();
 
@@ -39,7 +31,6 @@ const Home = (props) => {
             <CustomButton
                 title={t('home.button2')}
                 onPress={fetchFeed}
-                loading={laoding}
             />
         </CustomLayout>
     );

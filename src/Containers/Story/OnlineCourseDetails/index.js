@@ -47,6 +47,8 @@ const OnlineCoursesDetails = (props) => {
                 boldSubtitle={t('onlineCoursesDetails.language')}
                 click={t('onlineCoursesDetails.click')}
                 isCourseDetails={true}
+                color={Colors.coursesColor}
+
             />
             <ScrollView contentContainerStyle={styles.scroller}>
                 <CoursesList courses={coursesFiltered} />

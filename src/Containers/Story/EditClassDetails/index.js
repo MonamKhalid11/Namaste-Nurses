@@ -22,7 +22,7 @@ const EditClassDetails = ({ route, navigation }) => {
             <KeyboardAwareScrollView contentContainerStyle={styles.scroller}
                 showsVerticalScrollIndicator={false}
             >
-                < SessionInput title={t('editclass.date')} placeholder={params.dated} inputStyles={styles.input} />
+                <SessionInput title={t('editclass.date')} placeholder={params.dated} inputStyles={styles.input} />
                 <SessionInput title={t('editclass.time')} placeholder={params.time} inputStyles={styles.input} />
                 <SessionInput title={t('editclass.number')} placeholder={'5'} inputStyles={styles.input} />
                 <SessionInput title={t('editclass.classType')} placeholder={''} inputStyles={styles.input} />
@@ -43,6 +43,7 @@ const EditClassDetails = ({ route, navigation }) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor: Colors.white
     },
     scroller: {
         flexGrow: 1,

@@ -13,17 +13,25 @@ const ClassesItems = (props) => {
             time = time.slice(1);  // Remove full string match value
             time[5] = +time[0] < 12 ? 'AM' : 'PM'; // Set AM/PM
             time[0] = +time[0] % 12 || 12; // Adjust hours
+            time[3] = ' '
         }
-        return time.join(''); // return adjusted time or original string
+        return time.join('') // return adjusted time or original string
     }
 
     return (
         <View style={styles.docker}>
-            <View style={styles.parent}>
-                <View style={styles.circle} />
-                <View style={styles.dottedBorder} />
-                <View style={styles.circle} />
-            </View>
+            {props.classDetails.isEven ?
+                <View style={styles.parent}>
+                    <View style={styles.circle} />
+                    <View style={styles.dottedBorder} />
+                </View>
+
+                :
+                <View style={styles.oddParent}>
+                    <View style={styles.oddDottedBorder} />
+                    <View style={styles.oddCircle} />
+                </View>
+            }
             <TouchableOpacity style={styles.container}
                 onPress={() => props.onPress(props.classDetails)}
             >
@@ -32,7 +40,7 @@ const ClassesItems = (props) => {
                         <Text allowFontScaling={false} style={styles.date}>{moment(props.classDetails.class_date).format('DD')}</Text>
                         <Text allowFontScaling={false} style={styles.month}>{moment(props.classDetails.class_date).format('MMMM')}</Text>
                         <View style={styles.border} />
-                        <Text allowFontScaling={false} style={styles.day}>{moment(props.classDetails.class_date).format('dddd')}</Text>
+                        <Text allowFontScaling={false} style={styles.day}>{moment(props.classDetails.class_date).format('dddd').toUpperCase()}</Text>
                     </View>
                     <Text allowFontScaling={false} style={styles.time}>{tConvert(props.classDetails.class_time)}</Text>
                     <Image
@@ -57,7 +65,13 @@ const styles = StyleSheet.create({
     },
     parent: {
         display: 'flex',
-        alignItems: 'center'
+        alignItems: 'center',
+        marginTop: WP('-1')
+    },
+    oddParent: {
+        display: 'flex',
+        alignItems: 'center',
+        marginTop: WP('-16')
     },
     container: {
         display: 'flex',
@@ -90,13 +104,12 @@ const styles = StyleSheet.create({
         borderColor: Colors.appColor,
         height: WP('5'),
         width: 1,
-        marginLeft: WP('2'),
-        marginRight: WP('2')
     },
     day: {
         color: Colors.grey,
         fontFamily: 'Assistant-SemiBold',
-        width: WP('13'),
+        width: WP('16'),
+        marginLeft: WP('1')
     },
     forward: {
         height: WP('4'),
@@ -112,8 +125,9 @@ const styles = StyleSheet.create({
     time: {
         color: Colors.appColor,
         fontFamily: 'Assistant-Bold',
-        // marginRight: WP('2'),
-        width: WP('17'),
+        width: WP('15'),
+        textAlign: 'center',
+
     },
     course: {
         color: Colors.appColor,
@@ -128,13 +142,28 @@ const styles = StyleSheet.create({
         height: WP('2'),
         width: WP('2')
     },
+    oddCircle: {
+        display: 'flex',
+        borderRadius: 100,
+        borderColor: Colors.appColor,
+        borderWidth: 1,
+        height: WP('2'),
+        width: WP('2')
+    },
     dottedBorder: {
         borderWidth: 1,
         borderColor: Colors.appColor,
         borderStyle: 'dashed',
         borderRadius: 1,
         height: WP('10')
-    }
+    },
+    oddDottedBorder: {
+        borderWidth: 1,
+        borderColor: Colors.appColor,
+        borderStyle: 'dashed',
+        borderRadius: 1,
+        height: WP('6')
+    },
 });
 
 //make this component available to the app

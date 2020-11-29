@@ -11,11 +11,11 @@ const CustomLayout = (props) => {
     const onBackBtnPressed = () => props.navigation.goBack()
     return (
         <KeyboardAwareScrollView contentContainerStyle={styles.container}>
-            <View style={[props.showBackbtn ? styles.logoContainerBackBtn : styles.logoContainer, !props.isLogin && !props.showBackbtn ? { alignItems: 'center', justifyContent: 'center' } : null, props.logoStyles]}>
-                {!props.isLogin ?
+            {
+                !props.isLogin ?
                     props.showBackbtn ?
-                        <View style={styles.isCourse}>
-                            <TouchableOpacity style={styles.drawerContent}
+                        <View style={styles.drawerContainerDetails}>
+                            <TouchableOpacity
                                 onPress={onBackBtnPressed}
                             >
                                 <Image
@@ -23,7 +23,7 @@ const CustomLayout = (props) => {
                                     style={styles.menu}
                                 />
                             </TouchableOpacity>
-                            <TouchableOpacity style={styles.drawerContainer}
+                            <TouchableOpacity
                                 onPress={toggleDrawer}
                             >
                                 <Image
@@ -33,14 +33,19 @@ const CustomLayout = (props) => {
                             </TouchableOpacity>
                         </View>
                         :
-                        <TouchableOpacity style={styles.drawerContainer}
+                        <TouchableOpacity style={styles.loginContainer}
                             onPress={props.drawerOnPress}
                         >
                             <Image
-                                source={props.commingSoon ? Images.menu : Images.drawer}
-                                style={props.commingSoon ? styles.menu : styles.drawer}
+                                source={Images.menu}
+                                style={styles.menu}
                             />
-                        </TouchableOpacity> : null}
+                        </TouchableOpacity>
+                    :
+                    null
+
+            }
+            <View style={[props.showBackbtn ? styles.logoContainerBackBtn : styles.logoContainer, !props.isLogin && !props.showBackbtn ? { alignItems: 'center', justifyContent: 'center' } : null, props.logoStyles]}>
                 <Image
                     source={props.isLogin ? Images.logo : props.isMarked ? Images.marked : props.commingSoon ? Images.commingSoon : Images.welcome}
                     style={props.isLogin ? styles.logo : props.isMarked ? styles.marked : styles.welcome}
@@ -76,7 +81,7 @@ const styles = StyleSheet.create({
         flex: 2,
         padding: WP('5'),
         alignItems: 'center',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
     },
     logoContainerBackBtn: {
         flex: 2,
@@ -114,23 +119,49 @@ const styles = StyleSheet.create({
         width: WP('15'),
         resizeMode: 'contain',
     },
+    loginMenu: {
+
+    },
     isCourse: {
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between'
     },
+    drawerContainerDetails: {
+        display: 'flex',
+        height: WP('13'),
+        width: '100%',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        paddingRight: WP('5'),
+        paddingLeft: WP('5'),
+        backgroundColor: Colors.appColor,
+        flexDirection: 'row'
+    },
     menu: {
         height: WP('10'),
         width: WP('5'),
         resizeMode: 'contain',
         tintColor: Colors.black,
-        marginRight: WP('3')
     },
     drawerContainer: {
-        alignSelf: 'flex-end',
-        marginTop: WP('-10'),
-        marginRight: WP('-5'),
+        display: 'flex',
+        height: WP('13'),
+        width: '100%',
+        alignItems: 'center',
+        justifyContent: 'flex-end',
+        backgroundColor: Colors.appColor,
+        flexDirection: 'row'
+    },
+    loginContainer: {
+        display: 'flex',
+        height: WP('13'),
+        width: '100%',
+        alignItems: 'center',
+        justifyContent: 'flex-end',
+        paddingRight: WP('5'),
+        flexDirection: 'row'
     },
     marked: {
         height: WP('90'),

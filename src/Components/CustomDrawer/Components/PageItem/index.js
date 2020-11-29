@@ -13,7 +13,6 @@ const PageItem = (props) => {
     const { t } = useTranslation()
     const dispatch = useDispatch()
     const user = useSelector(state => state.auth.user)
-    const [loader, setLoader] = useState(false)
     console.log('showing props', props)
 
     const navigater = (page) => {
@@ -29,23 +28,14 @@ const PageItem = (props) => {
                 props.navigation.navigate('MarkAttendance')
                 break;
             case t('drawer.screen3'):
-                isOnline((connected) => {
-                    setLoader(true)
-                    dispatch(getNurseFeed(user.id, setLoader))
-                }, (offline) => {
-                    setLoader(false)
-                    showToast(t('commonApp.internetError'))
-                })
+                props.navigation.navigate('Feed')
                 break;
             case t('drawer.screen4'):
                 isOnline((connected) => {
-                    setLoader(true)
                     dispatch(getFullData(user.id, () => {
-                        setLoader(false)
                         props.navigation.navigate('PreviousClasses')
-                    }, () => { setLoader(false) }))
+                    }, () => { }))
                 }, (offline) => {
-                    setLoader(false)
                     showToast(t('commonApp.internetError'))
                 })
 
@@ -65,21 +55,11 @@ const PageItem = (props) => {
     }
 
     return (
-        <>
-            {loader ?
-                <View style={styles.container}
-                >
-                    {ShowActivityIndicator()}
-                </View>
-
-                :
-                <TouchableOpacity style={styles.container}
-                    onPress={() => navigater(props.page)}
-                >
-                    <Text style={styles.titleText}>{props.page.title}</Text>
-                </TouchableOpacity>
-            }
-        </>
+        <TouchableOpacity style={styles.container}
+            onPress={() => navigater(props.page)}
+        >
+            <Text style={styles.titleText}>{props.page.title}</Text>
+        </TouchableOpacity>
     );
 };
 
