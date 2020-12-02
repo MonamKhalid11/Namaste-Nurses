@@ -28,10 +28,11 @@ const Picker = (props) => {
 const styles = StyleSheet.create({
     container: {
         display: 'flex',
-        borderWidth: 1,
+        borderWidth: 2.5,
         borderColor: '#A4A9AD',
         flexDirection: 'row',
         alignItems: 'center',
+        justifyContent: 'flex-start',
         paddingLeft: WP('5'),
         height: WP('16'),
         width: WP('90'),
@@ -40,13 +41,14 @@ const styles = StyleSheet.create({
         borderRadius: 1,
     },
     iconContainer: {
-        height: WP('8'),
-        width: WP('8'),
+        height: WP('15'),
+        width: WP('15'),
         resizeMode: 'contain'
     },
     imageText: {
         color: Colors.grey,
-        fontFamily: 'Assistant-SemiBold'
+        fontFamily: 'Assistant-Regular',
+        fontSize: WP('5.5')
     }
 });
 

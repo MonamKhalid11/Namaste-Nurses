@@ -21,10 +21,9 @@ const DrawerIcon = (props) => {
 // define your styles
 const styles = StyleSheet.create({
     drawer: {
-        height: WP('5'),
-        width: WP('5'),
-        tintColor: Colors.grey,
-        resizeMode: 'contain',
+        height: WP('8'),
+        width: WP('6.3'),
+        tintColor: Colors.grey
     },
     drawerContainer: {
         display: 'flex',

@@ -26,7 +26,9 @@ const styles = StyleSheet.create({
     },
     todo: {
         color: Colors.white,
-        fontSize: WP('5')
+        fontSize: WP('5'),
+        fontFamily: 'Assistant-Regular',
+
 
     },
 

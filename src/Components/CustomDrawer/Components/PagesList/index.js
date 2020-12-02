@@ -1,9 +1,10 @@
 //import liraries
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Colors, WP } from '../../../../Theme';
 import PageItem from '../PageItem'
 import { useTranslation } from 'react-i18next'
+import { navigate } from '../../../../Services';
 
 // create a component
 const PagesList = (props) => {
@@ -11,9 +12,11 @@ const PagesList = (props) => {
     const { t } = useTranslation()
     return (
         <View style={styles.container} >
-            <View style={styles.helloTextContainer}>
+            <TouchableOpacity style={styles.helloTextContainer}
+                onPress={() => navigate('Home')}
+            >
                 <Text allowFontScaling={false} style={styles.titleText}>{t('drawer.message')}</Text>
-            </View>
+            </TouchableOpacity>
             {props.pages.map((page) => {
                 return (
                     <PageItem page={page} navigation={props.navigation} />
@@ -39,7 +42,7 @@ const styles = StyleSheet.create({
     titleText: {
         fontFamily: 'Assistant-Bold',
         color: Colors.appColor,
-        fontSize: WP('8'),
+        fontSize: WP('12'),
     }
 });
 export default PagesList;

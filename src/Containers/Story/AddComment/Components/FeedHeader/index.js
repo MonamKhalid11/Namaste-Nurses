@@ -59,7 +59,9 @@ const styles = StyleSheet.create({
     },
     posted: {
         color: Colors.pickerBorder,
-        fontSize: WP('2.5')
+        fontSize: WP('2.5'),
+        fontFamily: "Assistant-Regular"
+
     },
 });
 

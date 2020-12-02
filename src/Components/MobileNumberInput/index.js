@@ -14,7 +14,7 @@ const MobileNumberInput = (props) => {
                     :
                     null
                 }
-                <TextInput style={[Layout.inputText, props.value.length > 0 ? styles.input : styles.placer]}  {...props} placeholderTextColor={Colors.black} maxLength={10} />
+                <TextInput style={[Layout.inputText, props.value.length > 0 ? styles.input : styles.placer,]}  {...props} placeholderTextColor={Colors.grey} maxLength={10} />
             </View>
             {props.value.length > 9 ?
 
@@ -52,13 +52,15 @@ const styles = StyleSheet.create({
         paddingHorizontal: 10,
         fontFamily: 'Assistant-Bold',
         color: Colors.grey,
-        fontSize: WP('4.5')
+        fontSize: WP('6.5')
 
     },
     input: {
-        fontFamily: 'Assistant-Bold',
+        fontFamily: 'Assistant-SemiBold',
         color: Colors.grey,
-        fontSize: WP('4.5'),
+        fontSize: WP('5'),
+        letterSpacing: 10
+
     },
     placer: {
         fontFamily: 'Assistant-Regular',

@@ -74,8 +74,8 @@ const styles = StyleSheet.create({
     },
     titleText: {
         color: Colors.grey,
-        fontFamily: 'Assistant-Bold',
-        fontSize: WP('4')
+        fontFamily: 'Assistant-Regular',
+        fontSize: WP('4.5')
     }
 });
 

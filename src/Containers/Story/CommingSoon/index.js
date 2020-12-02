@@ -1,6 +1,6 @@
 //import liraries
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, StatusBar } from 'react-native';
 import { CustomLayout, CustomButton } from '@/Components'
 import { useTranslation } from 'react-i18next'
 import Headings from './Components/Heading'
@@ -12,28 +12,34 @@ const CommingSoon = (props) => {
     const toggleDrawer = () => props.navigation.toggleDrawer();;
 
     return (
-        <CustomLayout
-            drawerOnPress={toggleDrawer}
-            commingSoon={true}
-            logoStyles={styles.logoContainer}
-            contentContainer={styles.contentContainer}
-            showBackbtn={true}
-            navigation={props.navigation}
-        >
-            <Headings />
-            <CustomButton
-                onPress={() => props.navigation.navigate('CcpTools')}
-                title={t('commingsoon.button1')}
-                titleColor={Colors.white}
-                bgColor={Colors.appColor}
+        <View style={styles.container}>
+            <StatusBar
+                backgroundColor={Colors.appColor}
             />
-            <CustomButton
-                title={t('commingsoon.button2')}
-                titleColor={Colors.white}
-                bgColor={Colors.appColor}
+            <CustomLayout
+                drawerOnPress={toggleDrawer}
+                commingSoon={true}
+                logoStyles={styles.logoContainer}
+                contentContainer={styles.contentContainer}
+                showBackbtn={true}
+                navigation={props.navigation}
+            >
 
-            />
-        </CustomLayout>
+                <Headings />
+                <CustomButton
+                    onPress={() => props.navigation.navigate('CcpTools')}
+                    title={t('commingsoon.button1')}
+                    titleColor={Colors.white}
+                    bgColor={Colors.appColor}
+                />
+                <CustomButton
+                    title={t('commingsoon.button2')}
+                    titleColor={Colors.white}
+                    bgColor={Colors.appColor}
+
+                />
+            </CustomLayout>
+        </View>
     );
 };
 

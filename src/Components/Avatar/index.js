@@ -12,14 +12,18 @@ const AvatarContainer = (props) => {
                 source={{ uri: props.profilePicture ? props.profilePicture : placeholder }}
                 style={styles.profilePic}
             />
-            <TouchableOpacity onPress={props.onPress}
-                style={styles.imageContainer}
-            >
-                <Image
-                    source={Images.add}
-                    style={styles.add}
-                />
-            </TouchableOpacity>
+            {props.isEdit ?
+                <TouchableOpacity onPress={props.onPress}
+                    style={styles.imageContainer}
+                >
+                    <Image
+                        source={Images.add}
+                        style={styles.add}
+                    />
+                </TouchableOpacity> :
+                null
+            }
+
         </View>
     );
 };
@@ -28,8 +32,8 @@ const AvatarContainer = (props) => {
 const styles = StyleSheet.create({
     profileContainer: {
         display: 'flex',
-        height: WP('20'),
-        width: WP('20'),
+        height: WP('30'),
+        width: WP('30'),
         borderRadius: 100,
         borderWidth: WP('1'),
         borderColor: Colors.inputGrey,
@@ -50,8 +54,8 @@ const styles = StyleSheet.create({
     },
     imageContainer: {
         display: 'flex',
-        height: WP('5'),
-        width: WP('5'),
+        height: WP('8'),
+        width: WP('8'),
         resizeMode: 'contain',
         position: 'absolute',
         bottom: 0,

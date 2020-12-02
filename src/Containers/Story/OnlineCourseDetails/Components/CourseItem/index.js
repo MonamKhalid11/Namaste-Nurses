@@ -21,7 +21,7 @@ const CourseItem = (props) => {
         >
             <View style={styles.header}>
                 <Text allowFontScaling={false} style={styles.title}>{props.course.name}</Text>
-                <Text allowFontScaling={false} style={styles.course}>{props.course.language}</Text>
+                <Text allowFontScaling={false} style={styles.course}>{props.course.language.toUpperCase()}</Text>
             </View>
             <Image
                 source={Images.forward}
@@ -50,13 +50,14 @@ const styles = StyleSheet.create({
         resizeMode: 'contain',
     },
     title: {
-        color: Colors.black,
-        fontFamily: 'Assistant-Bold'
+        color: Colors.grey,
+        fontFamily: 'Assistant-Bold',
+        fontSize: WP('5')
     },
     course: {
         color: Colors.coursesColor,
         fontFamily: 'Assistant-Bold',
-        fontSize: WP('2.8'),
+        fontSize: WP('4'),
         marginTop: WP('1')
     }
 

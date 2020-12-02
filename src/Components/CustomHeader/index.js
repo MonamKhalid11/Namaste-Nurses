@@ -17,11 +17,18 @@ const CustomHeader = (props) => {
                     style={styles.drawer}
                 />
             </TouchableOpacity>
-            <Text allowFontScaling={false} style={styles.label}>{props.screenTitle}</Text>
+            {props.isProfile ?
+                <Text allowFontScaling={false} style={styles.hi}>Hi <Text allowFontScaling={false} style={styles.name}>{props.screenTitle}!</Text>
+                </Text>
+
+                :
+                <Text allowFontScaling={false} style={styles.label}>{props.screenTitle}</Text>
+
+            }
             <TouchableOpacity onPress={toggleDrawer}>
                 <Image
                     source={Images.menu}
-                    style={styles.drawer}
+                    style={styles.menuIcon}
                 />
             </TouchableOpacity>
         </View>
@@ -42,14 +49,30 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
     },
     drawer: {
-        height: WP('5'),
-        width: WP('5'),
+        height: WP('6'),
+        width: WP('6'),
+        tintColor: Colors.white,
         resizeMode: 'contain',
+    },
+    menuIcon: {
+        height: WP('8'),
+        width: WP('6.3'),
+        tintColor: Colors.white,
     },
     label: {
         color: Colors.white,
+        fontFamily: 'Assistant-Regular',
+        fontSize: WP('6')
+    },
+    name: {
+        color: Colors.white,
         fontFamily: 'Assistant-Bold',
-        fontSize: WP('5')
+        fontSize: WP('6')
+    },
+    hi: {
+        color: Colors.white,
+        fontFamily: 'Assistant-Regular',
+        fontSize: WP('6'),
     }
 });
 

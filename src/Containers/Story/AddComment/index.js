@@ -41,8 +41,8 @@ const AddComments = ({ route, navigation }) => {
                     user_id: user.id,
                     content_id: params.id,
                     comment: addedComments,
-                    entry_time: moment(new Date()).format('YYYY-MM-DD HH:MM:SS'),
-                    session_id: moment(new Date()).format('YYYY-MM-DD HH:MM:SS'),
+                    entry_time: moment().format('YYYY-MM-DD HH:MM:SS'),
+                    session_id: moment().format('YYYY-MM-DD HH:MM:SS'),
                     token: "j56sugRk029Po5DB",
                     appuser_id: user.id,
                     access_token: "",
@@ -110,7 +110,9 @@ const styles = StyleSheet.create({
         color: Colors.appColor,
         alignSelf: 'center',
         marginTop: WP('50'),
-        fontSize: WP('5')
+        fontSize: WP('5'),
+        fontFamily: "Assistant-Regular"
+
     },
     noCommentContainer: {
         flex: 1,

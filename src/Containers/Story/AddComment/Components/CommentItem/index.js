@@ -59,7 +59,8 @@ const styles = StyleSheet.create({
     },
     comment: {
         paddingLeft: WP('13'),
-        color: Colors.grey
+        color: Colors.grey,
+        fontFamily: "Assistant-Regular"
     }
 });
 

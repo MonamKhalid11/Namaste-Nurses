@@ -1,8 +1,9 @@
 //import liraries
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
-import { Common, Fonts, Gutters, Layout, WP, Images } from '@/Theme'
+import { Common, Fonts, Gutters, Layout, WP } from '@/Theme'
 import { Colors } from '../../Theme';
+import Images from '../../Theme/Images'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import MobileNumberInput from '../MobileNumberInput'
 // create a component
@@ -33,14 +34,16 @@ const CustomLayout = (props) => {
                             </TouchableOpacity>
                         </View>
                         :
-                        <TouchableOpacity style={styles.loginContainer}
-                            onPress={props.drawerOnPress}
-                        >
-                            <Image
-                                source={Images.menu}
-                                style={styles.menu}
-                            />
-                        </TouchableOpacity>
+                        <View style={styles.loginContainer}>
+                            <TouchableOpacity
+                                onPress={props.drawerOnPress}
+                            >
+                                <Image
+                                    source={Images.menu}
+                                    style={styles.menuBlack}
+                                />
+                            </TouchableOpacity>
+                        </View>
                     :
                     null
 
@@ -78,7 +81,7 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.white
     },
     logoContainer: {
-        flex: 2,
+        flex: 1.6,
         padding: WP('5'),
         alignItems: 'center',
         justifyContent: 'space-between',
@@ -104,8 +107,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     logo: {
-        height: WP('80'),
-        width: WP('80'),
+        height: WP('90'),
+        width: WP('90'),
         resizeMode: 'contain',
         // marginTop: WP('12'),
     },
@@ -140,10 +143,21 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
     },
     menu: {
+        height: WP('8'),
+        width: WP('6.3'),
+        tintColor: Colors.white,
+        resizeMode: 'contain'
+    },
+    menuBlack: {
+        height: WP('8'),
+        width: WP('6.3'),
+        tintColor: Colors.grey
+    },
+    backIcon: {
         height: WP('10'),
         width: WP('5'),
         resizeMode: 'contain',
-        tintColor: Colors.black,
+        tintColor: Colors.grey,
     },
     drawerContainer: {
         display: 'flex',

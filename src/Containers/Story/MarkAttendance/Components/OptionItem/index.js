@@ -18,8 +18,8 @@ const OptionItem = (props) => {
                 {props.classes.isSelected ?
                     <View style={styles.container}>
                         <Image
-                            style={styles.image}
-                            source={Images.like}
+                            style={[styles.selectedImages, props.isEditProfile ? { tintColor: Colors.secondaryColor } : null]}
+                            source={Images.checkedBox}
 
                         />
                         <Text allowFontScaling={false} style={styles.title}>{props.classes.title}</Text>
@@ -54,10 +54,23 @@ const styles = StyleSheet.create({
     image: {
         height: WP('6'),
         width: WP('6'),
-        resizeMode: 'contain'
+        resizeMode: 'contain',
+        tintColor: Colors.grey,
+        marginRight: 4,
+    },
+    selectedImages: {
+        height: WP('6'),
+        width: WP('6'),
+        resizeMode: 'contain',
+        tintColor: Colors.appColor,
+        marginRight: 4,
+
     },
     title: {
         color: Colors.grey,
+        fontFamily: 'Assistant-Regular',
+        fontSize: WP('4')
+
     }
 });
 

@@ -1,6 +1,6 @@
 //import liraries
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, StatusBar } from 'react-native';
 import CuatomCoursesHeaders from '../../../Components/CoursesHeader'
 import { useTranslation } from 'react-i18next'
 import CustomButton from '../../../Components/CustomButton'
@@ -14,6 +14,9 @@ const CcpTools = (props) => {
 
     return (
         <View style={styles.container}>
+            <StatusBar
+                backgroundColor={Colors.appColor}
+            />
             <CuatomCoursesHeaders
                 navigation={props.navigation}
                 title={t('ccp.title')}

@@ -46,7 +46,10 @@ const styles = StyleSheet.create({
     input: {
         width: WP('70'),
         paddingRight: WP('5'),
-        color: Colors.grey
+        color: Colors.grey,
+        fontFamily: "Assistant-Regular"
+
+
     },
     post: {
         color: Colors.feebackgroundColor,

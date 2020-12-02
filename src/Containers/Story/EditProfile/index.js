@@ -13,6 +13,7 @@ import MedicalConditionsPicker from './Components/index'
 import { pickImages, isOnline, updateUserProfile, phoneNumberValidator, showToast } from '../../../Services'
 import { updateUserProfiles, fetchNurseProfile } from '../../../Store/actions'
 import { useDispatch, useSelector } from 'react-redux'
+import FocusAwareStatusBar from '../../../Components/FoucsAwareStatusBar'
 
 // create a component
 const EditProfile = (props) => {
@@ -152,7 +153,7 @@ const EditProfile = (props) => {
         })
     }
 
-    submitProfile = () => {
+    const submitProfile = () => {
         try {
             isOnline((connected) => {
                 setLoading(true)
@@ -168,13 +169,15 @@ const EditProfile = (props) => {
                     hospital_joining_date: joining,
                     designation: designation,
                     trainer: trainer,
-                    hospital_condition_id: medicalPlaceHolder.id,
+                    hospital_condition_id: medicalPlaceHolder ? medicalPlaceHolder.id : 1,
                     tot_date: tot_date,
                     ccp_condition_id: pickedCcp.id ? pickedCcp.id : pickedCcp,
                     token: "j56sugRk029Po5DB",
                     appuser_id: user.id,
                     access_token: ""
                 }
+                console.log("showing params", parameters)
+
                 dispatch(updateUserProfiles(parameters,
                     ((updated) => {
                         setLoading(false)
@@ -187,17 +190,21 @@ const EditProfile = (props) => {
 
                     })
                 ))
-                console.log("showing params", parameters)
             }, (offline) => {
                 showToast(t('commonApp.internetError'))
             })
 
         } catch (error) {
+            console.log("showing errr ", error)
+            setLoading(false)
 
         }
     }
     return (
         <View style={styles.container}>
+            <FocusAwareStatusBar
+                backgroundColor={Colors.secondaryColor}
+            />
             <CustomHeader
                 headerColor={Colors.secondaryColor}
                 screenTitle={'Edit Profile'}
@@ -214,7 +221,7 @@ const EditProfile = (props) => {
                 <Text allowFontScaling={false} style={styles.title}>{t('profile.personal')}</Text>
                 < SessionInput title={t('editprofile.name')} placeholder={t('editprofile.locationPlaceHolder')} value={fname} onChangeText={setFName} />
                 < SessionInput title={t('editprofile.lname')} placeholder={t('editprofile.locationPlaceHolder')} value={lname} onChangeText={setLName} />
-                <SessionInput title={t('editprofile.mobile')} placeholder={t('editprofile.peoplePlaceHolder')} keyboardType={'numeric'} value={mobile} onChangeText={setMobile} />
+                <SessionInput title={t('editprofile.mobile')} placeholder={t('editprofile.peoplePlaceHolder')} keyboardType={'numeric'} value={mobile} onChangeText={setMobile} editable={false} />
                 <CustomDateTimePicker isDate={true} date={dob} onDateChange={setDob} title={t('editprofile.Date')} />
                 <CustomDateTimePicker isDate={true} date={graduating_year} onDateChange={setGraduating_year} title={t('editprofile.year')} />
                 < SessionInput title={t('editprofile.trainer')} placeholder={t('Enter trainer id')} value={trainer} onChangeText={setTrainer} />
@@ -224,7 +231,7 @@ const EditProfile = (props) => {
                 <SessionInput title={t('profile.designation')} placeholder={t('profile.sessionPlaceHolder')} value={designation} onChangeText={setDesignation} />
                 <MedicalConditionsPicker title={t('profile.medical')} items={items} setItems={setItems} value={value} setValue={setValue} placeholder={params.hospital_condition} pickedMedicalValue={(pickedOption) => setMedicalPlaceHolder(pickedOption)} />
                 <CustomDateTimePicker isDate={true} date={tot_date} onDateChange={setTot_date} title={t('profile.tot')} />
-                <OptionsListing classesTypes={classesTypes} title={t('profile.ccp')} onPress={(tapped) => { updateCheckedState(tapped.id) }} />
+                <OptionsListing classesTypes={classesTypes} title={t('profile.ccp')} onPress={(tapped) => { updateCheckedState(tapped.id) }} isEditProfle={true} />
                 <CustomButton
                     bgColor={Colors.secondaryColor}
                     titleColor={Colors.white}
@@ -250,8 +257,8 @@ const styles = StyleSheet.create({
     },
     title: {
         color: Colors.secondaryColor,
-        fontFamily: 'Assistant-Bold',
-        fontSize: WP('3.5'),
+        fontFamily: 'Assistant-SemiBold',
+        fontSize: WP('5.5'),
         marginTop: WP('5'),
         marginBottom: WP('5')
     },

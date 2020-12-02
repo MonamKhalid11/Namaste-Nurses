@@ -1,12 +1,13 @@
 //import liraries
 import React, { Component, useEffect, useState } from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, StatusBar } from 'react-native';
 import CuatomCoursesHeaders from '../../../Components/CoursesHeader'
 import { useTranslation } from 'react-i18next'
 import CustomButton from '../../../Components/CustomButton'
 import { Colors, WP } from '../../../Theme';
 import CoursesList from './Components/CoursesList'
 import { useDispatch, useSelector } from 'react-redux'
+import FocusAwareStatusBar from '../../../Components/FoucsAwareStatusBar'
 
 // create a component
 const OnlineCoursesDetails = (props) => {
@@ -40,6 +41,9 @@ const OnlineCoursesDetails = (props) => {
 
     return (
         <View style={styles.container}>
+            <FocusAwareStatusBar
+                backgroundColor={Colors.coursesColor}
+            />
             <CuatomCoursesHeaders
                 navigation={props.navigation}
                 title={params.course + " " + "Courses"}

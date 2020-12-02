@@ -1,12 +1,13 @@
 //import liraries
 import React, { Component, useState } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, StatusBar } from 'react-native';
 import { CustomLayout, CustomButton } from '@/Components'
 import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
 import Headings from './Components/Heading'
 import { getNurseFeed } from '../../../Store/actions'
 import { showToast, isOnline } from '../../../Services/index'
+import { Colors } from '../../../Theme';
 
 // create a component
 const Home = (props) => {
@@ -20,19 +21,24 @@ const Home = (props) => {
     const toggleDrawer = () => props.navigation.toggleDrawer();
 
     return (
-        <CustomLayout
-            drawerOnPress={toggleDrawer}
-        >
-            <Headings />
-            <CustomButton
-                onPress={() => props.navigation.navigate('MarkAttendance')}
-                title={t('home.button1')}
+        <View style={styles.container}>
+            <StatusBar
+                backgroundColor={Colors.appColor}
             />
-            <CustomButton
-                title={t('home.button2')}
-                onPress={fetchFeed}
-            />
-        </CustomLayout>
+            <CustomLayout
+                drawerOnPress={toggleDrawer}
+            >
+                <Headings />
+                <CustomButton
+                    onPress={() => props.navigation.navigate('MarkAttendance')}
+                    title={t('home.button1')}
+                />
+                <CustomButton
+                    title={t('home.button2')}
+                    onPress={fetchFeed}
+                />
+            </CustomLayout>
+        </View>
     );
 };
 

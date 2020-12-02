@@ -1,10 +1,10 @@
 //import liraries
 import React, { Component, useEffect, useState } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Image, StatusBar } from 'react-native';
 import CuatomCoursesHeaders from '../../../Components/CoursesHeader'
 import CustomButton from '../../../Components/CustomButton'
 import { useTranslation } from 'react-i18next'
-import { Colors, WP } from '../../../Theme';
+import { Colors, Images, WP } from '../../../Theme';
 import PreviousClassesList from './Components/ClassesLisitngs'
 import { getFullData } from '../../../Store/actions'
 import { useDispatch, useSelector } from 'react-redux'
@@ -29,6 +29,9 @@ const PreviousClasses = (props) => {
     }, [previousClasses, msgTotal])
     return (
         <View style={styles.container}>
+            <StatusBar
+                backgroundColor={Colors.appColor}
+            />
             <CuatomCoursesHeaders
                 navigation={props.navigation}
                 title={t('previousclasses.title')}
@@ -40,8 +43,19 @@ const PreviousClasses = (props) => {
                 sessions={previousClasses.length}
                 patients={msgTotal}
             />
-            <PreviousClassesList classes={previousClasses} onPress={(item) => props.navigation.navigate('EditClassDetails', item)} />
-            <CustomButton title={t('previousclasses.marknew')}
+            {previousClasses.length > 0 ?
+                <PreviousClassesList classes={previousClasses} onPress={(item) => props.navigation.navigate('EditClassDetails', item)} />
+                :
+                <View style={styles.noImageContainer}>
+                    <Image
+                        source={Images.noClass}
+                        style={styles.noClass}
+                    />
+                </View>
+
+
+            }
+            <CustomButton title={t('previousclasses.button')}
                 bgColor={Colors.appColor} titleColor={Colors.white}
                 onPress={() => props.navigation.navigate('MarkAttendance')}
                 containerStyles={styles.btnContainer}
@@ -62,7 +76,18 @@ const styles = StyleSheet.create({
         marginBottom: WP('2'),
         marginTop: WP('2')
 
-    }
+    },
+    noClass: {
+        height: WP('90'),
+        width: WP('90'),
+        resizeMode: 'contain',
+    },
+    noImageContainer: {
+        flex: 1,
+        backgroundColor: Colors.white,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
 });
 
 //make this component available to the app

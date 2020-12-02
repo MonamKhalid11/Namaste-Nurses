@@ -61,21 +61,35 @@ export const fetchNurseProfile = (nurseId) => {
 }
 
 //Method will pass nurse id and mark attendance against it
-export const markAttendance = (params, setLoading) => {
+export const markAttendance = (params, setLoading, done, isEditProfile) => {
   return async dispatch => {
     try {
       let api = await storyApi.submitClass(params)
       console.log('shwoing response here for submit', api)
       if (api.success) {
-        setLoading(false)
-        Util.navigate('AttendanceMarked')
+        setLoading(true)
+        if (isEditProfile) {
+          done(true)
+        }
+        else {
+          Util.navigate('AttendanceMarked')
+
+        }
       }
       else {
         setLoading(false)
+        if (isEditProfile) {
+          done(false)
+
+        }
+
       }
     } catch (error) {
       setLoading(false)
-      console.log('showing error', error)
+      if (isEditProfile) {
+        done(false)
+
+      } console.log('showing error', error)
 
     }
   }

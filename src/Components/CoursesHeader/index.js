@@ -30,20 +30,22 @@ const CuatomCoursesHeaders = (props) => {
                     >
                         <Image
                             source={Images.menu}
-                            style={styles.drawer}
+                            style={styles.menu}
                         />
                     </TouchableOpacity>
                 </View>
 
                 :
-                <TouchableOpacity style={[styles.drawerContainer, props.color ? { backgroundColor: props.color } : null]}
-                    onPress={toggleDrawer}
-                >
-                    <Image
-                        source={Images.menu}
-                        style={styles.menu}
-                    />
-                </TouchableOpacity>
+                <View style={[styles.drawerContainer, props.color ? { backgroundColor: props.color } : null]}>
+                    <TouchableOpacity
+                        onPress={toggleDrawer}
+                    >
+                        <Image
+                            source={Images.menu}
+                            style={styles.menu}
+                        />
+                    </TouchableOpacity>
+                </View>
             }
             <View style={[props.isPreviousClass ? styles.previous : styles.container, props.color ? { backgroundColor: props.color } : null]}>
                 <View style={props.isPreviousClass ? styles.customHeader : styles.textHeader}>
@@ -55,14 +57,14 @@ const CuatomCoursesHeaders = (props) => {
                     </TouchableOpacity>
                     <Text allowFontScaling={false} style={styles.subtitle}>{props.subtitle}
                         <Text allowFontScaling={false} style={styles.boldSubtitle}> {props.boldSubtitle}
-                        </Text><Text allowFontScaling={false} style={styles.subtitle}> {props.click} </Text>
+                        </Text><Text allowFontScaling={false} style={styles.subtitle}> {props.click}. </Text>
                     </Text>
                 </View>
 
                 {props.isPreviousClass ?
                     <View style={styles.coursesDetails}>
                         <View style={styles.sessionsContainer}>
-                            <Text allowFontScaling={false} style={styles.sessions} ellipsizeMode={'tail'} numberOfLines={1}>{kFormatter(props.sessions)}</Text>
+                            <Text allowFontScaling={false} style={styles.sessions} ellipsizeMode={'tail'} numberOfLines={1}>{props.sessions ? kFormatter(props.sessions) : "00"}</Text>
                             <View>
                                 <Text allowFontScaling={false} style={styles.sessionTheory}>Sessions</Text>
                                 <Text allowFontScaling={false} style={styles.sessionTheory}>Conducted</Text>
@@ -70,7 +72,7 @@ const CuatomCoursesHeaders = (props) => {
                         </View>
                         <View style={styles.border} />
                         <View style={styles.sessionsContainer2}>
-                            <Text allowFontScaling={false} style={styles.pateints} ellipsizeMode={'tail'} numberOfLines={1}> {kFormatter(props.patients)}</Text>
+                            <Text allowFontScaling={false} style={styles.pateints} ellipsizeMode={'tail'} numberOfLines={1}> {props.patients ? kFormatter(props.patients) : "00"}</Text>
                             <View>
                                 <Text allowFontScaling={false} style={styles.sessionTheory}>Patients</Text>
                                 <Text allowFontScaling={false} style={styles.sessionTheory}>Impacted</Text>
@@ -131,31 +133,31 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
     },
     drawer: {
-        height: WP('15'),
-        width: WP('5'),
-        resizeMode: 'contain',
+        height: WP('8'),
+        width: WP('6.3'),
+        tintColor: Colors.white,
     },
     menu: {
-        height: WP('5'),
-        width: WP('5'),
-        resizeMode: 'contain',
+        height: WP('8'),
+        width: WP('6.3'),
+        tintColor: Colors.white
     },
     title: {
         color: Colors.white,
         fontFamily: 'Assistant-Bold',
-        fontSize: WP('8'),
+        fontSize: WP('9'),
         marginBottom: WP('2')
     },
     subtitle: {
         color: Colors.white,
-        fontSize: WP('4'),
+        fontSize: WP('5'),
         fontFamily: 'Assistant-Regular',
 
     },
     boldSubtitle: {
         color: Colors.white,
         fontFamily: 'Assistant-Bold',
-        fontSize: WP('4')
+        fontSize: WP('5')
     },
     isCourse: {
         display: 'flex',
@@ -199,7 +201,7 @@ const styles = StyleSheet.create({
     sessionTheory: {
         fontFamily: 'Assistant-Bold',
         color: Colors.white,
-        fontSize: WP('4'),
+        fontSize: WP('5'),
     },
     border: {
         borderWidth: 1,

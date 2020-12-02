@@ -1,10 +1,12 @@
 //import liraries
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, StatusBar } from 'react-native';
 import CuatomCoursesHeaders from '../../../Components/CoursesHeader'
 import { useTranslation } from 'react-i18next'
 import CustomButton from '../../../Components/CustomButton'
 import { Colors, WP } from '../../../Theme';
+import FocusAwareStatusBar from '../../../Components/FoucsAwareStatusBar'
+
 // create a component
 const Games = (props) => {
     const { t } = useTranslation()
@@ -12,6 +14,9 @@ const Games = (props) => {
 
     return (
         <View style={styles.container}>
+            <FocusAwareStatusBar
+                backgroundColor={Colors.feebackgroundColor}
+            />
             <CuatomCoursesHeaders
                 navigation={props.navigation}
                 title={t('games.title')}

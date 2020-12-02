@@ -16,6 +16,7 @@ const CustomModal = (props) => {
                         <Text allowFontScaling={false} style={styles.capture}>CAPTURE IMAGE</Text>
                         <TouchableOpacity
                             onPress={props.onClosePress}
+                            style={styles.closeBtn}
                         >
                             <Image
                                 source={Images.close}
@@ -51,7 +52,7 @@ const CustomModal = (props) => {
 // define your styles
 const styles = StyleSheet.create({
     container: {
-        height: WP('50'),
+        height: WP('55'),
         backgroundColor: Colors.white,
         width: WP('72'),
         alignSelf: 'center',
@@ -83,6 +84,12 @@ const styles = StyleSheet.create({
         height: WP('30'),
         width: WP('28'),
         resizeMode: 'contain'
+    },
+    closeBtn: {
+        height: WP('12'),
+        width: WP('12'),
+        alignItems: "center",
+        justifyContent: "center"
     }
 });
 

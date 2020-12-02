@@ -54,7 +54,8 @@ const styles = StyleSheet.create({
     noComment: {
         color: Colors.appColor,
         alignSelf: 'center',
-        fontSize: WP('5')
+        fontSize: WP('5'),
+        fontFamily: "Assistant-Regular"
     },
     noCommentContainer: {
         flex: 1,

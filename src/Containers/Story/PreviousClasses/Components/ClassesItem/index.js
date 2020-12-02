@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { Colors, Images, WP } from '../../../../../Theme';
 import moment from 'moment'
+import Dash from 'react-native-dash';
+
 // create a component
 const ClassesItems = (props) => {
     function tConvert(time) {
@@ -23,12 +25,12 @@ const ClassesItems = (props) => {
             {props.classDetails.isEven ?
                 <View style={styles.parent}>
                     <View style={styles.circle} />
-                    <View style={styles.dottedBorder} />
+                    <Dash style={styles.dottedBorder} dashColor={Colors.appColor} />
                 </View>
 
                 :
                 <View style={styles.oddParent}>
-                    <View style={styles.oddDottedBorder} />
+                    <Dash style={styles.oddDottedBorder} dashColor={Colors.appColor} />
                     <View style={styles.oddCircle} />
                 </View>
             }
@@ -40,7 +42,7 @@ const ClassesItems = (props) => {
                         <Text allowFontScaling={false} style={styles.date}>{moment(props.classDetails.class_date).format('DD')}</Text>
                         <Text allowFontScaling={false} style={styles.month}>{moment(props.classDetails.class_date).format('MMMM')}</Text>
                         <View style={styles.border} />
-                        <Text allowFontScaling={false} style={styles.day}>{moment(props.classDetails.class_date).format('dddd').toUpperCase()}</Text>
+                        <Text allowFontScaling={false} style={styles.day}>{moment(props.classDetails.class_date).format('dddd')}</Text>
                     </View>
                     <Text allowFontScaling={false} style={styles.time}>{tConvert(props.classDetails.class_time)}</Text>
                     <Image
@@ -89,13 +91,17 @@ const styles = StyleSheet.create({
     date: {
         color: Colors.black,
         fontFamily: 'Assistant-Bold',
-        width: WP('4'),
+        fontSize: WP('4')
+
+        // width: WP('4'),
     },
     month: {
         color: Colors.grey,
         marginLeft: WP('1'),
-        fontFamily: 'Assistant-SemiBold',
-        width: WP('16'),
+        marginRight: WP('2'),
+        fontFamily: 'Assistant-Regular',
+        fontSize: WP('4.5')
+        // width: WP('16'),
 
     },
     border: {
@@ -107,9 +113,10 @@ const styles = StyleSheet.create({
     },
     day: {
         color: Colors.grey,
-        fontFamily: 'Assistant-SemiBold',
-        width: WP('16'),
-        marginLeft: WP('1')
+        fontFamily: 'Assistant-Regular',
+        marginLeft: WP('2'),
+        fontSize: WP('4.5')
+
     },
     forward: {
         height: WP('4'),
@@ -125,14 +132,14 @@ const styles = StyleSheet.create({
     time: {
         color: Colors.appColor,
         fontFamily: 'Assistant-Bold',
+        // marginRight: WP('2')
         width: WP('15'),
-        textAlign: 'center',
 
     },
     course: {
         color: Colors.appColor,
         fontFamily: 'Assistant-Bold',
-        fontSize: WP('3'),
+        fontSize: WP('4'),
     },
     circle: {
         display: 'flex',
@@ -151,18 +158,15 @@ const styles = StyleSheet.create({
         width: WP('2')
     },
     dottedBorder: {
-        borderWidth: 1,
-        borderColor: Colors.appColor,
-        borderStyle: 'dashed',
-        borderRadius: 1,
-        height: WP('10')
+        height: WP('12'),
+        width: 1,
+        flexDirection: 'column'
+
     },
     oddDottedBorder: {
-        borderWidth: 1,
-        borderColor: Colors.appColor,
-        borderStyle: 'dashed',
-        borderRadius: 1,
-        height: WP('6')
+        height: WP('4'),
+        width: 1,
+        flexDirection: 'column'
     },
 });
 

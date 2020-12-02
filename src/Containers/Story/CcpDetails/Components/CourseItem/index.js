@@ -59,8 +59,9 @@ const styles = StyleSheet.create({
         tintColor: Colors.appColor
     },
     title: {
-        color: Colors.black,
-        fontFamily: 'Assistant-Bold'
+        color: Colors.grey,
+        fontFamily: 'Assistant-Bold',
+        fontSize: WP('5')
     },
     course: {
         color: Colors.appColor,

@@ -17,7 +17,7 @@ const OptionsListing = (props) => {
             <View style={styles.container}>
                 {props.classesTypes.map((type) => {
                     return (
-                        <OptionItem classes={type} onPress={(tapped) => { props.onPress(tapped) }} />
+                        <OptionItem classes={type} onPress={(tapped) => { props.onPress(tapped) }} isEditProfile={props.isEditProfle} />
                     )
                 })}
             </View >
@@ -35,13 +35,17 @@ const styles = StyleSheet.create({
     },
     title: {
         color: Colors.grey,
-        fontSize: WP('3'),
-        marginBottom: WP('3')
+        fontSize: WP('5'),
+        marginBottom: WP('3'),
+        fontFamily: 'Assistant-Regular'
+
     },
     subtitle: {
         color: Colors.pickerBorder,
-        fontSize: WP('3'),
+        fontSize: WP('4'),
         marginBottom: WP('3'),
+        fontFamily: 'Assistant-Regular'
+
     },
 
 

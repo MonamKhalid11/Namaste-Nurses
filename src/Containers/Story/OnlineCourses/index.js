@@ -1,6 +1,6 @@
 //import liraries
 import React, { Component, useEffect, useState } from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, StatusBar } from 'react-native';
 import CuatomCoursesHeaders from '../../../Components/CoursesHeader'
 import { useTranslation } from 'react-i18next'
 import CustomButton from '../../../Components/CustomButton'
@@ -8,6 +8,9 @@ import { Colors, WP } from '../../../Theme';
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchOnlineCourses } from '../../../Store/actions'
 import { isOnline, ShowActivityIndicator } from '../../../Services';
+import FocusAwareStatusBar from '../../../Components/FoucsAwareStatusBar'
+
+
 // create a component
 const OnlineCourses = (props) => {
     const { t } = useTranslation()
@@ -30,6 +33,9 @@ const OnlineCourses = (props) => {
 
     return (
         <View style={styles.container}>
+            <FocusAwareStatusBar
+                backgroundColor={Colors.coursesColor}
+            />
             <CuatomCoursesHeaders
                 navigation={props.navigation}
                 title={t('onlineCourses.title')}
@@ -84,13 +90,13 @@ const styles = StyleSheet.create({
         marginTop: WP('5')
     },
     allCourses: {
-        fontFamily: 'Assistant-ExtraBold',
-        fontSize: WP('4'),
+        fontFamily: 'Assistant-Bold',
+        fontSize: WP('5.5'),
         color: Colors.white
     },
     english: {
         fontFamily: 'Assistant-SemiBold',
-        fontSize: WP('4'),
+        fontSize: WP('5.5'),
         color: Colors.white
     }
 });

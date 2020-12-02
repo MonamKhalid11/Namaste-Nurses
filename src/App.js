@@ -9,6 +9,7 @@ import { ApplicationNavigator } from '@/Navigators'
 import { Layout } from '@/Theme'
 import './Translations'
 import { navigationRef } from './Services/navigation';
+import { Colors } from './Theme'
 
 
 const App = () => (
@@ -23,7 +24,7 @@ const App = () => (
     <PersistGate loading={null} persistor={PERSISTOR}>
       <SafeAreaView style={Layout.fill}>
         <NavigationContainer ref={navigationRef}>
-          <StatusBar barStyle={'light-content'} />
+          <StatusBar barStyle={'light-content'} backgroundColor={Colors.appColor} />
           <ApplicationNavigator />
         </NavigationContainer>
       </SafeAreaView>

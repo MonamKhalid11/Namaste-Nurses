@@ -5,6 +5,7 @@ import {
     Layout, Fonts, Images, WP
 } from '@/Theme'
 import { Colors } from '../../../../../Theme';
+import { color } from 'react-native-reanimated';
 
 // create a component
 const SessionInput = (props) => {
@@ -35,12 +36,16 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         paddingLeft: WP('3'),
-        marginBottom: WP('3')
+        marginBottom: WP('3'),
+        fontFamily: 'Assistant-Regular',
+        color: Colors.grey,
+        fontSize: WP('4')
     },
     title: {
         color: Colors.grey,
-        fontSize: WP('3'),
-        marginBottom: WP('3')
+        fontSize: WP('5'),
+        marginBottom: WP('3'),
+        fontFamily: 'Assistant-Regular'
     }
 });
 

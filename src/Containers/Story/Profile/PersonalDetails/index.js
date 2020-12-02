@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next'
 import { Colors, WP } from '../../../../Theme';
 import { Layout, Fonts, Images } from '@/Theme'
 import AvatarContainer from '../../../../Components/Avatar'
+import moment from 'moment'
 // create a component
 const PersonalDetails = (props) => {
     const { t } = useTranslation()
@@ -17,11 +18,11 @@ const PersonalDetails = (props) => {
                 <Text allowFontScaling={false} style={styles.name}>{props.name}</Text>
                 <AvatarContainer profilePicture={props.profilePicture} />
             </View>
-            <Text style={styles.questions}>{t('profile.phone')} : <Text style={styles.details}>{props.phone}</Text></Text>
-            <Text style={styles.questions}>{t('profile.date')} : <Text style={styles.details}>{props.date}</Text></Text>
-            <Text style={styles.questions}>{t('profile.status')} : <Text style={styles.details}>{props.status}</Text> </Text>
-            <Text style={styles.questions}>{t('profile.year')} : <Text style={styles.details}>{props.year}</Text></Text>
-            <Text style={styles.questions}>{t('profile.trainer')} : <Text style={styles.details}>{props.trainer}</Text></Text>
+            <Text style={styles.questions}>{t('profile.phone')} :    <Text style={styles.details}>{props.phone}</Text></Text>
+            <Text style={styles.questions}>{t('profile.date')} :    <Text style={styles.details}>{moment(props.date).format('DD MMMM YYYY')}</Text></Text>
+            <Text style={styles.questions}>{t('profile.status')} :    <Text style={styles.details}>{props.status}</Text> </Text>
+            <Text style={styles.questions}>{t('profile.year')} :    <Text style={styles.details}>{props.year}</Text></Text>
+            <Text style={styles.questions}>{t('profile.trainer')} :    <Text style={styles.details}>{props.trainer}</Text></Text>
         </View>
     );
 };
@@ -33,8 +34,8 @@ const styles = StyleSheet.create({
     },
     title: {
         color: Colors.secondaryColor,
-        fontFamily: 'Assistant-Bold',
-        fontSize: WP('3.5'),
+        fontFamily: 'Assistant-SemiBold',
+        fontSize: WP('5.5'),
         marginTop: WP('5'),
         // marginBottom: WP('5')
     },
@@ -45,10 +46,10 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between'
     },
     name: {
-        color: Colors.black,
+        color: Colors.grey,
         // fontWeight: '500',
-        fontSize: WP('5'),
-        fontFamily: 'Assistant-Regular',
+        fontSize: WP('7'),
+        fontFamily: 'Assistant-SemiBold',
         // marginTop: WP('5'),
     },
     profileContainer: {
@@ -62,16 +63,16 @@ const styles = StyleSheet.create({
     },
     questions: {
         color: Colors.secondaryColor,
-        fontFamily: 'Assistant-Bold',
+        fontFamily: 'Assistant-SemiBold',
         fontSize: WP('4'),
         marginBottom: WP('2')
     },
     details:
     {
         color: Colors.grey,
-        fontSize: WP('4'),
+        fontSize: WP('3.5'),
         marginBottom: WP('3'),
-        fontFamily: 'Assistant-Bold',
+        fontFamily: 'Assistant-Regular',
 
     },
     profilePic: {

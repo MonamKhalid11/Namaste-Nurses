@@ -24,9 +24,13 @@ const styles = StyleSheet.create({
         fontFamily: 'Assistant-Bold',
         fontSize: WP('5')
     },
+    container: {
+    },
     todo: {
         color: Colors.appColor,
-        fontSize: WP('5')
+        fontSize: WP('5'),
+        fontFamily: 'Assistant-Regular',
+        width: WP('90')
     },
 
 });

@@ -70,15 +70,11 @@ const FeedItem = (props) => {
                 </View>
 
             }
-            <TouchableOpacity style={styles.likesContainer}
+            {/* <TouchableOpacity style={styles.likesContainer}
                 onPress={() => props.navigation.navigate('Likes', props.feed)}
             >
-                <Image
-                    source={Images.likedBy}
-                    style={styles.icon}
-                />
                 <Text allowFontScaling={false} style={styles.like}>{props.feed.like_count}</Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
             <View style={styles.likeCommentContainer}>
                 {loading ?
                     <View style={styles.iconContainer}>
@@ -86,16 +82,23 @@ const FeedItem = (props) => {
                         {ShowActivityIndicator()}
                     </View>
                     :
-                    <TouchableOpacity style={styles.iconContainer}
-                        disabled={props.feed.like ? true : false}
-                        onPress={addLike}
-                    >
-                        <Image
-                            source={props.feed.like ? Images.likeFilled : Images.likeEmpty}
-                            style={[styles.icon, { tintColor: props.feed.like ? Colors.appColor : Colors.black }]}
-                        />
-                        <Text allowFontScaling={false} style={styles.like}>{props.feed.like ? "Liked" : "Like"}</Text>
-                    </TouchableOpacity>
+                    <View style={styles.iconContainer}>
+                        <TouchableOpacity
+                            disabled={props.feed.like ? true : false}
+                            onPress={addLike}
+                        >
+                            <Image
+                                source={props.feed.like ? Images.likeFilled : Images.likeEmpty}
+                                style={[styles.icon, { tintColor: props.feed.like ? Colors.appColor : Colors.black }]}
+                            />
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.likesContent}
+                            onPress={() => props.navigation.navigate('Likes', props.feed)}
+                        >
+                            <Text allowFontScaling={false} style={styles.like}>{props.feed.like_count}</Text>
+                            <Text allowFontScaling={false} style={styles.like}>{props.feed.like_count > 1 ? "Likes" : "Like"}</Text>
+                        </TouchableOpacity>
+                    </View>
                 }
 
                 <TouchableOpacity style={styles.iconContainer2}
@@ -105,10 +108,11 @@ const FeedItem = (props) => {
                         source={Images.chat}
                         style={styles.icon}
                     />
-                    <Text allowFontScaling={false} style={styles.like}>Comment</Text>
+                    <Text allowFontScaling={false} style={styles.like}>{props.feed.comment_count}</Text>
+                    <Text allowFontScaling={false} style={styles.like}>{props.feed.comment_count > 1 ? "Comments" : "Comment"}</Text>
                 </TouchableOpacity>
             </View>
-        </View>
+        </View >
     );
 };
 
@@ -146,30 +150,32 @@ const styles = StyleSheet.create({
     },
     headingContainer: {
         display: 'flex',
-        marginLeft: WP('2')
+        marginLeft: WP('2'),
+        paddingRight: WP('9')
     },
     title: {
         color: Colors.grey,
-        fontFamily: 'Assistant-Bold',
-        fontSize: WP('4'),
+        fontFamily: 'Assistant-SemiBold',
+        fontSize: WP('5'),
         marginBottom: WP('1'),
     },
     posted: {
         color: Colors.pickerBorder,
-        fontSize: WP('2.5')
+        fontSize: WP('4'),
+        fontFamily: 'Assistant-SemiBold',
     },
     description: {
-        color: 'grey',
-        fontSize: WP('3'),
-        fontWeight: '400',
+        color: Colors.grey,
+        fontSize: WP('5'),
         paddingLeft: WP('2'),
         paddingRight: WP('2'),
-        width: WP('90')
+        width: WP('90'),
+        fontFamily: "Assistant-Regular",
     },
     feedImage: {
         height: "100%",
         width: "100%",
-        resizeMode: 'contain'
+        resizeMode: 'cover'
     },
     feedImageContainer: {
         display: 'flex',
@@ -187,8 +193,8 @@ const styles = StyleSheet.create({
     },
     icon: {
         display: 'flex',
-        height: WP('5'),
-        width: WP('5'),
+        height: WP('3.5'),
+        width: WP('3.5'),
         resizeMode: 'contain',
     },
     iconContainer: {
@@ -214,7 +220,15 @@ const styles = StyleSheet.create({
     },
     like: {
         color: Colors.grey,
-        marginLeft: WP('2')
+        marginLeft: WP('2'),
+        fontSize: WP('4'),
+        fontFamily: 'Assistant-Regular'
+    },
+    likesContent: {
+        display: 'flex',
+        alignItems: 'center',
+        flexDirection: 'row',
+
     }
 });
 

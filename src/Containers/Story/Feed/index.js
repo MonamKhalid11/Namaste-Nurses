@@ -1,6 +1,6 @@
 //import liraries
 import React, { Component, useEffect, useState } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, StatusBar } from 'react-native';
 import CustomHeader from '../../../Components/CustomHeader'
 import { Colors, WP } from '../../../Theme';
 import FeedListing from './Components/FeedList'
@@ -8,7 +8,7 @@ import { Layout, Fonts, Images } from '@/Theme'
 import { useDispatch, useSelector } from 'react-redux'
 import { getNurseFeed } from '../../../Store/actions'
 import { ShowActivityIndicator, isOnline, showToast } from '../../../Services';
-
+import FocusAwareStatusBar from '../../../Components/FoucsAwareStatusBar'
 
 // create a component
 const Feed = (props) => {
@@ -29,10 +29,14 @@ const Feed = (props) => {
 
     return (
         <View style={styles.container}>
+            <FocusAwareStatusBar
+                backgroundColor={Colors.feebackgroundColor}
+            />
             <CustomHeader
                 headerColor={Colors.feebackgroundColor}
-                screenTitle={user.first_name + ' ' + user.last_name}
+                screenTitle={user.first_name}
                 navigation={props.navigation}
+                isProfile={true}
             />
             {loading ?
                 <View style={styles.loader}>

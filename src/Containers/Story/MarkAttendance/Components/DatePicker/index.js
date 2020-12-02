@@ -12,11 +12,11 @@ const CustomDateTimePicker = (props) => {
 
             <Text allowFontScaling={false} style={styles.title}>{props.title}</Text>
             <DatePicker
-                style={styles.inputField}
+                style={props.isEditClass ? styles.inputFieldEditClass : styles.inputField}
                 date={props.date}
                 mode={'date'}
                 placeholder="Select Date"
-                format="YYYY-MM-DD"
+                format="DD MMMM YYYY"
                 confirmBtnText="Confirm"
                 cancelBtnText="Cancel"
                 showIcon={false}
@@ -28,6 +28,12 @@ const CustomDateTimePicker = (props) => {
                     },
                     placeholderText: {
                         color: Colors.pickerBorder
+                    },
+                    dateText: {
+                        color: Colors.grey,
+                        fontSize: WP('4'),
+                        fontFamily: 'Assistant-Regular'
+
                     }
                 }}
             />
@@ -54,12 +60,30 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         paddingLeft: WP('3'),
-        marginBottom: WP('3')
+        marginBottom: WP('3'),
+        fontSize: WP('4'),
+        fontFamily: 'Assistant-Regular'
+
+    },
+    inputFieldEditClass: {
+        display: 'flex',
+        width: WP('90'),
+        height: WP('13'),
+        borderBottomWidth: 1,
+        borderColor: Colors.containerBorder,
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingLeft: WP('3'),
+        marginBottom: WP('3'),
+        fontSize: WP('4'),
+        fontFamily: 'Assistant-Regular'
+
     },
     title: {
         color: Colors.grey,
-        fontSize: WP('3'),
-        marginBottom: WP('3')
+        fontSize: WP('5'),
+        marginBottom: WP('3'),
+        fontFamily: 'Assistant-Regular'
     }
 });
 

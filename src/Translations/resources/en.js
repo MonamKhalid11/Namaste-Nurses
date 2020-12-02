@@ -108,7 +108,9 @@ export default {
     subtitle: 'You can',
     language: "view or edit",
     click: 'your previous class entries by clicking on them',
-    marknew: 'MARK NEW ATTENDANCE'
+    marknew: 'EDIT CLASS DETAILS',
+    button: "MARK NEW ATTENDANCE",
+
   },
   editclass: {
     date: 'Date',

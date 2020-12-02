@@ -21,6 +21,11 @@ const MedicalConditionsPicker = (props) => {
                 style={styles.inputField}
                 showArrow={false}
                 items={props.items}
+                labelStyle={{
+                    fontSize: WP('4'),
+                    color: Colors.grey,
+                    fontFamily: 'Assistant-Regular'
+                }}
                 controller={instance => controller = instance}
                 onChangeList={(items, callback) => {
                     new Promise((resolve, reject) => resolve(props.setItems(items)))
@@ -52,12 +57,16 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         paddingLeft: WP('3'),
-        marginBottom: WP('3')
+        marginBottom: WP('3'),
+        fontSize: WP('4'),
+        color: Colors.grey
     },
     title: {
         color: Colors.grey,
-        fontSize: WP('3'),
-        marginBottom: WP('3')
+        fontSize: WP('5'),
+        marginBottom: WP('3'),
+        fontFamily: 'Assistant-Regular'
+
     }
 });
 

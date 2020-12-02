@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import { useTranslation } from 'react-i18next'
 import { Colors, WP } from '../../../../Theme';
-
+import moment from 'moment'
 // create a component
 const ProfessionalDetails = (props) => {
     console.log("showing props", props)
@@ -12,19 +12,27 @@ const ProfessionalDetails = (props) => {
     return (
         <View style={styles.container}>
             <Text allowFontScaling={false} style={styles.title}>{t('profile.professional')}</Text>
-            <Text style={styles.questions}>{t('profile.location')} : <Text style={styles.details}>{props.location}</Text></Text>
-            <Text style={styles.questions}>{t('profile.name')} : <Text style={styles.details}>{props.name}</Text></Text>
-            <Text style={styles.questions}>{t('profile.dateOfJoining')} : <Text style={styles.details}>{props.dateOfJoining}</Text> </Text>
-            <Text style={styles.questions}>{t('profile.designation')} : <Text style={styles.details}>{props.designation}</Text></Text>
+            <Text style={styles.questions}>{t('profile.location')} :    <Text style={styles.details}>{props.location}</Text></Text>
+            <Text style={styles.questions}>{t('profile.name')} :    <Text style={styles.details}>{props.name}</Text></Text>
+            <Text style={styles.questions}>{t('profile.dateOfJoining')} :    <Text style={styles.details}>{moment(props.dateOfJoining).format('DD MMMM YYYY')}</Text> </Text>
+            <Text style={styles.questions}>{t('profile.designation')} :    <Text style={styles.details}>{props.designation}</Text></Text>
+
             <Text style={styles.questions}>{t('profile.medical')} :
-            {props.medical.map((condition) => {
-                return (
-                    <Text style={styles.details}>{condition.name}</Text>
-                )
-            })}
+            {
+                    props.medical.length > 0 ?
+                        props.medical.map((condition) => {
+                            return (
+                                <Text style={styles.details}>    {condition.name}</Text>
+                            )
+                        })
+                        :
+                        <Text style={styles.details}>    {'Condition not found'}</Text>
+
+
+                }
             </Text>
-            <Text style={styles.questions}>{t('profile.tot')} : <Text style={styles.details}>{props.tot}</Text></Text>
-            <Text style={styles.questions}>{t('profile.ccp')} : <Text style={styles.details}>{props.ccp ? props.ccp.title : 'Condition area not found'}</Text></Text>
+            <Text style={styles.questions}>{t('profile.tot')} :    <Text style={styles.details}>{moment(props.tot).format('DD MMMM YYYY')}</Text></Text>
+            <Text style={styles.questions}>{t('profile.ccp')} :    <Text style={styles.details}>{props.ccp ? props.ccp.title : 'Condition area not found'}</Text></Text>
         </View>
     );
 };
@@ -36,8 +44,8 @@ const styles = StyleSheet.create({
     },
     title: {
         color: Colors.secondaryColor,
-        fontFamily: 'Assistant-Bold',
-        fontSize: WP('3.5'),
+        fontFamily: 'Assistant-SemiBold',
+        fontSize: WP('5'),
         marginTop: WP('5'),
         marginBottom: WP('5')
     },
@@ -48,10 +56,10 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between'
     },
     name: {
-        color: Colors.black,
+        color: Colors.grey,
         // fontWeight: '500',
-        fontSize: WP('5'),
-        fontFamily: 'Assistant-Regular',
+        fontSize: WP('7'),
+        fontFamily: 'Assistant-SemiBold',
 
         // marginTop: WP('5'),
     },
@@ -66,16 +74,16 @@ const styles = StyleSheet.create({
     },
     questions: {
         color: Colors.secondaryColor,
-        fontFamily: 'Assistant-Bold',
+        fontFamily: 'Assistant-SemiBold',
         fontSize: WP('4'),
         marginBottom: WP('2')
     },
     details:
     {
         color: Colors.grey,
-        fontSize: WP('4'),
+        fontSize: WP('3.5'),
         marginBottom: WP('3'),
-        fontFamily: 'Assistant-Bold',
+        fontFamily: 'Assistant-Regular',
     }
 });
 

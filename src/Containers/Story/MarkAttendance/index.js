@@ -15,12 +15,14 @@ import TimePicker from './Components/TimePicker'
 import { showToast, getPicture, isOnline } from '../../../Services';
 import { useDispatch, useSelector } from 'react-redux'
 import { markAttendance } from '../../../Store/actions'
+import moment from 'moment'
+import { cos } from 'react-native-reanimated';
 // create a component
 const MarkAttendance = (props) => {
     console.log("showing props here for marked attendance", props)
     const { t } = useTranslation()
-    const [date, SetDate] = useState(null)
-    const [time, SetTime] = useState(new Date())
+    const [date, SetDate] = useState(new Date())
+    const [time, SetTime] = useState(moment().format('HH:MM a'))
     const [people, SetPeople] = useState(null)
     const [location, SetLocation] = useState(null)
     const [session, SetSession] = useState(null)
@@ -141,31 +143,41 @@ const MarkAttendance = (props) => {
                         class_id: "0",
                         class_type: selectedOptionId.id,
                         image: 'data:image/jpeg;base64,' + selectedImage.data,
-                        class_date: date,
-                        class_time: time,
+                        class_date: moment(date).format('YYYY-MM-DD'),
+                        class_time: time.slice(0, 5),
                         no_of_people: people,
                         no_of_family: "0",
                         ward: location,
                         notes: notes,
                         session_conducted: session,
-                        entry_time: "2020-11-17 10:39:44",
-                        session_id: "2020-11-17 17:21:23",
+                        entry_time: moment().format('YYYY-MM-DD HH:MM:SS'),
+                        session_id: moment().format('YYYY-MM-DD HH:MM:SS'),
                         token: "j56sugRk029Po5DB",
                         appuser_id: user.id,
                         access_token: ""
                     }
+                    console.log("showing aprams here", params)
                     isOnline((connected) => {
-                        dispatch(markAttendance(params, setLoading))
-                        if (!loading) {
-                            SetDate(null)
-                            SetTime(null)
-                            SetPeople(null)
-                            SetLocation(null)
-                            SetSession(null)
-                            SetNotes(null)
-                            setSelectedImage(null)
-                            unMark()
-                        }
+                        dispatch(markAttendance(params, (response) => {
+                            if (response) {
+
+                                SetPeople(null)
+                                SetLocation(null)
+                                SetSession(null)
+                                SetNotes(null)
+                                setSelectedImage(null)
+                                unMark()
+                                setLoading(false)
+
+                            }
+                            else {
+                                showToast('Try again')
+                                setLoading(false)
+
+                            }
+
+                        }))
+
                     }, (offline) => {
                         setLoading(false)
                         showToast(t('commonApp.internetError'))
@@ -177,7 +189,7 @@ const MarkAttendance = (props) => {
         }
     }
 
-    toggleModal = () => setModal(!openModal)
+    const toggleModal = () => setModal(!openModal)
     return (
         <View style={styles.container}>
             <CustomHeader
@@ -191,7 +203,7 @@ const MarkAttendance = (props) => {
                         selectedImage={selectedImage}
                     />
                     <CustomDateTimePicker date={date} onDateChange={SetDate} title={t('markScreen.date')} />
-                    <TimePicker time={time} onTimeChange={SetTime} title={t('markScreen.time')} />
+                    <TimePicker time={time} onTimeChange={SetTime} title={t('markScreen.time')} placeholder={time} />
                     <SessionInput title={t('markScreen.people')} placeholder={t('markScreen.peoplePlaceHolder')} keyboardType={'numeric'} value={people} onChangeText={SetPeople} />
                     <OptionsListing classesTypes={classesTypes} title={t('markScreen.type')} subTitle={t('markScreen.select')} onPress={(tapped) => { updateCheckedState(tapped) }} />
                     < SessionInput title={t('markScreen.location')} placeholder={t('markScreen.locationPlaceHolder')} value={location} onChangeText={SetLocation} />
@@ -203,6 +215,7 @@ const MarkAttendance = (props) => {
             <CustomModal
                 isVisible={openModal}
                 onClosePress={toggleModal}
+                onBackdropPress={toggleModal}
                 onCameraPress={() => renderImages(true)}
                 onLibraryPress={() => renderImages(false)}
             />
