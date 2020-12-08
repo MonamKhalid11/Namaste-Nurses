@@ -24,7 +24,7 @@ const App = () => (
     <PersistGate loading={null} persistor={PERSISTOR}>
       <SafeAreaView style={Layout.fill}>
         <NavigationContainer ref={navigationRef}>
-          <StatusBar barStyle={'light-content'} backgroundColor={Colors.appColor} />
+          <StatusBar barStyle={'dark-content'} backgroundColor={Colors.appColor} />
           <ApplicationNavigator />
         </NavigationContainer>
       </SafeAreaView>
