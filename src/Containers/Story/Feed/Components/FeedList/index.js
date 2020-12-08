@@ -16,6 +16,7 @@ const FeedListing = (props) => {
                         navigation={props.navigation}
                     />
                 )}
+                {...props}
 
                 keyExtractor={item => item.id}
             />

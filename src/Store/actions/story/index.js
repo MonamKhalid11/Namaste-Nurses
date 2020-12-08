@@ -282,13 +282,14 @@ export const addComments = (params, success, reject) => {
 export const addLikesToFeed = (params, success, reject) => {
   return async dispatch => {
     try {
+      console.log("showing params for adding feed in like", params)
       let api = await storyApi.setContentLikeBulk(params)
       console.log('shwoing response here for submit', api)
       if (api.success) {
-        // dispatch({
-        //   type: TYPES.ADD_LIKE,
-        //   id: params.content_id
-        // })
+        dispatch({
+          type: TYPES.ADD_LIKE,
+          id: params
+        })
         success(api.details)
 
       }

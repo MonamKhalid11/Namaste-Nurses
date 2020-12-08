@@ -19,8 +19,6 @@
 		2DCD954D1E0B4F2C00145EB5 /* CareCompanionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* CareCompanionTests.m */; };
 		526B833B257FAB8800C3F633 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 526B833A257FAB8800C3F633 /* Launch Screen.storyboard */; };
 		526B833C257FAB8800C3F633 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 526B833A257FAB8800C3F633 /* Launch Screen.storyboard */; };
-		526B8346257FABC500C3F633 /* logo-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 526B8345257FABC500C3F633 /* logo-icon.png */; };
-		526B8347257FABC500C3F633 /* logo-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 526B8345257FABC500C3F633 /* logo-icon.png */; };
 		526B8351257FAC1C00C3F633 /* tester.png in Resources */ = {isa = PBXBuildFile; fileRef = 526B8350257FAC1C00C3F633 /* tester.png */; };
 		526B8352257FAC1C00C3F633 /* tester.png in Resources */ = {isa = PBXBuildFile; fileRef = 526B8350257FAC1C00C3F633 /* tester.png */; };
 		52E381B7256548090073D131 /* Assistant-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 52E381B1256548090073D131 /* Assistant-Regular.otf */; };
@@ -71,7 +69,6 @@
 		363F4681F4D72D355459D728 /* Pods-CareCompanion-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CareCompanion-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-CareCompanion-tvOSTests/Pods-CareCompanion-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3DF2B387AECB3EB857C4592D /* libPods-CareCompanion-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CareCompanion-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		526B833A257FAB8800C3F633 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
-		526B8345257FABC500C3F633 /* logo-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo-icon.png"; sourceTree = "<group>"; };
 		526B8350257FAC1C00C3F633 /* tester.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tester.png; sourceTree = "<group>"; };
 		52E381B1256548090073D131 /* Assistant-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Assistant-Regular.otf"; path = "../../src/Assets/fonts/Assistant-Regular.otf"; sourceTree = "<group>"; };
 		52E381B2256548090073D131 /* Assistant-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Assistant-SemiBold.otf"; path = "../../src/Assets/fonts/Assistant-SemiBold.otf"; sourceTree = "<group>"; };
@@ -147,7 +144,6 @@
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
-				526B8345257FABC500C3F633 /* logo-icon.png */,
 				526B8350257FAC1C00C3F633 /* tester.png */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
@@ -383,7 +379,6 @@
 				52E381BA256548090073D131 /* Assistant-Light.otf in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				52E381B8256548090073D131 /* Assistant-SemiBold.otf in Resources */,
-				526B8346257FABC500C3F633 /* logo-icon.png in Resources */,
 				526B8351257FAC1C00C3F633 /* tester.png in Resources */,
 				52E381BB256548090073D131 /* Assistant-ExtraLight.otf in Resources */,
 			);
@@ -396,7 +391,6 @@
 				526B8352257FAC1C00C3F633 /* tester.png in Resources */,
 				526B833C257FAB8800C3F633 /* Launch Screen.storyboard in Resources */,
 				2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */,
-				526B8347257FABC500C3F633 /* logo-icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

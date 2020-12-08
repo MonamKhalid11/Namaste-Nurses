@@ -38,15 +38,13 @@
 		</dict>
 	</dict>
 	<key>NSAppleMusicUsageDescription</key>
-	<string>Namste</string>
+	<string>CareCompanion will access your media library to set a profile picture which you will select</string>
 	<key>NSCameraUsageDescription</key>
-	<string>Namaste nurses will use camera for class image</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string>CareCompanion will access your camera to upload class image and profile image , which will later stored and you will see in relevant sections</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>Namste</string>
+	<string>CareCompanion will access your photo library to upload class image and profile image , which will later stored and you will see in relevant sections</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Namste Nurses will use library</string>
+	<string>CareCompanion will access your photo library to upload class image and profile image , which will later stored and you will see in relevant sections</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Assistant-Bold.otf</string>

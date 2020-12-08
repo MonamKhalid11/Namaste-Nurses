@@ -26,9 +26,10 @@ const FeedItem = (props) => {
             }
             setLoading(true)
             dispatch(addLikesToFeed(params, (success) => {
-                dispatch(getNurseFeed(user.id, () => {
-                    setLoading(false)
-                }))
+                // dispatch(getNurseFeed(user.id, () => {
+                //     setLoading(false)
+                // }))
+                setLoading(false)
 
             }, (reject) => {
                 setLoading(false)

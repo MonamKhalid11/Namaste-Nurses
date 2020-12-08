@@ -27,6 +27,15 @@ const Feed = (props) => {
         })
     }, [props.route])
 
+    const _handleRefresh = () => {
+        isOnline((connected) => {
+            setLoading(true)
+            dispatch(getNurseFeed(user.id, setLoading))
+        }, (offline) => {
+            setLoading(false)
+            showToast(t('commonApp.internetError'))
+        })
+    }
     return (
         <View style={styles.container}>
             <FocusAwareStatusBar
@@ -46,6 +55,8 @@ const Feed = (props) => {
                 <FeedListing
                     navigation={props.navigation}
                     feeds={nurseFeed}
+                    refreshing={loading}
+                    onRefresh={_handleRefresh}
                 />
             }
         </View>
