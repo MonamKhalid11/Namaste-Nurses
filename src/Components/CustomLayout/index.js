@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.white
     },
     logoContainer: {
-        flex: 1.6,
+        flex: 2,
         padding: WP('5'),
         alignItems: 'center',
         justifyContent: 'space-between',

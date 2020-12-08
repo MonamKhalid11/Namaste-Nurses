@@ -22,11 +22,11 @@ const styles = StyleSheet.create({
     heading: {
         color: Colors.white,
         fontFamily: 'Assistant-Bold',
-        fontSize: WP('9')
+        fontSize: WP('7')
     },
     todo: {
         color: Colors.white,
-        fontSize: WP('7'),
+        fontSize: WP('6'),
         fontFamily: 'Assistant-Regular'
     },
 

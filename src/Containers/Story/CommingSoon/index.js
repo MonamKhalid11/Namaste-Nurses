@@ -12,34 +12,29 @@ const CommingSoon = (props) => {
     const toggleDrawer = () => props.navigation.toggleDrawer();;
 
     return (
-        <View style={styles.container}>
-            <StatusBar
-                backgroundColor={Colors.appColor}
+        <CustomLayout
+            drawerOnPress={toggleDrawer}
+            commingSoon={true}
+            logoStyles={styles.logoContainer}
+            contentContainer={styles.contentContainer}
+            showBackbtn={true}
+            navigation={props.navigation}
+        >
+
+            <Headings />
+            <CustomButton
+                onPress={() => props.navigation.navigate('CcpTools')}
+                title={t('commingsoon.button1')}
+                titleColor={Colors.white}
+                bgColor={Colors.appColor}
             />
-            <CustomLayout
-                drawerOnPress={toggleDrawer}
-                commingSoon={true}
-                logoStyles={styles.logoContainer}
-                contentContainer={styles.contentContainer}
-                showBackbtn={true}
-                navigation={props.navigation}
-            >
+            <CustomButton
+                title={t('commingsoon.button2')}
+                titleColor={Colors.white}
+                bgColor={Colors.appColor}
 
-                <Headings />
-                <CustomButton
-                    onPress={() => props.navigation.navigate('CcpTools')}
-                    title={t('commingsoon.button1')}
-                    titleColor={Colors.white}
-                    bgColor={Colors.appColor}
-                />
-                <CustomButton
-                    title={t('commingsoon.button2')}
-                    titleColor={Colors.white}
-                    bgColor={Colors.appColor}
-
-                />
-            </CustomLayout>
-        </View>
+            />
+        </CustomLayout>
     );
 };
 

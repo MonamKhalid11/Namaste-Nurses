@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
         color: Colors.grey,
         fontSize: WP('3.5'),
         marginBottom: WP('3'),
-        fontFamily: 'Assistant-Regular',
+        fontFamily: 'Assistant-SemiBold',
     }
 });
 

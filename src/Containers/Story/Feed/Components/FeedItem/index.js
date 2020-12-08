@@ -19,15 +19,16 @@ const FeedItem = (props) => {
                 content_id: props.feed.id,
                 entry_time: moment(new Date()).format('YYYY-MM-DD HH:MM:SS'),
                 session_id: moment(new Date()).format('YYYY-MM-DD HH:MM:SS'),
-                status: true,
+                status: props.feed.like ? false : true,
                 token: "j56sugRk029Po5DB",
                 appuser_id: user.id,
                 access_token: ""
             }
             setLoading(true)
             dispatch(addLikesToFeed(params, (success) => {
-                // dispatch(getNurseFeed(user.id, setLoading))
-                setLoading(false)
+                dispatch(getNurseFeed(user.id, () => {
+                    setLoading(false)
+                }))
 
             }, (reject) => {
                 setLoading(false)
@@ -84,7 +85,6 @@ const FeedItem = (props) => {
                     :
                     <View style={styles.iconContainer}>
                         <TouchableOpacity
-                            disabled={props.feed.like ? true : false}
                             onPress={addLike}
                         >
                             <Image

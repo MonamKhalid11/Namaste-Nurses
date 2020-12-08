@@ -16,13 +16,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="square.and.arrow.down.on.square.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="jO6-3k-XJM">
-                                <rect key="frame" x="87" y="231" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="TTI-wm-HeT">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                             </imageView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="Bcu-3y-fUS"/>
+                        <viewLayoutGuide key="safeArea" id="oC2-xL-sI4"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="TTI-wm-HeT" firstAttribute="leading" secondItem="oC2-xL-sI4" secondAttribute="leading" id="D4h-Lk-x5Q"/>
+                            <constraint firstItem="TTI-wm-HeT" firstAttribute="trailing" secondItem="oC2-xL-sI4" secondAttribute="trailing" id="Vru-L6-mcY"/>
+                            <constraint firstItem="TTI-wm-HeT" firstAttribute="bottom" secondItem="oC2-xL-sI4" secondAttribute="bottom" id="ebU-og-kcU"/>
+                            <constraint firstItem="TTI-wm-HeT" firstAttribute="top" secondItem="oC2-xL-sI4" secondAttribute="top" id="hw9-Qj-fpv"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -31,6 +36,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="square.and.arrow.down.on.square.fill" catalog="system" width="122" height="128"/>
+        <image name="splash_icon.png" width="750" height="1583"/>
     </resources>
 </document>

@@ -21,24 +21,20 @@ const Home = (props) => {
     const toggleDrawer = () => props.navigation.toggleDrawer();
 
     return (
-        <View style={styles.container}>
-            <StatusBar
-                backgroundColor={Colors.appColor}
+
+        <CustomLayout
+            drawerOnPress={toggleDrawer}
+        >
+            <Headings />
+            <CustomButton
+                onPress={() => props.navigation.navigate('MarkAttendance')}
+                title={t('home.button1')}
             />
-            <CustomLayout
-                drawerOnPress={toggleDrawer}
-            >
-                <Headings />
-                <CustomButton
-                    onPress={() => props.navigation.navigate('MarkAttendance')}
-                    title={t('home.button1')}
-                />
-                <CustomButton
-                    title={t('home.button2')}
-                    onPress={fetchFeed}
-                />
-            </CustomLayout>
-        </View>
+            <CustomButton
+                title={t('home.button2')}
+                onPress={fetchFeed}
+            />
+        </CustomLayout>
     );
 };
 
