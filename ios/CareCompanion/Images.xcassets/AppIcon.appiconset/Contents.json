@@ -19,7 +19,7 @@
       "size" : "29x29"
     },
     {
-      "filename" : "58-1.png",
+      "filename" : "58.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "29x29"
@@ -73,7 +73,7 @@
       "size" : "29x29"
     },
     {
-      "filename" : "58.png",
+      "filename" : "58-1.png",
       "idiom" : "ipad",
       "scale" : "2x",
       "size" : "29x29"
@@ -103,13 +103,13 @@
       "size" : "76x76"
     },
     {
-      "filename" : "Icon-App-83.5x83.5@2x.png",
+      "filename" : "167.png",
       "idiom" : "ipad",
       "scale" : "2x",
       "size" : "83.5x83.5"
     },
     {
-      "filename" : "1024.png",
+      "filename" : "appstore.png",
       "idiom" : "ios-marketing",
       "scale" : "1x",
       "size" : "1024x1024"
