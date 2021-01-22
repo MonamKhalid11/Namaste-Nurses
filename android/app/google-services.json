@@ -1,0 +1,77 @@
+{
+  "project_info": {
+    "project_number": "482882977494",
+    "firebase_url": "https://noorahealth-f3daa.firebaseio.com",
+    "project_id": "noorahealth-f3daa",
+    "storage_bucket": "noorahealth-f3daa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:482882977494:android:f87315cffc066207215377",
+        "android_client_info": {
+          "package_name": "com.carecompanion"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "482882977494-t7n1l6s2572va33mutg4rfj22pmu2o6i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.carecompanion",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "482882977494-obmmuf3a6g35j8uulspm2c84q8p17ccg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDo4l5epEk7c5czT-v_PhQNjMEAuBJQpvQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "482882977494-obmmuf3a6g35j8uulspm2c84q8p17ccg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:482882977494:android:7507f45b1b516e4d215377",
+        "android_client_info": {
+          "package_name": "com.noorahealth"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "482882977494-obmmuf3a6g35j8uulspm2c84q8p17ccg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDo4l5epEk7c5czT-v_PhQNjMEAuBJQpvQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "482882977494-obmmuf3a6g35j8uulspm2c84q8p17ccg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
