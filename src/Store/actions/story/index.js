@@ -301,3 +301,17 @@ export const addLikesToFeed = (params, success, reject) => {
     }
   }
 }
+export const UpdateDeviceTokenDetails = (params) => {
+  return async dispatch => {
+    try {
+      console.log("showing params for adding feed in like", params)
+      let api = await storyApi.UpdateFcmToken(params)
+      console.log('shwoing response here for submit', api)
+      if (api.success) {
+
+      }
+    } catch (error) {
+      console.log("showing error")
+    }
+  }
+}

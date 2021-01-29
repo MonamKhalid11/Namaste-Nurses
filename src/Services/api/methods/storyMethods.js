@@ -134,6 +134,14 @@ function getNurseList(params) {
         'post',
     );
 }
+function UpdateFcmToken(params) {
+    return Api(
+        endPoints.updateDeviceToken,
+        params,
+        'post',
+        true,
+    );
+}
 export {
     getNurseContent,
     getNurseClass,
@@ -153,5 +161,6 @@ export {
     getCCPToolType,
     getCCPToolMaterial,
     getNurseList,
-    getMasterData
+    getMasterData,
+    UpdateFcmToken
 }

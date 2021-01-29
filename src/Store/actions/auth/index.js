@@ -28,6 +28,7 @@ export const requestOtp = (userApp, navigation, setLoading) => {
     try {
       let params = { mobile_number: userApp.mobile_number, otp: "1234", token: "j56sugRk029Po5DB", appuser_id: "0", access_token: "" }
       let api = await AuthenticationApi.verifyMobileOTP(params)
+      console.log("showing api response", api)
       if (api.success) {
         dispatch({
           type: TYPES.ADD_USER,

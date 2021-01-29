@@ -17,5 +17,6 @@ export {
     fetchOnlineCourses,
     fetchCCPMaterials,
     addComments,
-    addLikesToFeed
+    addLikesToFeed,
+    UpdateDeviceTokenDetails
 } from './story'

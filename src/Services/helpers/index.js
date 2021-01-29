@@ -136,20 +136,16 @@ export const pickImages = (success, reject) => {
 
 export const deviceInformation = (success) => {
   try {
-    let brand = DeviceInfo.getBrand();
     let deviceInfo = null
-
-    if (Platform.OS === 'ios') {
+    deviceInfo = {
+      name: DeviceInfo.getDeviceId(),
+      id: DeviceInfo.getUniqueId(),
+      device_os: Platform.OS === 'ios' ? 'ios' : 'Android',
+      device_os_version: DeviceInfo.getSystemVersion(),
+      app_version: 25,
+      app_version_name: '0.0.25'
     }
-    else {
-      DeviceInfo.getAndroidId().then(androidId => {
-        deviceInfo = {
-          id: androidId,
-          brand: brand
-        }
-        success(deviceInfo)
-      });
-    }
+    success(deviceInfo)
   } catch (error) {
 
   }

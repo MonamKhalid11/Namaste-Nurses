@@ -31,4 +31,6 @@ export const endPoints = {
     getCCPToolType: 'getCCPToolType',
     getCCPToolMaterial: 'getCCPToolMaterial',
     getNurseList: 'getNurseList',
+    updateDeviceToken: 'updateDeviceToken',
+
 }

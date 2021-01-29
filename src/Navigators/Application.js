@@ -6,6 +6,8 @@ import MainNavigator from './Main'
 import { Platform } from 'react-native';
 import messaging from '@react-native-firebase/messaging';
 import { Notifications } from 'react-native-notifications';
+import { deviceInformation } from '../Services'
+
 const Stack = createStackNavigator()
 // @refresh reset
 const ApplicationNavigator = () => {
@@ -20,7 +22,7 @@ const ApplicationNavigator = () => {
       alert: true,
     });
     const token = await messaging().getToken();
-    console.log('TOKEN (getFCMToken)', token);
+
   }
 
 
