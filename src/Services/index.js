@@ -13,6 +13,7 @@ export {
 export {
   BASE_URL,
   endPoints,
+  BASE_URL_IMAGE
 } from './constants';
 export {
   sendMobileOTP,

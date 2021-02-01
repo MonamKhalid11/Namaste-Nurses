@@ -142,6 +142,13 @@ function UpdateFcmToken(params) {
         true,
     );
 }
+function SearchNurse(params) {
+    return Api(
+        endPoints.searchNurseList,
+        params,
+        'post',
+    );
+}
 export {
     getNurseContent,
     getNurseClass,
@@ -162,5 +169,6 @@ export {
     getCCPToolMaterial,
     getNurseList,
     getMasterData,
-    UpdateFcmToken
+    UpdateFcmToken,
+    SearchNurse
 }

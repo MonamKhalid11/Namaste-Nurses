@@ -18,5 +18,6 @@ export {
     fetchCCPMaterials,
     addComments,
     addLikesToFeed,
-    UpdateDeviceTokenDetails
+    UpdateDeviceTokenDetails,
+    SearchNurses
 } from './story'

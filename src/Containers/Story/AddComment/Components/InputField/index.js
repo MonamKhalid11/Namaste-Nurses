@@ -3,17 +3,20 @@ import React, { Component, useEffect } from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image } from 'react-native';
 import { Colors, WP } from '../../../../../Theme';
 import { useTranslation } from 'react-i18next'
+import { SearchNurses } from '../../../../../Store/actions'
+import { useDispatch } from 'react-redux'
+import { BASE_URL_IMAGE } from '../../../../../Services/index'
 
 // create a component
 import { MentionInput, Tag } from 'react-native-complete-mentions';
 
-const suggestedUsers = [{ name: 'John', id: 1, profile: "https://www.w3schools.com/bootstrap/img_avatar3.png" }, { name: 'Eve', id: 2, profile: "https://www.w3schools.com/bootstrap/img_avatar3.png" }];
+var suggestedUsers = [];
 
-function UserSuggestion({ name, onPress, profile }) {
+function UserSuggestion({ name, onPress, image }) {
     return (
         <TouchableOpacity onPress={onPress} style={styles.userSuggestionContainer}>
             <Image
-                source={{ uri: profile }}
+                source={{ uri: `${BASE_URL_IMAGE}/${image}` }}
                 style={styles.dp}
             />
             <Text style={styles.nurseName}>{name}</Text>
@@ -30,10 +33,23 @@ const CommentInputBox = (props) => {
     const [keyword, setKeyword] = React.useState('');
     const [tracking, setTracking] = React.useState(false);
     const [extractedValue, setExtractedValue] = React.useState('');
+    const [nurses, setNurses] = React.useState(false);
+    const dispatch = useDispatch()
+
 
     useEffect(() => {
-        console.log(extractedValue);
-    }, [extractedValue]);
+        dispatch(SearchNurses(extractedValue, (nurses) => {
+            console.log('showing nurses here ', nurses)
+            suggestedUsers = nurses
+            setNurses(true)
+        }, (reject) => {
+            suggestedUsers = [];
+            setNurses(false)
+        }))
+        if (props.value == null) {
+            setValue('')
+        }
+    }, [extractedValue, nurses, props.value]);
 
     const commitRef = React.useRef();
     const extractCommit = commit => {
@@ -46,15 +62,20 @@ const CommentInputBox = (props) => {
             <UserSuggestion
                 name={user.name}
                 id={user.id}
-                profile={user.profile}
+                image={user.image}
                 onPress={() => {
                     if (commitRef.current) {
                         commitRef.current({ name: user.name, id: user.id });
+                        props.taggedId(user.id)
                     }
                 }}
             />
         ));
     };
+    const searchNurseListings = (nurse) => {
+    }
+
+    // console.log("showing values in keyword", keyword)
     return (
         <View style={styles.container}>
             <View style={styles.postingContainer}>
@@ -65,8 +86,9 @@ const CommentInputBox = (props) => {
                 /> */}
                 <MentionInput
                     value={value}
-                    onChangeText={setValue}
+                    onChangeText={(text) => { setValue(text), props.onChangeText(text) }}
                     onExtractedStringChange={setExtractedValue}
+                    placeholder={props.placeholder}
                     style={styles.input}>
                     <Tag
                         tag="@"
@@ -79,7 +101,7 @@ const CommentInputBox = (props) => {
                         extractString={mention => `@[${mention.name}](id:${mention.id})`}
                     />
                 </MentionInput>
-                <TouchableOpacity onPress={props.onPress}>
+                <TouchableOpacity onPress={() => { props.onPress() }}>
                     <Text allowFontScaling={false} style={styles.post}>{t('addComment.post')}</Text>
                 </TouchableOpacity>
 
@@ -140,7 +162,7 @@ const styles = StyleSheet.create({
         // borderColor: 'blue',
         // marginBottom: 2,
         backgroundColor: "white",
-        shadowOpacity: 0.4,
+        shadowOpacity: 0.1,
         height: WP('10'),
         marginBottom: WP('1'),
         flexDirection: 'row',

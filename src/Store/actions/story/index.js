@@ -235,29 +235,29 @@ export const fetchOnlineCourses = (userId) => {
 
 //fetchCCPtools material 
 
-export const fetchCCPMaterials = (userId, success, reject) => {
-  return async dispatch => {
-    try {
-      let params = {
-        user_id: userId,
-        token: "j56sugRk029Po5DB",
-        appuser_id: userId,
-        access_token: "",
-      }
-      let api = await storyApi.getCCPToolMaterial(params)
-      console.log('shwoing response here for submit', api)
-      if (api.success) {
+// export const fetchCCPMaterials = (userId, success, reject) => {
+//   return async dispatch => {
+//     try {
+//       let params = {
+//         user_id: userId,
+//         token: "j56sugRk029Po5DB",
+//         appuser_id: userId,
+//         access_token: "",
+//       }
+//       let api = await storyApi.getCCPToolMaterial(params)
+//       console.log('shwoing response here for submit', api)
+//       if (api.success) {
 
-        success(api.details)
-      }
-      else {
-        reject(true)
-      }
-    } catch (error) {
-      reject(true)
-    }
-  }
-}
+//         success(api.details)
+//       }
+//       else {
+//         reject(true)
+//       }
+//     } catch (error) {
+//       reject(true)
+//     }
+//   }
+// }
 
 //Add comments to user feed 
 export const addComments = (params, success, reject) => {
@@ -312,6 +312,56 @@ export const UpdateDeviceTokenDetails = (params) => {
       }
     } catch (error) {
       console.log("showing error")
+    }
+  }
+}
+
+export const fetchCCPMaterials = (userId, success, reject) => {
+  return async dispatch => {
+    try {
+      let params = {
+        user_id: userId,
+        token: "j56sugRk029Po5DB",
+        appuser_id: userId,
+        access_token: "",
+      }
+      let api = await storyApi.getCCPToolMaterial(params)
+      console.log('shwoing response here for submit', api)
+      if (api.success) {
+
+        success(api.details)
+      }
+      else {
+        reject(true)
+      }
+    } catch (error) {
+      reject(true)
+    }
+  }
+}
+
+//Add comments to user feed 
+export const SearchNurses = (searchedTag, success, reject) => {
+  console.log("showing search tag", searchedTag.substring(1))
+  return async dispatch => {
+    try {
+      let params = {
+        user_id: 89,
+        token: "j56sugRk029Po5DB",
+        appuser_id: 89,
+        search_term: searchedTag.substring(1),
+      }
+      let api = await storyApi.SearchNurse(params)
+      console.log('shwoing response here for submit', api)
+      if (api.success) {
+        success(api.details)
+      }
+      else {
+        reject([])
+      }
+    } catch (error) {
+      reject([])
+
     }
   }
 }

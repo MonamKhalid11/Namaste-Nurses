@@ -22,6 +22,8 @@ const AddComments = ({ route, navigation }) => {
     const [loading, setLoading] = useState(false)
     const [comments, setComments] = useState([])
     const [addedComments, setAddedComments] = useState(null)
+    const [taggedId, setTaggedId] = useState(null)
+
     useEffect(() => {
         isOnline((connected) => {
             setLoading(true)
@@ -41,6 +43,7 @@ const AddComments = ({ route, navigation }) => {
                     user_id: user.id,
                     content_id: params.id,
                     comment: addedComments,
+                    // mentioned_user_id: taggedId,
                     entry_time: moment().format('YYYY-MM-DD HH:MM:SS'),
                     session_id: moment().format('YYYY-MM-DD HH:MM:SS'),
                     token: "j56sugRk029Po5DB",
@@ -59,8 +62,13 @@ const AddComments = ({ route, navigation }) => {
                 })
 
             }
+            else {
+                console.log("shpwing error here")
+
+            }
         }
         catch (error) {
+            console.log("shpwing error here", error)
 
         }
     }
@@ -79,9 +87,8 @@ const AddComments = ({ route, navigation }) => {
                     placeholder={'Add Comment Here'}
                     onPress={addComment}
                     value={addedComments}
-                    onChangeText={setAddedComments}
-
-
+                    onChangeText={(text) => setAddedComments(text)}
+                    taggedId={setTaggedId}
                 />
                 {loading ?
                     <View style={styles.loader}>

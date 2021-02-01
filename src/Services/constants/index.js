@@ -3,6 +3,8 @@
 
 //staging 
 export const BASE_URL = 'http://34.94.112.24/noora/api/v6/'
+export const BASE_URL_IMAGE = 'http://34.94.112.24/noora/uploads/NurseImage/'
+
 export const endPoints = {
 
     //Authentication EndPoints
@@ -32,5 +34,5 @@ export const endPoints = {
     getCCPToolMaterial: 'getCCPToolMaterial',
     getNurseList: 'getNurseList',
     updateDeviceToken: 'updateDeviceToken',
-
+    searchNurseList: 'getNurseName'
 }
