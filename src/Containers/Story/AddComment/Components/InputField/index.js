@@ -49,7 +49,7 @@ const CommentInputBox = (props) => {
         if (props.value == null) {
             setValue('')
         }
-    }, [extractedValue, nurses, props.value]);
+    }, [extractedValue, nurses, props.value, suggestedUsers]);
 
     const commitRef = React.useRef();
     const extractCommit = commit => {
@@ -57,7 +57,7 @@ const CommentInputBox = (props) => {
     };
 
     const renderSuggestedUsers = () => {
-        if (!tracking || keyword === '') return null;
+        if (!tracking) return null;
         return suggestedUsers.map(user => (
             <UserSuggestion
                 name={user.name}

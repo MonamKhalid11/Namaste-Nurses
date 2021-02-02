@@ -43,7 +43,7 @@ const AddComments = ({ route, navigation }) => {
                     user_id: user.id,
                     content_id: params.id,
                     comment: addedComments,
-                    // mentioned_user_id: taggedId,
+                    mentioned_user_id: taggedId,
                     entry_time: moment().format('YYYY-MM-DD HH:MM:SS'),
                     session_id: moment().format('YYYY-MM-DD HH:MM:SS'),
                     token: "j56sugRk029Po5DB",
