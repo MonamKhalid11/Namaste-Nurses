@@ -17,6 +17,13 @@ export default {
     heading: 'Lets get started.',
     todo: 'What would you like to do today?'
   },
+  states: {
+    button1: "MARK ATTENDANCE",
+    button2: "SUBMIT",
+    heading: 'Lets get started.',
+    todo: 'Please choose your state.',
+    placeholder: "Tap to select state"
+  },
   drawer: {
     message: 'Hello!',
     screen1: 'PROFILE',

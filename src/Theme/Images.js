@@ -30,5 +30,10 @@ export default {
   likeEmpty: require('@/Assets/Images/likeEmpty.png'),
   likeFilled: require('@/Assets/Images/likeFilled.png'),
   noClass: require('@/Assets/Images/NoClass.png'),
+  karnatak: require('@/Assets/Images/karnatak.jpeg'),
+  madhaya: require('@/Assets/Images/madhaya.jpeg'),
+  mahrashtra: require('@/Assets/Images/mahrashtra.jpeg'),
+  punjab: require('@/Assets/Images/punjab.jpeg'),
+
 
 }

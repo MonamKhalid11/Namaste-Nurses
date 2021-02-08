@@ -38,7 +38,7 @@ export const requestOtp = (userApp, navigation, setLoading) => {
         navigation.dispatch(
           CommonActions.reset({
             index: 0,
-            routes: [{ name: 'Main' }],
+            routes: [{ name: 'States' }],
           }),
         )
       }

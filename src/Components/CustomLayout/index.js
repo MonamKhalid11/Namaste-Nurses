@@ -34,39 +34,53 @@ const CustomLayout = (props) => {
                             </TouchableOpacity>
                         </View>
                         :
-                        <View style={styles.loginContainer}>
-                            <TouchableOpacity
-                                onPress={props.drawerOnPress}
-                            >
-                                <Image
-                                    source={Images.menu}
-                                    style={styles.menuBlack}
-                                />
-                            </TouchableOpacity>
-                        </View>
+                        props.isWelcome ?
+                            null
+                            :
+                            <View style={styles.loginContainer}>
+                                <TouchableOpacity
+                                    onPress={props.drawerOnPress}
+                                >
+                                    <Image
+                                        source={Images.menu}
+                                        style={styles.menuBlack}
+                                    />
+                                </TouchableOpacity>
+                            </View>
                     :
                     null
 
             }
-            <View style={[props.showBackbtn ? styles.logoContainerBackBtn : styles.logoContainer, !props.isLogin && !props.showBackbtn ? { alignItems: 'center', justifyContent: 'center' } : null, props.logoStyles]}>
-                <Image
-                    source={props.isLogin ? Images.logo : props.isMarked ? Images.marked : props.commingSoon ? Images.commingSoon : Images.welcome}
-                    style={props.isLogin ? styles.logo : props.isMarked ? styles.marked : styles.welcome}
-                />
-
-                {props.isLogin ?
-                    <MobileNumberInput
-                        placeholder={props.loginPlaceHolder}
-                        isLogin={props.isLogin}
-                        keyboardType={'phone-pad'}
-                        value={props.value}
-                        onChangeText={props.onChangeText}
-                        onArrowPress={props.onArrowPress}
-                    />
+            {
+                props.isWelcome ?
+                    <View style={styles.logoContainer}>
+                        <Image
+                            source={Images.logo}
+                            style={styles.logo}
+                        />
+                    </View>
                     :
-                    null
-                }
-            </View>
+                    <View style={[props.showBackbtn ? styles.logoContainerBackBtn : styles.logoContainer, !props.isLogin && !props.showBackbtn ? { alignItems: 'center', justifyContent: 'center' } : null, props.logoStyles]}>
+                        <Image
+                            source={props.isLogin ? Images.logo : props.isMarked ? Images.marked : props.commingSoon ? Images.commingSoon : Images.welcome}
+                            style={props.isLogin ? styles.logo : props.isMarked ? styles.marked : styles.welcome}
+                        />
+
+                        {props.isLogin ?
+                            <MobileNumberInput
+                                placeholder={props.loginPlaceHolder}
+                                isLogin={props.isLogin}
+                                keyboardType={'phone-pad'}
+                                value={props.value}
+                                onChangeText={props.onChangeText}
+                                onArrowPress={props.onArrowPress}
+                            />
+                            :
+                            null
+                        }
+                    </View>
+            }
+
             <View style={[props.isLogin ? styles.contentContainerLogin : styles.contentContainer, props.contentContainer]}>
                 {props.children}
             </View>

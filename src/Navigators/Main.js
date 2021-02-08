@@ -19,6 +19,7 @@ import CcpToolsDetails from '../Containers/Story/CcpDetails'
 import Games from '../Containers/Story/InteractiveGame'
 import CommingSoon from '../Containers/Story/CommingSoon'
 import PreferredLanguage from '../Containers/Story/PreferredLanguage'
+import YoutubeComponent from '../Containers/Story/Feed/Components/VideoPlayer'
 const Drawer = createDrawerNavigator();
 
 // @refresh reset
@@ -50,6 +51,7 @@ const MainNavigator = () => {
       <Drawer.Screen name="Games" component={Games} options={{ headerShown: false }} />
       <Drawer.Screen name="CommingSoon" component={CommingSoon} options={{ headerShown: false }} />
       <Drawer.Screen name="PreferredLanguage" component={PreferredLanguage} options={{ headerShown: false }} />
+      <Drawer.Screen name="YoutubeComponent" component={YoutubeComponent} options={{ headerShown: false }} />
     </Drawer.Navigator>
   )
 }

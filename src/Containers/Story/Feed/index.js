@@ -12,6 +12,7 @@ import FocusAwareStatusBar from '../../../Components/FoucsAwareStatusBar'
 
 // create a component
 const Feed = (props) => {
+    console.log("showing props here is:", props)
     const nurseFeed = useSelector(state => state.story.nurseFeed)
     const user = useSelector(state => state.auth.user)
     const dispatch = useDispatch()
@@ -26,6 +27,7 @@ const Feed = (props) => {
             showToast(t('commonApp.internetError'))
         })
     }, [props.route])
+
 
     const _handleRefresh = () => {
         isOnline((connected) => {

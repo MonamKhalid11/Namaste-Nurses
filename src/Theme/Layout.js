@@ -100,6 +100,17 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  dropDownContainer: {
+    display: 'flex',
+    height: WP('13'),
+    width: WP('90'),
+    backgroundColor: Colors.white,
+    alignItems: 'center',
+    justifyContent: 'center',
+    transform: [{ rotate: '180deg' }],
+    fontFamily: 'Assistant-Bold',
+
+  },
   inputContainer: {
     display: 'flex',
     height: WP('13'),

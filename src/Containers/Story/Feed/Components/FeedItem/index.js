@@ -6,6 +6,8 @@ import TimeAgo from 'react-native-timeago';
 import { useDispatch, useSelector } from 'react-redux'
 import { isOnline, ShowActivityIndicator } from '../../../../../Services';
 import { addLikesToFeed, getNurseFeed } from '../../../../../Store/actions'
+import { Thumbnail } from 'react-native-thumbnail-video';
+
 // create a component
 import moment from 'moment'
 const FeedItem = (props) => {
@@ -64,12 +66,12 @@ const FeedItem = (props) => {
                     />
                 </View>
                 :
-                <View style={styles.feedImageContainer}>
-                    <Image
-                        source={Images.noora}
-                        style={styles.feedImage}
-                    />
-                </View>
+                props.feed.attachment ?
+                    <TouchableOpacity onPress={() => props.navigation.navigate('YoutubeComponent', { url: props.feed.attachment })}>
+                        <Thumbnail url={props.feed.attachment} />
+                    </TouchableOpacity>
+                    :
+                    null
 
             }
             {/* <TouchableOpacity style={styles.likesContainer}
@@ -230,7 +232,14 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         flexDirection: 'row',
 
-    }
+    },
+    backgroundVideo: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        bottom: 0,
+        right: 0,
+    },
 });
 
 //make this component available to the app
