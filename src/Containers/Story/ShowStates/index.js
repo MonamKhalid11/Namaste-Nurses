@@ -18,7 +18,7 @@ const Home = (props) => {
     const { navigation } = props
     const { t } = useTranslation()
     const user = useSelector(state => state.auth.user)
-    const [value, setValue] = useState(null);
+    const [value, setValue] = useState('item1');
     const [showScreen, setShowScreen] = useState(false)
     const [showScreenUrl, setShowScreenUrl] = useState(false)
     const renderScreens = () => {

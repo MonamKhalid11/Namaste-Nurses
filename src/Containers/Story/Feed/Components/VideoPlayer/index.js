@@ -1,17 +1,18 @@
 //import liraries
 import React, { Component, useEffect, useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image, Alert, SafeAreaView } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image, Alert, SafeAreaView, PermissionsAndroid, Platform } from 'react-native';
 import YouTube from 'react-native-youtube';
 import getVideoId from 'get-video-id';
 import { CustomLayout } from '@/Components'
 import { Colors, Images, WP } from '../../../../../Theme'
 import { Dimensions, PixelRatio } from 'react-native';
-
+import { YOUTUBEKEY } from '../../../../../Services/constants'
 // create a component
 import CameraRoll from "@react-native-community/cameraroll";
 import { ShowActivityIndicator, showToast } from '../../../../../Services';
 import FadeInView from '../../../../../Components/AnimatedView'
 import Modal from 'react-native-modal';
+import RNFetchBlob from 'rn-fetch-blob';
 
 const YoutubeComponent = (props) => {
     console.log('props here', props.route.params)
@@ -20,16 +21,46 @@ const YoutubeComponent = (props) => {
     const [showLoader, setShowLoader] = useState(false)
 
     const screenWidth = Dimensions.get('window').width;
+    const getPermissionAndroid = async () => {
+        try {
+            const granted = await PermissionsAndroid.request(
+                PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
+                {
+                    title: 'Image Download Permission',
+                    message: 'Your permission is required to save images to your device',
+                    buttonNegative: 'Cancel',
+                    buttonPositive: 'OK',
+                },
+            );
+            if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+                return true;
+            }
+            Alert.alert(
+                'Save remote Image',
+                'Grant Me Permission to save Image',
+                [{ text: 'OK', onPress: () => console.log('OK Pressed') }],
+                { cancelable: false },
+            );
+        } catch (err) {
+            Alert.alert(
+                'Save remote Image',
+                'Failed to save Image: ' + err.message,
+                [{ text: 'OK', onPress: () => console.log('OK Pressed') }],
+                { cancelable: false },
+            );
+        }
+    };
 
     useEffect(() => {
         if (props.route.params.isVideo) {
             const { id } = getVideoId(props.route.params.url);
             setVideoId(id)
+            console.log("showing hereed in effect")
         }
         else {
             SetShowImages(true)
         }
-    }, [props.route.params])
+    }, [props.route])
 
     const toggleDrawer = () => props.navigation.toggleDrawer();
     const toggleImageViewer = () => { SetShowImages(!showImages), onBackBtnPressed() };
@@ -39,17 +70,69 @@ const YoutubeComponent = (props) => {
 
 
     const tester = () => {
-        setShowLoader(true)
-        setTimeout(() => {
-            try {
-                CameraRoll.save(props.route.params.url, "photo").then(showToast('Photo added to camera roll!'))
-                setShowLoader(false)
+        if (Platform.OS === 'android') {
+            handleDownload()
+        }
+        else {
+            setShowLoader(true)
+            setTimeout(() => {
+                try {
+                    CameraRoll.save(props.route.params.url, "photo").then(showToast('Photo added to camera roll!'))
+                    setShowLoader(false)
 
-            } catch (error) {
-                setShowLoader(false)
-            }
-        }, 2000)
+                } catch (error) {
+                    setShowLoader(false)
+                }
+            }, 2000)
+        }
+
     }
+    const handleDownload = async () => {
+        // if device is android you have to ensure you have permission
+        if (Platform.OS === 'android') {
+            const granted = await getPermissionAndroid();
+            if (!granted) {
+                return;
+            }
+        }
+        setShowLoader(true)
+
+        RNFetchBlob.config({
+            fileCache: true,
+            appendExt: 'png',
+        })
+            .fetch('GET', props.route.params.url)
+            .then(res => {
+                CameraRoll.saveToCameraRoll(res.data, 'photo')
+                    .then(() => {
+                        Alert.alert(
+                            'Image Saved',
+                            'Photo added to camera roll!',
+                            [{ text: 'OK', onPress: () => console.log('OK Pressed') }],
+                            { cancelable: false },
+                        );
+                    })
+                    .catch(err => {
+                        Alert.alert(
+                            'Save remote Image',
+                            'Failed to save Image: ' + err.message,
+                            [{ text: 'OK', onPress: () => console.log('OK Pressed') }],
+                            { cancelable: false },
+                        );
+                    })
+                    .finally(() => setShowLoader(false)
+                    );
+            })
+            .catch(error => {
+                setShowLoader(false)
+                Alert.alert(
+                    'Save remote Image',
+                    'Failed to save Image: ' + error.message,
+                    [{ text: 'OK', onPress: () => console.log('OK Pressed') }],
+                    { cancelable: false },
+                );
+            });
+    };
 
     return (
         <>
@@ -78,10 +161,10 @@ const YoutubeComponent = (props) => {
                     </View>
                     <View style={styles.containerVideo}>
                         <YouTube
+                            apiKey={YOUTUBEKEY}
                             videoId={videoId} // The YouTube video ID
                             play // control playback of video with true/false
                             fullscreen // control whether the video should play in fullscreen or inline
-                            loop // control whether the video should loop when ended
                             style={{ alignSelf: 'stretch', height: 300 }}
                         />
                     </View>

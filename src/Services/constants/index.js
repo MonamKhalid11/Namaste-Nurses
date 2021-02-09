@@ -4,6 +4,7 @@
 //staging 
 export const BASE_URL = 'http://34.94.112.24/noora/api/v6/'
 export const BASE_URL_IMAGE = 'http://34.94.112.24/noora/uploads/NurseImage/'
+export const YOUTUBEKEY = "AIzaSyC1L4KGWC4PkOFCXIYWTJCgJ5qluFEcK8E"
 
 export const endPoints = {
 
