@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@react-native-community/async-storage": "^1.12.1",
+    "@react-native-community/cameraroll": "^4.0.2",
     "@react-native-community/clipboard": "^1.5.1",
     "@react-native-community/datetimepicker": "^3.0.6",
     "@react-native-community/masked-view": "^0.1.10",
@@ -39,7 +40,6 @@
     "react-native-flipper": "^0.62.0",
     "react-native-gesture-handler": "^1.8.0",
     "react-native-image-picker": "^2.3.4",
-    "react-native-image-view": "^2.1.9",
     "react-native-indicators": "^0.17.0",
     "react-native-keyboard-aware-scroll-view": "^0.9.3",
     "react-native-modal": "^11.5.6",

@@ -60,14 +60,18 @@ const FeedItem = (props) => {
             </View>
             {props.feed.attachment_list.length > 0 ?
                 <View style={styles.feedImageContainer}>
-                    <Image
-                        source={{ uri: props.feed.attachment_list[0].attachment }}
-                        style={styles.feedImage}
-                    />
+                    <TouchableOpacity onPress={() => props.navigation.navigate('YoutubeComponent', { url: props.feed.attachment_list[0].attachment, isVideo: false })}>
+
+                        <Image
+                            source={{ uri: props.feed.attachment_list[0].attachment }}
+                            style={styles.feedImage}
+                        />
+                    </TouchableOpacity>
+
                 </View>
                 :
                 props.feed.attachment ?
-                    <TouchableOpacity onPress={() => props.navigation.navigate('YoutubeComponent', { url: props.feed.attachment })}>
+                    <TouchableOpacity onPress={() => props.navigation.navigate('YoutubeComponent', { url: props.feed.attachment, isVideo: true })}>
                         <Thumbnail url={props.feed.attachment} />
                     </TouchableOpacity>
                     :

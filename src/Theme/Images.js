@@ -34,6 +34,9 @@ export default {
   madhaya: require('@/Assets/Images/madhaya.jpeg'),
   mahrashtra: require('@/Assets/Images/mahrashtra.jpeg'),
   punjab: require('@/Assets/Images/punjab.jpeg'),
+  download: require('@/Assets/Images/download.png'),
+
+
 
 
 }
