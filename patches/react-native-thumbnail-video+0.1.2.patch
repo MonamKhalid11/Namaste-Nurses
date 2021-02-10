@@ -1,0 +1,24 @@
+diff --git a/node_modules/react-native-thumbnail-video/src/components/thumbnail.js b/node_modules/react-native-thumbnail-video/src/components/thumbnail.js
+index bc53a4f..8318f4f 100644
+--- a/node_modules/react-native-thumbnail-video/src/components/thumbnail.js
++++ b/node_modules/react-native-thumbnail-video/src/components/thumbnail.js
+@@ -113,11 +113,6 @@ export default class Thumbnail extends PureComponent {
+     const imageURL = `https://img.youtube.com/vi/${videoId}/${this.getType()}.jpg`;
+ 
+     return (
+-      <TouchableOpacity
+-        activeOpacity={0.7}
+-        style={containerStyle}
+-        onPress={this.onPress}
+-      >
+         <ImageBackground
+           source={{ uri: imageURL }}
+           style={[
+@@ -145,7 +140,6 @@ export default class Thumbnail extends PureComponent {
+ 
+           {children}
+         </ImageBackground>
+-      </TouchableOpacity>
+     );
+   }
+ }
