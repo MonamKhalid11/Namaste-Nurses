@@ -111,6 +111,15 @@ export default StyleSheet.create({
     fontFamily: 'Assistant-Bold',
 
   },
+  dropDownContainerAndroid: {
+    display: 'flex',
+    height: WP('13'),
+    width: WP('90'),
+    backgroundColor: Colors.white,
+    justifyContent: 'center',
+    fontFamily: 'Assistant-Bold',
+
+  },
   inputContainer: {
     display: 'flex',
     height: WP('13'),
