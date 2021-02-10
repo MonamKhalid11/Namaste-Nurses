@@ -18,10 +18,11 @@ const Home = (props) => {
     const { navigation } = props
     const { t } = useTranslation()
     const user = useSelector(state => state.auth.user)
-    const [value, setValue] = useState('item1');
+    const [value, setValue] = useState(null);
     const [showScreen, setShowScreen] = useState(false)
     const [showScreenUrl, setShowScreenUrl] = useState(false)
     const renderScreens = () => {
+        console.log("showing value here is value", value)
         if (value) {
             switch (value) {
                 case 'item1':

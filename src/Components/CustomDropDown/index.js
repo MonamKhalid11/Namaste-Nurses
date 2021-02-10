@@ -11,70 +11,70 @@ const CustomDropDown = (props) => {
     const { t } = useTranslation()
     let controller;
     return (
-      Platform.OS == 'ios' ?
-      <DropDownPicker
-           items={items}
-           style={{ transform: [{ rotate: '180deg' }] }}
-           arrowColor={Colors.appColor}
-           customArrowUp={() => <Image source={Images.forward} style={styles.accessoryUp} />}
-           customArrowDown={() => <Image source={Images.forward} style={styles.accessory} />}
-           placeholder={t('states.placeholder')}
-           containerStyle={Layout.dropDownContainer}
-           controller={instance => controller = instance}
-           onChangeList={(items, callback) => {
-               new Promise((resolve, reject) => resolve(setItems(items)))
-                   .then(() => callback())
-                   .catch(() => { });
-           }}
-           defaultValue={props.value}
-           onChangeItem={item => props.setValue(item.value)}
-           dropDownStyle={{
-               transform: [{ rotate: '180deg' }],
-               fontFamily: 'Assistant-Bold',
-               backgroundColor: Colors.inputGrey,
-           }}
-           selectedLabelStyle={{
-               color: Colors.grey,
-               fontFamily: 'Assistant-Bold',
-           }}
-           placeholderStyle={{
-               fontFamily: 'Assistant-SemiBold',
-               color: Colors.grey
-           }}
-           itemStyle={{
-               fontFamily: 'Assistant-Bold',
-               color: Colors.grey,
-               alignItems: 'flex-start',
-               justifyContent: 'flex-start'
-           }}
+        Platform.OS == 'ios' ?
+            <DropDownPicker
+                items={items}
+                style={{ transform: [{ rotate: '180deg' }] }}
+                arrowColor={Colors.appColor}
+                customArrowUp={() => <Image source={Images.forward} style={styles.accessoryUp} />}
+                customArrowDown={() => <Image source={Images.forward} style={styles.accessory} />}
+                placeholder={t('states.placeholder')}
+                containerStyle={Layout.dropDownContainer}
+                controller={instance => controller = instance}
+                onChangeList={(items, callback) => {
+                    new Promise((resolve, reject) => resolve(setItems(items)))
+                        .then(() => callback())
+                        .catch(() => { });
+                }}
+                defaultValue={props.value}
+                onChangeItem={item => props.setValue(item.value)}
+                dropDownStyle={{
+                    transform: [{ rotate: '180deg' }],
+                    fontFamily: 'Assistant-Bold',
+                    backgroundColor: Colors.inputGrey,
+                }}
+                selectedLabelStyle={{
+                    color: Colors.grey,
+                    fontFamily: 'Assistant-Bold',
+                }}
+                placeholderStyle={{
+                    fontFamily: 'Assistant-SemiBold',
+                    color: Colors.grey
+                }}
+                itemStyle={{
+                    fontFamily: 'Assistant-Bold',
+                    color: Colors.grey,
+                    alignItems: 'flex-start',
+                    justifyContent: 'flex-start'
+                }}
 
-       />
-      :  <Dropdown
-          dropdownPosition={5.2}
-          value={t('states.placeholder')}
-          containerStyle={Layout.dropDownContainerAndroid}
-          onChangeText={item => props.setValue(item.value)}
-          data={items}
-          fontSize={12}
-          arrowColor={Colors.appColor}
-          CustomArrow={(props) => <Image source={Images.forward} style={props.isEnabled ? styles.accessoryUp : styles.accessory} />}
-          selectedItemColor={Colors.grey}
-          styleInput={{
-            color: Colors.grey,
-            fontFamily: 'Assistant-Bold',
-          }}
-          itemTextStyle={{
-            fontFamily: 'Assistant-Bold',
-            color: Colors.grey,
-            alignItems: 'flex-start',
-            justifyContent: 'flex-start'
-          }}
-          pickerStyle={{
-           backgroundColor: Colors.inputGrey,
-           margin: 10,
-           width: 325
-          }}
-       />
+            />
+            : <Dropdown
+                dropdownPosition={5.2}
+                value={t('states.placeholder')}
+                containerStyle={Layout.dropDownContainerAndroid}
+                onChangeText={item => props.setValue(item)}
+                data={items}
+                fontSize={12}
+                arrowColor={Colors.appColor}
+                CustomArrow={(props) => <Image source={Images.forward} style={props.isEnabled ? styles.accessoryUp : styles.accessory} />}
+                selectedItemColor={Colors.grey}
+                styleInput={{
+                    color: Colors.grey,
+                    fontFamily: 'Assistant-Bold',
+                }}
+                itemTextStyle={{
+                    fontFamily: 'Assistant-Bold',
+                    color: Colors.grey,
+                    alignItems: 'flex-start',
+                    justifyContent: 'flex-start'
+                }}
+                pickerStyle={{
+                    backgroundColor: Colors.inputGrey,
+                    margin: 10,
+                    width: 325
+                }}
+            />
     )
 
 };

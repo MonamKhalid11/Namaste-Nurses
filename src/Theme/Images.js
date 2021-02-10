@@ -9,7 +9,7 @@ export default {
   back: require('@/Assets/Images/back.png'),
   menu: require('@/Assets/Images/menu.png'),
   picker: require('@/Assets/Images/picker.png'),
-  unchecked: require('@/Assets/Images/unchecked.png'),
+  unchecked: require('@/Assets/Images/unChecked.png'),
   checkedBox: require('@/Assets/Images/checkedBox.png'),
   marked: require('@/Assets/Images/marked.png'),
   add: require('@/Assets/Images/addBtn.png'),
