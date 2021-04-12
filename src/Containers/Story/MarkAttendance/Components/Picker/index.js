@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
         height: WP('16'),
         width: WP('90'),
         marginBottom: WP('3'),
-        borderStyle: 'dashed',
+        borderStyle: 'dotted',
         borderRadius: 1,
     },
     iconContainer: {

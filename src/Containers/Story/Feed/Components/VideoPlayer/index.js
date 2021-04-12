@@ -1,6 +1,6 @@
 //import liraries
-import React, { Component, useEffect, useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image, Alert, SafeAreaView, PermissionsAndroid, Platform } from 'react-native';
+import React, { Component, useEffect, useState, useFocusEffect, useCallback } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, Image, Alert, SafeAreaView, PermissionsAndroid, Platform, BackHandler } from 'react-native';
 import YouTube from 'react-native-youtube';
 import getVideoId from 'get-video-id';
 import { CustomLayout } from '@/Components'
@@ -13,8 +13,12 @@ import { ShowActivityIndicator, showToast } from '../../../../../Services';
 import FadeInView from '../../../../../Components/AnimatedView'
 import Modal from 'react-native-modal';
 import RNFetchBlob from 'rn-fetch-blob';
+import { useNavigation } from '@react-navigation/native';
 
 const YoutubeComponent = (props) => {
+    const { addListener } = useNavigation();
+    const [play, setPlay] = useState(true);
+
     console.log('props here', props.route.params)
     const [videoId, setVideoId] = useState(null)
     const [showImages, SetShowImages] = useState(false)
@@ -52,6 +56,7 @@ const YoutubeComponent = (props) => {
     };
 
     useEffect(() => {
+
         if (props.route.params.isVideo) {
             const { id } = getVideoId(props.route.params.url);
             setVideoId(id)
@@ -60,10 +65,35 @@ const YoutubeComponent = (props) => {
         else {
             SetShowImages(true)
         }
-    }, [props.route])
+
+        const unsubsfocus = addListener('focus', () => {
+            console.log('focus');
+            setPlay(true);
+        });
+        const unsubsblur = addListener('blur', () => {
+            console.log('blur');
+            setPlay(true);
+        });
+
+        return () => {
+            unsubsfocus();
+            unsubsblur();
+            setPlay(false);
+        };
+
+    }, [props.route, addListener,])
+
+
+
+
 
     const toggleDrawer = () => props.navigation.toggleDrawer();
     const toggleImageViewer = () => { SetShowImages(!showImages), onBackBtnPressed() };
+
+    const onDeviceBackBtn = () => {
+        SetShowImages(false)
+        props.navigation.goBack()
+    }
 
     const onBackBtnPressed = () => props.navigation.goBack()
 
@@ -160,13 +190,20 @@ const YoutubeComponent = (props) => {
                         </TouchableOpacity>
                     </View>
                     <View style={styles.containerVideo}>
-                        <YouTube
-                            apiKey={YOUTUBEKEY}
-                            videoId={videoId} // The YouTube video ID
-                            play // control playback of video with true/false
-                            fullscreen // control whether the video should play in fullscreen or inline
-                            style={{ alignSelf: 'stretch', height: 300 }}
-                        />
+                        {videoId && play ?
+                            <YouTube
+                                apiKey={YOUTUBEKEY}
+                                videoId={videoId} // The YouTube video ID
+                                play={play}// control playback of video with true/false
+                                fullscreen // control whether the video should play in fullscreen or inline
+                                style={{ alignSelf: 'stretch', height: 300 }}
+                                resumePlayAndroid={false}
+                            />
+                            :
+                            null
+
+                        }
+
                     </View>
 
                 </View>
@@ -175,6 +212,8 @@ const YoutubeComponent = (props) => {
                     isVisible={showImages}
                     onBackdropPress={toggleImageViewer}
                     style={styles.containerImage}
+                    onRequestClose={onDeviceBackBtn}
+
                 >
                     <View style={styles.drawerContainerDetailsModal}>
                         <TouchableOpacity

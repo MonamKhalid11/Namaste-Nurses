@@ -8,7 +8,7 @@ const FeedListing = (props) => {
     return (
         <View style={styles.container}>
             <FlatList
-                data={props.feeds}
+                data={props.feeds.reverse()}
                 extraData={props.feeds}
                 renderItem={({ item }) => (
                     <FeedItem

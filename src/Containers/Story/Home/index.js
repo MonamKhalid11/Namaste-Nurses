@@ -33,6 +33,8 @@ const Home = (props) => {
             data.append('app_version_name', device.app_version);
             data.append('gcm_token', token);
             data.append('user_id', parseInt(user.id));
+            console.log("showing user data", data)
+
             dispatch(UpdateDeviceTokenDetails(data))
         })
     }, [])

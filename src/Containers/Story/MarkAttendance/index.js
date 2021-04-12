@@ -16,7 +16,6 @@ import { showToast, getPicture, isOnline } from '../../../Services';
 import { useDispatch, useSelector } from 'react-redux'
 import { markAttendance } from '../../../Store/actions'
 import moment from 'moment'
-import { cos } from 'react-native-reanimated';
 // create a component
 const MarkAttendance = (props) => {
     console.log("showing props here for marked attendance", props)
@@ -116,9 +115,9 @@ const MarkAttendance = (props) => {
                 showToast('Please enter date!')
                 return
             }
-            else if (!selectedImage) {
-                showToast('Please select image!')
-            }
+            // else if (!selectedImage) {
+            //     showToast('Please select image!')
+            // }
             else if (!time) {
                 showToast('Please enter time!')
                 return
@@ -142,9 +141,9 @@ const MarkAttendance = (props) => {
                         user_id: user.id,
                         class_id: "0",
                         class_type: selectedOptionId.id,
-                        image: 'data:image/jpeg;base64,' + selectedImage.data,
+                        image: selectedImage ? 'data:image/jpeg;base64,' + selectedImage.data : null,
                         class_date: moment(date).format('YYYY-MM-DD'),
-                        class_time: time.slice(0, 5),
+                        class_time: time,
                         no_of_people: people,
                         no_of_family: "0",
                         ward: location,
@@ -171,7 +170,7 @@ const MarkAttendance = (props) => {
 
                             }
                             else {
-                                showToast('Try again')
+                                showToast('Sorry, unable to submit details!')
                                 setLoading(false)
 
                             }
@@ -185,7 +184,7 @@ const MarkAttendance = (props) => {
                 }
             }
         } catch (error) {
-
+            console.log("showing values in error are ", error)
         }
     }
 
@@ -203,7 +202,7 @@ const MarkAttendance = (props) => {
                         selectedImage={selectedImage}
                     />
                     <CustomDateTimePicker date={date} onDateChange={SetDate} title={t('markScreen.date')} />
-                    <TimePicker time={time} onTimeChange={SetTime} title={t('markScreen.time')} placeholder={time} />
+                    <TimePicker onTimeChange={SetTime} title={t('markScreen.time')} />
                     <SessionInput title={t('markScreen.people')} placeholder={t('markScreen.peoplePlaceHolder')} keyboardType={'numeric'} value={people} onChangeText={SetPeople} />
                     <OptionsListing classesTypes={classesTypes} title={t('markScreen.type')} subTitle={t('markScreen.select')} onPress={(tapped) => { updateCheckedState(tapped) }} />
                     < SessionInput title={t('markScreen.location')} placeholder={t('markScreen.locationPlaceHolder')} value={location} onChangeText={SetLocation} />

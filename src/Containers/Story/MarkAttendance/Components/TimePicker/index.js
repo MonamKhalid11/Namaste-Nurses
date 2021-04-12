@@ -4,10 +4,12 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import DatePicker from 'react-native-datepicker'
 import { Colors, WP } from '../../../../../Theme';
 import DateTimePickerModal from "react-native-modal-datetime-picker";
+import CalendarPicker from 'react-native-calendar-picker';
+
 import moment from 'moment'
 // create a component
 const TimePicker = (props) => {
-    const [pickedDate, setPickedDate] = useState(null)
+    const [pickedDate, setPickedDate] = useState(format12Hours(new Date()))
     const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
 
     const showDatePicker = () => {
@@ -19,11 +21,34 @@ const TimePicker = (props) => {
     };
 
     const handleConfirm = (date) => {
-        let datePicked = moment(date).format('HH:MM')
-        setPickedDate(datePicked)
-        props.onTimeChange(datePicked)
+        console.log("showing values in date here are", date)
+        setPickedDate(format12Hours(new Date(date)))
+        props.onTimeChange(formatAMPM(new Date(date)))
         hideDatePicker();
     };
+
+    function formatAMPM(date) {
+        var hours = date.getHours();
+        var minutes = date.getMinutes();
+        // var ampm = hours >= 12 ? 'pm' : 'am';
+        // hours = hours % 12;
+        // hours = hours ? hours : 12; // the hour '0' should be '12'
+        minutes = minutes < 10 ? '0' + minutes : minutes;
+        var strTime = hours + ':' + minutes;
+        return strTime;
+    }
+
+    function format12Hours(date) {
+        var hours = date.getHours();
+        var minutes = date.getMinutes();
+        var ampm = hours >= 12 ? 'pm' : 'am';
+        hours = hours % 12;
+        hours = hours ? hours : 12; // the hour '0' should be '12'
+        minutes = minutes < 10 ? '0' + minutes : minutes;
+        var strTime = hours + ':' + minutes + ' ' + ampm;
+        return strTime;
+    }
+
 
     // const setTime = (event, date) => {
     //     try {
@@ -38,6 +63,7 @@ const TimePicker = (props) => {
 
     //     }
     // };
+
     function tConvert(time) {
         // Check correct time format and split into components
         time = time.toString().match(/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];
@@ -55,18 +81,18 @@ const TimePicker = (props) => {
         <View style={[styles.container, props.inputContainerStyles]}>
             <DateTimePickerModal
                 isVisible={isDatePickerVisible}
+                is24Hour={true}
                 mode="time"
+                headerTextIOS="Pick Time"
                 onConfirm={handleConfirm}
                 onCancel={hideDatePicker}
             />
             <Text allowFontScaling={false} style={styles.title}>{props.title}</Text>
             <TouchableOpacity style={props.isEditClass ? styles.inputFieldEditClass : styles.inputField}
                 onPress={showDatePicker}>
-                {pickedDate && !props.placeholder ?
-                    <Text allowFontScaling={false} style={styles.picked} >{pickedDate}</Text>
-                    :
-                    <Text allowFontScaling={false} style={[props.placeholder ? styles.picked : styles.placeholder]} >{props.placeholder ? tConvert(props.placeholder) : "Select time"}</Text>
-                }
+
+                <Text allowFontScaling={false} style={styles.picked} >{pickedDate}</Text>
+
             </TouchableOpacity>
         </View>
     );
