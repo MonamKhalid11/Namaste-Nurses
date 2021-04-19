@@ -11,6 +11,8 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchNurseComments, addComments } from '../../../Store/actions'
 import { isOnline, ShowActivityIndicator, showToast } from '../../../Services';
+import { replaceMentionValues } from 'react-native-controlled-mentions'
+
 import moment from 'moment'
 // create a component
 const AddComments = ({ route, navigation }) => {
@@ -39,16 +41,18 @@ const AddComments = ({ route, navigation }) => {
     const addComment = () => {
         try {
             if (addedComments) {
+
+                console.log("showing plain string here ", replaceMentionValues(addedComments, ({ name }) => `@${name}`))
                 let parameter = {
                     user_id: user.id,
                     content_id: params.id,
-                    comment: addedComments,
+                    comment: replaceMentionValues(addedComments, ({ name }) => `@${name}`),
                     mentioned_user_id: taggedId,
                     entry_time: moment().format('YYYY-MM-DD HH:MM:SS'),
                     session_id: moment().format('YYYY-MM-DD HH:MM:SS'),
                     token: "j56sugRk029Po5DB",
                     appuser_id: user.id,
-                    access_token: "",
+                    access_token: "j56sugRk029Po5DB",
                 }
                 setLoading(true)
                 isOnline((connected) => {

@@ -263,6 +263,8 @@ export const fetchOnlineCourses = (userId) => {
 export const addComments = (params, success, reject) => {
   return async dispatch => {
     try {
+      console.log('shwoing response here for params', params)
+
       let api = await storyApi.postContentCommentBulk(params)
       console.log('shwoing response here for submit', api)
       if (api.success) {
@@ -342,14 +344,14 @@ export const fetchCCPMaterials = (userId, success, reject) => {
 
 //Add comments to user feed 
 export const SearchNurses = (searchedTag, success, reject) => {
-  console.log("showing search tag", searchedTag.substring(1))
+  console.log("showing search tag",)
   return async dispatch => {
     try {
       let params = {
         user_id: 89,
         token: "j56sugRk029Po5DB",
         appuser_id: 89,
-        search_term: searchedTag.substring(1),
+        search_term: searchedTag,
       }
       let api = await storyApi.SearchNurse(params)
       console.log('shwoing response here for submit', api)

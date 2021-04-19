@@ -8,7 +8,9 @@ import { useDispatch } from 'react-redux'
 import { BASE_URL_IMAGE } from '../../../../../Services/index'
 
 // create a component
-import { MentionInput, Tag } from 'react-native-complete-mentions';
+// import { MentionInput, Tag } from 'react-native-complete-mentions';
+import { MentionInput, replaceMentionValues } from 'react-native-controlled-mentions'
+
 
 var suggestedUsers = [];
 
@@ -37,40 +39,37 @@ const CommentInputBox = (props) => {
     const dispatch = useDispatch()
 
 
-    useEffect(() => {
-        dispatch(SearchNurses(extractedValue, (nurses) => {
-            console.log('showing nurses here ', nurses)
-            suggestedUsers = nurses
-            setNurses(true)
-        }, (reject) => {
-            suggestedUsers = [];
-            setNurses(false)
-        }))
-        if (props.value == null) {
-            setValue('')
+
+
+
+    const renderSuggestions: FC<MentionSuggestionsProps> = ({ keyword, onSuggestionPress }) => {
+
+        if (keyword == null) {
+            return null;
         }
-    }, [extractedValue, nurses, props.value, suggestedUsers]);
+        else {
+            dispatch(SearchNurses(keyword, (nurses) => {
+                console.log('showing nurses here ', nurses)
+                suggestedUsers = nurses
+            }, (reject) => {
+                suggestedUsers = [];
+            }))
+        }
 
-    const commitRef = React.useRef();
-    const extractCommit = commit => {
-        commitRef.current = commit;
-    };
-
-    const renderSuggestedUsers = () => {
-        if (!tracking) return null;
-        return suggestedUsers.map(user => (
-            <UserSuggestion
-                name={user.name}
-                id={user.id}
-                image={user.image}
-                onPress={() => {
-                    if (commitRef.current) {
-                        commitRef.current({ name: user.name, id: user.id });
-                        props.taggedId(user.id)
-                    }
-                }}
-            />
-        ));
+        return (
+            <View>
+                {suggestedUsers
+                    .map(one => (
+                        <UserSuggestion
+                            name={one.name}
+                            id={one.id}
+                            image={one.image}
+                            onPress={() => { onSuggestionPress(one), props.taggedId(one.id) }}
+                        />
+                    ))
+                }
+            </View>
+        );
     };
     const searchNurseListings = (nurse) => {
     }
@@ -84,7 +83,7 @@ const CommentInputBox = (props) => {
                     style={styles.input}
                     placeholderTextColor={Colors.pickerBorder}
                 /> */}
-                <MentionInput
+                {/* <MentionInput
                     value={value}
                     onChangeText={(text) => { setValue(text), props.onChangeText(text) }}
                     onExtractedStringChange={setExtractedValue}
@@ -100,14 +99,27 @@ const CommentInputBox = (props) => {
                         formatText={text => `@${text}`}
                         extractString={mention => `@[${mention.name}](id:${mention.id})`}
                     />
-                </MentionInput>
+                </MentionInput> */}
+                <MentionInput
+                    value={value}
+                    onChange={(text) => { setValue(text), props.onChangeText(text) }}
+
+                    style={styles.input}
+                    isBottomMentionSuggestionsRender={false}
+                    partTypes={[
+                        {
+                            trigger: '@', // Should be a single character like '@' or '#'
+                            renderSuggestions,
+                            textStyle: { fontWeight: 'bold', color: Colors.grey }, // The mention style in the input
+                        },
+                    ]}
+                />
                 <TouchableOpacity onPress={() => { props.onPress() }}>
                     <Text allowFontScaling={false} style={styles.post}>{t('addComment.post')}</Text>
                 </TouchableOpacity>
 
             </View>
 
-            {renderSuggestedUsers()}
         </View>
     );
 };
@@ -130,7 +142,7 @@ const styles = StyleSheet.create({
     },
     postingContainer: {
         display: 'flex',
-        height: WP('15'),
+        // height: WP('15'),
         width: WP('90'),
         backgroundColor: Colors.white,
         alignItems: 'center',
