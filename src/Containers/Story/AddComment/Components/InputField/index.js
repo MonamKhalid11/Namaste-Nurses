@@ -103,7 +103,7 @@ const CommentInputBox = (props) => {
                 <MentionInput
                     value={value}
                     onChange={(text) => { setValue(text), props.onChangeText(text) }}
-
+                    placeholder={props.placeholder}
                     style={styles.input}
                     isBottomMentionSuggestionsRender={false}
                     partTypes={[
@@ -114,7 +114,7 @@ const CommentInputBox = (props) => {
                         },
                     ]}
                 />
-                <TouchableOpacity onPress={() => { props.onPress() }}>
+                <TouchableOpacity onPress={() => { setValue(''), props.onPress() }}>
                     <Text allowFontScaling={false} style={styles.post}>{t('addComment.post')}</Text>
                 </TouchableOpacity>
 
@@ -142,7 +142,7 @@ const styles = StyleSheet.create({
     },
     postingContainer: {
         display: 'flex',
-        // height: WP('15'),
+        minHeight: WP('15'),
         width: WP('90'),
         backgroundColor: Colors.white,
         alignItems: 'center',
@@ -154,7 +154,7 @@ const styles = StyleSheet.create({
         width: WP('70'),
         paddingRight: WP('5'),
         color: Colors.grey,
-        fontFamily: "Assistant-Regular"
+        fontFamily: "Assistant-Regular",
 
 
     },

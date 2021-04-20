@@ -38,6 +38,12 @@ const AddComments = ({ route, navigation }) => {
             })
     }, [params])
 
+    const timeNow = () => {
+        let date = new Date()
+        let timeDate = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} ${date.getHours()}-${date.getMinutes()}-${date.getSeconds()} `
+        return timeDate
+    }
+
     const addComment = () => {
         try {
             if (addedComments) {
@@ -48,8 +54,8 @@ const AddComments = ({ route, navigation }) => {
                     content_id: params.id,
                     comment: replaceMentionValues(addedComments, ({ name }) => `@${name}`),
                     mentioned_user_id: taggedId,
-                    entry_time: moment().format('YYYY-MM-DD HH:MM:SS'),
-                    session_id: moment().format('YYYY-MM-DD HH:MM:SS'),
+                    entry_time: timeNow(),
+                    session_id: timeNow(),
                     token: "j56sugRk029Po5DB",
                     appuser_id: user.id,
                     access_token: "j56sugRk029Po5DB",
