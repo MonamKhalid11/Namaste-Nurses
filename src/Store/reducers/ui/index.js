@@ -1,5 +1,5 @@
 import * as TYPES from '../../actions/types';
-import {Platform} from 'react-native';
+import { Platform } from 'react-native';
 const initialState = {
   isLoading: false,
 };
